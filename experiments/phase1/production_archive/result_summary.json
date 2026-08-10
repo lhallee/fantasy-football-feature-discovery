@@ -1,0 +1,185 @@
+{
+  "generated_at_utc": "2026-08-10T05:22:28+00:00",
+  "run_mode": "full",
+  "data_and_artifact_bytes": 82802977,
+  "scoring": {
+    "profile": "espn_full_ppr_2026",
+    "config_sha256": "744c0cea0e70966966d5446595b0858304c5e941a1951fff8feb078e78792d7e",
+    "target_period": "all NFL regular-season games, including Week 18 since 2021"
+  },
+  "data": {
+    "player_game_rows": 475626,
+    "player_game_players": 11372,
+    "player_season_rows": 66907,
+    "modeling_rows": 18630,
+    "current_roster_players": 2930,
+    "current_fantasy_players": 958,
+    "snapshot_date": "2026-08-09"
+  },
+  "search": {
+    "candidate_model_settings": 30,
+    "development_seasons": [
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "retrospective_evaluation_seasons": [
+      2024,
+      2025
+    ],
+    "compact_rule": "smallest consensus-ranked prefix with mean Spearman loss <= 0.01 and mean MAE <= 1.02 times the full model, followed by greedy leave-one-atom-out deletion until no removal passes",
+    "scope_caveat": "This is a locally irreducible set on a greedy search path, not a global optimum over every atom combination."
+  },
+  "offense": {
+    "champion": {
+      "cohort": "offense",
+      "spec": {
+        "identifier": "extra_trees_02",
+        "family": "extra_trees",
+        "parameters": {
+          "max_depth": 12,
+          "min_samples_leaf": 5,
+          "max_features": 1.0
+        }
+      },
+      "tier": "base",
+      "training_window": null,
+      "selected_atoms": [
+        "draft_number",
+        "receiving_yards",
+        "rushing_yards",
+        "passing_tds",
+        "age"
+      ],
+      "development_spearman": 0.7386488740283159,
+      "development_mae": 31.770396365122174
+    },
+    "ranking_elastic_spec": {
+      "identifier": "elastic_net_09",
+      "family": "elastic_net",
+      "parameters": {
+        "alpha": 0.2,
+        "l1_ratio": 1.0
+      }
+    },
+    "model_column_count": 24,
+    "retrospective_2024_2025": {
+      "spearman": 0.7574565586795353,
+      "kendall_tau_b": 0.5916947656953888,
+      "mae": 29.461687135420792,
+      "rmse": 46.00708060400479,
+      "r2": 0.654090596187691,
+      "rank_mae": 41.85041407867495,
+      "ndcg_at_roster_cutoff": 0.7939964304154803,
+      "top_k_recall": 0.5746527777777778,
+      "calibration_intercept": -6.072914612642654,
+      "calibration_slope": 1.0401831730344562
+    },
+    "previous_points_baseline": {
+      "spearman": 0.6687989062474189,
+      "kendall_tau_b": 0.5522247063530602,
+      "mae": 29.579213250517597,
+      "rmse": 56.09609710260535,
+      "r2": 0.4857452527302554,
+      "rank_mae": 40.11128364389234,
+      "ndcg_at_roster_cutoff": 0.7642037443376438,
+      "top_k_recall": 0.5381944444444444,
+      "calibration_intercept": 12.789506628556245,
+      "calibration_slope": 0.7400602042869058
+    },
+    "intervals": {
+      "model_spearman": {
+        "estimate": 0.7574565586795353,
+        "lower_95": 0.7248577220430785,
+        "upper_95": 0.7822040790900018,
+        "bootstrap_samples": 500
+      },
+      "difference_vs_previous_points": {
+        "estimate": 0.08865765243211643,
+        "lower_95": 0.06024238710798219,
+        "upper_95": 0.11571623118207507,
+        "bootstrap_samples": 500
+      }
+    }
+  },
+  "kicker": {
+    "champion": {
+      "cohort": "kicker",
+      "spec": {
+        "identifier": "svr_01",
+        "family": "svr",
+        "parameters": {
+          "C": 1.0,
+          "epsilon": 0.1,
+          "gamma": "scale"
+        }
+      },
+      "tier": "base",
+      "training_window": null,
+      "selected_atoms": [
+        "pat_made"
+      ],
+      "development_spearman": 0.5088989909057068,
+      "development_mae": 45.895045473757484
+    },
+    "ranking_elastic_spec": {
+      "identifier": "elastic_net_02",
+      "family": "elastic_net",
+      "parameters": {
+        "alpha": 0.01,
+        "l1_ratio": 0.95
+      }
+    },
+    "model_column_count": 5,
+    "retrospective_2024_2025": {
+      "spearman": 0.4664090029963182,
+      "kendall_tau_b": 0.3354522528035587,
+      "mae": 43.50954061498345,
+      "rmse": 52.00257305542493,
+      "r2": 0.21607498129857927,
+      "rank_mae": 10.393617021276595,
+      "ndcg_at_roster_cutoff": 0.7024592731419477,
+      "top_k_recall": 0.45833333333333337,
+      "calibration_intercept": -23.634266663546317,
+      "calibration_slope": 1.211511183758108
+    },
+    "previous_points_baseline": {
+      "spearman": 0.5121396505257859,
+      "kendall_tau_b": 0.3681616410073335,
+      "mae": 43.674468085106376,
+      "rmse": 59.887870401915244,
+      "r2": -0.03968696567571195,
+      "rank_mae": 10.329787234042554,
+      "ndcg_at_roster_cutoff": 0.8101987268151407,
+      "top_k_recall": 0.5,
+      "calibration_intercept": 50.36735129199095,
+      "calibration_slope": 0.4898586532029819
+    },
+    "intervals": {
+      "model_spearman": {
+        "estimate": 0.4664090029963182,
+        "lower_95": 0.30475091706004337,
+        "upper_95": 0.6280436537753931,
+        "bootstrap_samples": 500
+      },
+      "difference_vs_previous_points": {
+        "estimate": -0.045730647529467705,
+        "lower_95": -0.1589323349110938,
+        "upper_95": 0.06659405038921799,
+        "bootstrap_samples": 500
+      }
+    }
+  },
+  "current_predictions": {
+    "rows": 958,
+    "position_counts": {
+      "WR": 388,
+      "RB": 213,
+      "TE": 195,
+      "QB": 119,
+      "K": 43
+    },
+    "note": "Ranks cover fantasy-position players in the nflverse snapshot; non-fantasy roster rows remain metadata-only in the catalog."
+  }
+}

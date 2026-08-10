@@ -1,0 +1,41 @@
+{
+  "created_at_utc": "2026-08-10T17:51:50.926874+00:00",
+  "plan_sha256": "3b07b79602c5a5e352d008f1cdd1b185011aa76b08140ae2313c940bf98babc0",
+  "code_hashes": {
+    "fantasy_football/metrics.py": "471ac11b9add47bfd97fdc42fd7e0b45f81b757b7797e9bcd72d1861a9de5ae4",
+    "fantasy_football/models.py": "cf4a4769a37e5fdaceda6c6d3b268a22800273dfebd40520a7d49e4dc097ea06",
+    "fantasy_football/phase2_august.py": "20af08333bdce152ce6d10e78f189cd670e822d389b2860fc81688bb58b3ee0f",
+    "fantasy_football/phase2_august_runner.py": "7e9015418a3fecd8b7323ed8bdf8af0d2bb70639a050e743b6fe3cccbbfb38cb",
+    "fantasy_football/phase2_features.py": "d8576816bce3efe6696e74f23e9e75f2bc98a4482dd9ab03e416f619443222e3",
+    "fantasy_football/phase2_modeling.py": "8f489253c9a93ac66baec8d5bce57f5645f59ac0d9057db095b1e4f4371b9286",
+    "tests/test_phase2_august.py": "f58759bc9948ea3171e886bdc32cb93f28959bed459682535a984802fa2be578",
+    "tests/test_phase2_august_runner.py": "d6758b8d39b3f38a05566d7e8f8c7d05a0a592411583bd89a3e65d74575ee1fa"
+  },
+  "forecast_origin": "2026-08-09",
+  "discovery_seasons": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021
+  ],
+  "cohorts": {
+    "offense": {
+      "identifier": "off_stable_core_et_all",
+      "best_discovery_spearman": 0.6988126723300688,
+      "selected_discovery_spearman": 0.6988126723300688,
+      "selected_feature_count": 228,
+      "feature_pool_count": 228,
+      "selection_rule": "within 0.005 mean within-position-season Spearman of the best eligible procedure, then fewer columns, lower MAE, and ID"
+    },
+    "kicker": {
+      "identifier": "k_stable_core_et_32",
+      "best_discovery_spearman": 0.6094241994223614,
+      "selected_discovery_spearman": 0.6094241994223614,
+      "selected_feature_count": 32,
+      "feature_pool_count": 164,
+      "selection_rule": "within 0.005 mean within-position-season Spearman of the best eligible procedure, then fewer columns, lower MAE, and ID"
+    }
+  }
+}

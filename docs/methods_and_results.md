@@ -1,121 +1,175 @@
-# Methods and results
+# Phase 2 production methods and results
 
 ## Prediction question
 
-For each fantasy-position player in a target-season roster cohort, predict full regular-season ESPN PPR points using only information available before that season. Same-season statistics construct the label. Imported fantasy points, expert projections, ADP, betting lines, EPA, WOPR, target share, depth rank, and other prebuilt indices are excluded from model inputs. Prior fantasy points appear only as benchmarks.
+For every fantasy-position player who could reasonably be identified by August 9, predict full regular-season ESPN full-PPR points using only elementary information from before the target season. Rank quality is evaluated within position and season because draft decisions compare players who can fill the same roster slot.
 
-The primary metric is mean Spearman correlation across position-season groups. Secondary metrics are Kendall τ-b, MAE, RMSE, R², position-rank MAE, NDCG at QB12/RB24/WR36/TE12/K12, top-k recall, and calibration slope and intercept.
+The primary metric is the arithmetic mean of Spearman correlation across position-season groups. Secondary metrics include Kendall τ-b, MAE, RMSE, R², position-rank MAE, NDCG at QB12/RB24/WR36/TE12/K12, top-k recall, and linear calibration.
 
-## Cohort and temporal protocol
+## Fixed forecast origin
 
-- Unit: one `(player_id, target_season)` row.
-- Cohort: every fantasy-position player in the historical Week 1 roster proxy, including backups and eventual zero scorers.
-- Inputs: target-season metadata plus raw one- and two-season lags.
-- Development: chronological 2020, 2021, 2022, and 2023 folds.
-- Retrospective evaluation: train before 2024 and predict 2024, then train before 2025 and predict 2025.
-- Final forecast: refit through 2025 and predict the August 9, 2026 roster snapshot.
+The production origin is August 9, 2026. Historical target-season roster membership cannot be used because equivalent timestamped August snapshots are unavailable for every training year.
 
-The development folds support model, window, and feature decisions. Their reuse makes the comparison exploratory rather than a formal multiple-comparison experiment. Aggregate 2024-2025 results were inspected during pipeline development, so those years are retrospective evaluation, not a sealed audit. No 2026 outcomes were available.
+For historical target season `t`, the candidate universe is constructed from:
 
-## Raw feature contract
+1. Every fantasy-position player on a regular-season roster in `t - 1`.
+2. Every target-year draft pick or combine participant that can be mapped to a player.
 
-The 32-atom offense base menu contains direct metadata, combine measurements, and prior box-score counts. An optional 33rd atom adds offense snaps. Current status and depth are retained as catalog metadata but excluded from modeling because their historical and current cutoffs are not comparable. Draft number remains because it is a direct source scalar, although it embeds NFL teams' scouting decisions rather than pure player performance.
+The union is deduplicated by player and position. A candidate who records no regular-season statistics in `t` stays in the table with zero points. This preserves backups, cuts, retirements, and unsuccessful entrants instead of conditioning the sample on later participation.
 
-Each statistical atom generates five columns: lag one, lag two, `log1p` of each nonnegative lag, and lag-one minus lag-two trend. Age generates raw, `log1p`, and squared values. Draft number generates raw and `log1p` values. The pooled offense model also requires four position indicators. There are no hidden per-game denominators or fantasy-derived features.
+The 2026 inference cohort is different only where observable information permits it to be: all 958 fantasy-position players in the frozen August 9 roster snapshot receive forecasts. Seven CUT or RET records remain in the catalog for provenance but are excluded from the default draft board.
 
-## Model and hyperparameter search
+## Target and exclusions
 
-Thirty deterministic settings cover ridge, elastic net with L1 ratios 0.8-1.0, random forest, extra trees, histogram gradient boosting, XGBoost, RBF SVR, and small MLPs. A recent development fold retains one setting per family. Those finalists are compared across all four development seasons, the base and utilization tiers, and five-season, eight-season, and all-history windows.
+The target is the sum of all regular-season ESPN full-PPR player-game points, including Week 18 since 2021. The executable scoring profile is [`scoring_espn_full_ppr_2026.json`](../config/scoring_espn_full_ppr_2026.json), with SHA-256 `744c0cea0e70966966d5446595b0858304c5e941a1951fff8feb078e78792d7e`.
 
-Estimator `n_jobs` and process-native numerical pools are capped at four threads. CUDA is not required. ConvNets and transformers were not tested because this is a small tabular panel without a justified spatial or token order; the tree, kernel, linear, boosting, and small-neural candidates already cover nonlinear interactions at lower cost.
+The feature contract excludes:
 
-The point-estimate offense champion is `extra_trees_02`:
+- target-season roster membership in historical rows
+- target-season roster-room or team aggregates
+- current status, depth rank, and depth tier
+- injuries without a historically verified August timestamp
+- `team_changed`, because the historical August team is unknown
+- imported fantasy scores, projections, ADP, betting lines, EPA, WOPR, and other composite efficiency features
 
-- 240 trees
-- maximum depth 12
-- minimum leaf size 5
-- all features considered per split
-- all available training seasons
-- base feature tier
+Prior-season fantasy points are retained only as a benchmark. They are not model inputs.
 
-The full 32-atom model reached development ρ = 0.74325, MAE 31.435, NDCG 0.8091, and top-k recall 0.5851. The selected high-L1 ranking model was a lasso with alpha 0.2. The model-family comparison does not establish that Extra Trees is meaningfully superior to every near-tied finalist; it is the winner under the declared point-estimate rule.
+## Raw feature construction
 
-## Compact feature search
+All performance sources have offsets from one through four seasons. No target-season performance column can enter a model vector.
 
-Atoms are ranked by the mean percentile rank of three development-only signals:
+### Offense
 
-1. Grouped permutation loss in within-position Spearman.
-2. Summed absolute coefficients from the selected high-L1 elastic net.
-3. Absolute within-position, within-season univariate Spearman association.
+The selected offense vector has 228 columns:
 
-The pipeline refits ranked prefixes of size 1-15 and the full set across all four development folds. A set passes when mean Spearman loss versus the full model is at most 0.01 and mean MAE is at most 1.02 times the full-model MAE. The smallest passing prefix had 11 atoms.
+| Feature group | Columns | Examples |
+|---|---:|---|
+| Lag-one raw counts and rates | 48 | games, passing yards, carries, receptions, touchdowns, first downs, explosive plays, fumbles, yards per attempt |
+| Lag-two raw counts and rates | 48 | same elementary statistics from `t - 2` |
+| Lag-three raw counts and rates | 48 | same elementary statistics from `t - 3` |
+| Lag-four raw counts and rates | 48 | same elementary statistics from `t - 4` |
+| Missingness indicators | 14 | missing age, draft, size, experience, or combine result |
+| Metadata and draft | 8 | age, height, weight, experience, rookie flag, drafted flag, round, pick |
+| Combine measurements | 6 | forty, bench, vertical, broad jump, shuttle, cone |
+| History-availability indicators | 4 | whether each lag season exists |
+| Position indicators | 4 | QB, RB, WR, TE |
 
-Greedy backward deletion then removed, in order, receptions, yards after catch, receiving touchdowns, carries, passing yards, and games. At each step, every one-atom deletion was evaluated on the four development folds, and the passing subset with highest Spearman was retained. No deletion from the final five-atom set passed. This proves local irreducibility on that greedy path, not a global minimum across all 2³² atom subsets.
+Rates are direct arithmetic transforms of lagged raw counts, such as completion rate, passing yards per attempt, rushing yards per carry, receiving yards per reception, first-down rate, and field-goal make rate. There are no fantasy-point transforms or target-derived aggregates.
 
-The final five atoms are:
+The candidate search also tested late-season trajectory features and a recent-era source tier with snaps, targets, and air-yard inputs. Neither improved the locked discovery objective enough to be selected.
 
-| Atom | Direct meaning | Mean univariate Spearman | Mean grouped permutation loss |
-|---|---|---:|---:|
-| `draft_number` | Overall NFL draft pick; undrafted is coded 300 | -0.561 | 0.152 |
-| `receiving_yards` | Prior raw receiving yards | 0.495 | 0.081 |
-| `rushing_yards` | Prior raw rushing yards | 0.432 | 0.030 |
-| `passing_tds` | Prior raw passing touchdowns | 0.333 | 0.010 |
-| `age` | Age on September 1 of the target season | 0.116 | 0.008 |
+### Kicker
 
-All five have positive grouped permutation importance in each development year. Their exploratory Benjamini-Hochberg adjusted correlation tests range from below 10⁻¹⁵ to 0.0051. Repeated players and correlated atoms violate simple independent-test assumptions, so those p-values describe consistency, not causal evidence or a selection guarantee.
+The selected kicker vector has 32 columns from `t - 1` and `t - 2`: games, roster weeks, PAT attempts and makes, field-goal attempts and makes, distance buckets, total made and missed distance, mean made and missed distance, and elementary make rates.
 
-The five atoms expand to 24 estimator columns: 3 age columns, 2 draft columns, 15 lag/log/trend columns from the three statistics, and 4 position indicators. Development ρ is 0.73865 and MAE is 31.770. Relative to the full model, the losses are 0.00460 Spearman and 1.07% MAE. Every four-atom deletion fails at least one threshold.
+## Chronological protocol
 
-## Retrospective offense results
+The experimental plan and code hashes were recorded before fitting. Discovery and audit are separate commands with separately hashed outputs.
 
-| Predictor | Spearman | Kendall τ-b | MAE | RMSE | R² | NDCG | Top-k recall |
+- Discovery folds: 2016 through 2021.
+- Locked retrospective folds: 2022 through 2025.
+- Final fit: all eligible history through 2025, followed by 2026 inference.
+
+For every validation year, training uses only earlier target seasons. Feature scoring, median imputation, and estimator fitting occur inside that training fold. The discovery build is bounded to its maximum source season, so 2022-2025 outcomes are not loaded into discovery feature construction.
+
+The later outcomes had been inspected during Phase 1 and the superseded source-proxy studies. The audit is therefore chronological and procedure-locked, but not analyst-blinded. The 2026 season is the first prospective test.
+
+## Candidate and feature-count search
+
+The pre-fit menu contained 16 offense procedures and 9 kicker procedures. It compared Extra Trees with histogram gradient boosting, XGBoost, and ridge, stable and recent source tiers, core and trajectory recipes, and explicit column limits.
+
+Selection maximized discovery Spearman. Any procedure within 0.005 of the best was resolved by fewer columns, lower MAE, and lexicographic identifier, in that order. Prior-season points was eligible to win the kicker cohort but not offense.
+
+### Offense discovery sensitivity
+
+| Procedure | Columns | Discovery ρ | MAE |
+|---|---:|---:|---:|
+| Stable core Extra Trees, all | 228 | 0.6988 | 27.86 |
+| Stable core plus trajectory Extra Trees, all | 264 | 0.6970 | 27.94 |
+| Recent core plus trajectory Extra Trees, all | 327 | 0.6918 | 28.08 |
+| Stable core Extra Trees, 128 | 128 | 0.6814 | 29.34 |
+| Stable core Extra Trees, 64 | 64 | 0.6775 | 29.62 |
+| Stable core Extra Trees, 32 | 32 | 0.6515 | 31.40 |
+| Stable core Extra Trees, 16 | 16 | 0.5336 | 35.23 |
+
+The 128-column model was 0.0174 below the best, so it failed the 0.005 compactness tolerance. Phase 2 does not support a claim that a small combination preserves the available rank signal.
+
+### Kicker discovery sensitivity
+
+The 32-column stable-core Extra Trees model led discovery at ρ = 0.6094. The 164-column version reached 0.6018, the 16-column version reached 0.5933, and prior-season points reached 0.5571. The 32-column model was selected.
+
+## Final estimators
+
+Each model is a scikit-learn pipeline with median imputation and `ExtraTreesRegressor`.
+
+| Setting | Offense | Kicker |
+|---|---:|---:|
+| Trees | 180 | 180 |
+| Maximum depth | 14 | 10 |
+| Minimum leaf size | 5 | 4 |
+| Columns considered per split | 70% | 80% |
+| Selected columns | 228 | 32 |
+| Random seed | 20260809 | 20260809 |
+
+Training columns are ordered by the absolute within-position-season association computed from training rows only. Missing values are median-imputed inside the pipeline. Each tree is fit to a bootstrap-free randomized sample of split thresholds and feature subsets, and the forest prediction is the mean of its trees. Negative totals are clipped to zero after prediction.
+
+Numerical and estimator thread pools are capped at four. CUDA is not required.
+
+## Retrospective results
+
+### Offense
+
+| Predictor | Spearman ρ | Kendall τ-b | MAE | RMSE | R² | NDCG | Top-k recall |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Five-atom Extra Trees | 0.7575 | 0.5917 | 29.46 | 46.01 | 0.654 | 0.7940 | 0.5747 |
-| Prior-year points | 0.6688 | 0.5522 | 29.58 | 56.10 | 0.486 | 0.7642 | 0.5382 |
-| Two-year recency points | 0.6437 | 0.5231 | 29.57 | 54.41 | 0.516 | 0.7648 | 0.5313 |
-| Position and rookie median | 0.2119 | 0.1836 | 48.55 | 80.53 | -0.060 | 0.2055 | 0.1181 |
+| Phase 2 Extra Trees | 0.7510 | 0.5928 | 25.25 | 43.54 | 0.659 | 0.7895 | 0.5651 |
+| Prior-season points | 0.6472 | 0.5372 | 27.18 | 52.70 | 0.500 | 0.7850 | 0.5547 |
 
-A 500-sample player-cluster bootstrap gives a 95% interval of 0.7249-0.7822 for model Spearman. The paired improvement over prior-year points is 0.0887, with interval 0.0602-0.1157. The model improves ranking and RMSE; its MAE advantage is only 0.12 points, and position-rank MAE is slightly worse than the baseline.
+The Spearman gain is 0.1038. A 500-sample player-cluster bootstrap gives a 95% interval of 0.7263 to 0.7703 for model ρ and 0.0843 to 0.1244 for the paired gain.
 
-| Position | Rows | Model Spearman | Prior-points Spearman | Model MAE | Prior-points MAE | Model top-k recall |
-|---|---:|---:|---:|---:|---:|---:|
-| QB | 257 | 0.756 | 0.635 | 41.25 | 45.17 | 0.542 |
-| RB | 458 | 0.707 | 0.616 | 35.25 | 31.94 | 0.646 |
-| WR | 805 | 0.765 | 0.685 | 27.18 | 27.68 | 0.611 |
-| TE | 412 | 0.802 | 0.739 | 20.14 | 20.93 | 0.500 |
+| Position | Rows | Model ρ | Model MAE |
+|---|---:|---:|---:|
+| QB | 497 | 0.7092 | 37.77 |
+| RB | 1,076 | 0.7485 | 29.28 |
+| WR | 1,900 | 0.7595 | 23.01 |
+| TE | 891 | 0.7867 | 17.38 |
 
-The running-back point error is worse than prior points despite better rank correlation, so the model should not be treated as uniformly better on every objective.
+| Validation season | Rows | Model ρ | Prior-points ρ |
+|---|---:|---:|---:|
+| 2022 | 1,050 | 0.7413 | 0.6330 |
+| 2023 | 1,114 | 0.7441 | 0.6332 |
+| 2024 | 1,079 | 0.7595 | 0.6676 |
+| 2025 | 1,121 | 0.7589 | 0.6548 |
 
-### Feature-count sensitivity
+No season or position approaches 0.90. The stable values across four chronological years are more informative than a single pooled correlation, but they do not establish future accuracy.
 
-| Atom set | Columns | Spearman | MAE | NDCG | Top-k recall |
-|---|---:|---:|---:|---:|---:|
-| Selected five | 24 | 0.7575 | 29.46 | 0.7940 | 0.5747 |
-| Top 15 | 70 | 0.7590 | 29.17 | 0.7833 | 0.5885 |
-| Full 32 | 117 | 0.7694 | 28.83 | 0.7853 | 0.5764 |
+### Kicker
 
-The compact model gives up retrospective correlation and MAE relative to all atoms, while slightly improving NDCG. The compact threshold was chosen on development folds; the retrospective period did not choose the final set.
+The kicker model reached ρ = 0.6255 versus 0.5995 for prior-season points. Its MAE was 37.88 versus 35.96, and NDCG was 0.7752 versus 0.8008. The bootstrap interval for the Spearman gain was -0.0255 to 0.0766. Kicker ordering is therefore exploratory even though the locked discovery rule selected the model.
 
-Rookie-only retrospective rows have ρ = 0.646 and MAE 20.53. Many deep rookies score zero, which makes point error look favorable. Without NFL history, rookies rely heavily on draft number and age; the catalog labels 224 current offense rookies `limited_rookie_history`.
+## Negative controls
 
-## Kicker result
+The plan fixed both controls before fitting.
 
-The greedy kicker search reduces to prior `pat_made`, expanded into five lag/log/trend columns and fit by an all-history RBF SVR. Development ρ = 0.509. Retrospective ρ = 0.466 is below prior-year points at 0.512. MAE is 43.51 versus 43.67, but NDCG is 0.702 versus 0.810 and top-12 recall is 0.458 versus 0.500.
+| Control | Offense mean ρ | Kicker mean ρ |
+|---|---:|---:|
+| Fixed predictions, 499 independently permuted validation labels | 0.0004 | 0.0008 |
+| End-to-end fit, 11 independently permuted training and validation labels | 0.0009 | 0.0287 |
 
-This does not support a better kicker ranking. All kicker rows carry `low_kicker_rank_evidence`, and an explicit K or PK query defaults to the stronger prior-points order. Pass `sort_by="prediction"` to inspect model order.
+The offense end-to-end values ranged from -0.0187 to 0.0376. These controls passed the predeclared centering gates. They are implementation sentinels, not confirmatory permutation tests over the full model-selection process.
 
 ## Leading August 9 outputs
 
 | Position | Rank 1 | Rank 2 | Rank 3 |
 |---|---|---|---|
-| QB | Lamar Jackson, 286.2 | Josh Allen, 281.4 | Joe Burrow, 276.3 |
-| RB | Bijan Robinson, 269.5 | Jahmyr Gibbs, 264.1 | Ashton Jeanty, 249.8 |
-| WR | Puka Nacua, 284.0 | Amon-Ra St. Brown, 248.8 | Ja'Marr Chase, 244.5 |
-| TE | Trey McBride, 197.7 | Brock Bowers, 180.2 | Kyle Pitts, 177.9 |
-| K | Jake Elliott, 121.2 | Wil Lutz, 120.6 | Jason Myers, 119.4 |
+| QB | Josh Allen, 315.9 | Jared Goff, 270.9 | Baker Mayfield, 264.8 |
+| RB | Jahmyr Gibbs, 257.8 | Bijan Robinson, 240.5 | De'Von Achane, 228.8 |
+| WR | Puka Nacua, 274.2 | Amon-Ra St. Brown, 270.4 | Ja'Marr Chase, 249.9 |
+| TE | Trey McBride, 222.9 | Harold Fannin Jr., 183.2 | Tyler Warren, 167.2 |
 
-These are August 9 model outputs, not observed 2026 results or optimal draft order. The catalog contains every nflverse roster player, 791 eligible backups, approximate intervals, prior-season points, exact fitted vectors, and confidence labels.
+Kicker pages in the workbook are also sorted by model-predicted points, as requested. The Python query interface retains the conservative prior-points default for explicit K or PK queries because kicker evidence is mixed; pass `sort_by="prediction"` for model order.
 
 ## Claim boundary
 
-The result is conditional on the public sources, season cohort, raw atom menu, mechanical transforms, model families, metric, and greedy search described above. It does not establish a universal minimum, causal drivers, prospective accuracy, or optimal draft value. Correlated atoms can substitute for one another. Draft number carries human judgment. Current injuries, schedule context, and final roster decisions are absent.
+Phase 2 is the production generation because it has the strongest forecast-origin contract in this repository, not because it achieved ρ > 0.90. The result is conditional on the available public sources, candidate-universe rule, feature menu, model menu, and selection metric.
+
+Historical public data do not reconstruct exact August 9 roster, injury, transaction, or depth-chart states. The retrospective was not analyst-blinded. The analysis does not prove causal effects, a globally minimal feature set, optimal draft value, or prospective 2026 accuracy.

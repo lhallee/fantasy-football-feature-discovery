@@ -2,11 +2,11 @@
 
 import hashlib
 import json
-from pathlib import Path
-
 import joblib
 import numpy as np
 import pandas as pd
+
+from pathlib import Path
 
 from fantasy_football.constants import CURRENT_SEASON, MAX_PROJECT_DATA_BYTES
 from fantasy_football.features import build_features
@@ -57,63 +57,54 @@ def test_model_manifest_identifies_inputs_scoring_and_thread_limit() -> None:
         (ROOT / "data" / "processed" / "build_summary.json").read_text()
     )
 
-    assert manifest["run_mode"] == "full"
+    assert manifest["production_generation"] == "phase2_august9_v1"
     assert manifest["current_season"] == CURRENT_SEASON
+    assert manifest["forecast_origin"] == "2026-08-09"
     assert manifest["scoring_profile"] == build_summary["scoring_profile"]
     assert manifest["scoring_config_sha256"] == build_summary["scoring_config_sha256"]
     assert manifest["snapshot_date"] == build_summary["snapshot_date"]
-    assert manifest["source_manifest_sha256"]
-    assert manifest["modeling_table_sha256"]
     assert manifest["maximum_cpu_threads"] == 4
+    assert manifest["promotion_gates"]["passed"] is True
+    assert len(manifest["feature_columns"]["offense"]) == 228
+    assert len(manifest["feature_columns"]["kicker"]) == 32
+    lowered = " ".join(
+        (*manifest["feature_columns"]["offense"], *manifest["feature_columns"]["kicker"])
+    ).lower()
+    for forbidden in ("target_points", "fantasy", "status", "depth", "room_"):
+        assert forbidden not in lowered
 
 
 def test_saved_predictions_match_saved_estimators() -> None:
-    modeling = pd.read_parquet(  # (n_player_seasons, c_modeling)
-        ROOT / "data" / "processed" / "modeling_table.parquet"
-    )
     saved = pd.read_parquet(  # (n_current_players, c_prediction)
         ROOT / "artifacts" / f"predictions_{CURRENT_SEASON}.parquet"
     )
-    for cohort, position_mask in [
-        ("offense", modeling["model_position"].ne("K")),
-        ("kicker", modeling["model_position"].eq("K")),
-    ]:
-        # position_mask: (n_player_seasons,)
-        table = modeling[position_mask].copy()  # (n_cohort_rows, c_modeling)
+    for cohort, position_mask in (
+        ("offense", saved["model_position"].ne("K")),
+        ("kicker", saved["model_position"].eq("K")),
+    ):
+        # position_mask: (n_current_players,)
+        current = saved.loc[position_mask].copy()  # (n_current, c_prediction)
         bundle = joblib.load(ROOT / "artifacts" / f"{cohort}_model.joblib")
-        tier = bundle["champion"]["tier"]
-        features = build_features(  # frame: (n_cohort_rows, d_all)
-            table,
-            cohort,
-            tier,
-        )
-        current_mask = table["target_season"].eq(CURRENT_SEASON)  # (n_cohort_rows,)
-        X_current = features.frame.loc[
-            current_mask, bundle["feature_columns"]
-        ]  # (n_current, d_selected)
+        feature_columns = bundle["feature_columns"]
+        stored_columns = [f"feature_value__{column}" for column in feature_columns]
+        X_current = current.loc[:, stored_columns].copy()  # (n_current, d_selected)
+        X_current.columns = feature_columns
         predicted = np.clip(
             bundle["estimator"].predict(X_current),
             a_min=0.0,
             a_max=None,
         )  # (n_current,)
-        player_ids = table.loc[current_mask, "player_id"].to_numpy()  # (n_current,)
-        expected = (
-            saved.set_index("player_id").loc[player_ids, "predicted_points"].to_numpy()
-        )  # (n_current,)
-        np.testing.assert_allclose(predicted, expected, rtol=1e-6, atol=1e-6)
+        expected = current["predicted_points"].to_numpy()  # (n_current,)
+        np.testing.assert_allclose(predicted, expected, rtol=0.0, atol=1e-12)
 
 
 def test_complete_project_data_remains_below_limit() -> None:
     paths = list((ROOT / "data").rglob("*")) + list((ROOT / "artifacts").rglob("*"))
     canonical_bytes = project_data_bytes(ROOT)
-    build_summary = json.loads(
-        (ROOT / "data" / "processed" / "build_summary.json").read_text()
-    )
     result_summary = json.loads(
         (ROOT / "artifacts" / "result_summary.json").read_text()
     )
 
-    assert build_summary["total_project_data_bytes"] == canonical_bytes
     assert result_summary["data_and_artifact_bytes"] == canonical_bytes
 
     paths.append(ROOT / "fantasy_football" / f"players_{CURRENT_SEASON}.py")

@@ -1,185 +1,228 @@
 {
-  "generated_at_utc": "2026-08-10T05:22:28+00:00",
-  "run_mode": "full",
-  "data_and_artifact_bytes": 82802977,
+  "generated_at_utc": "2026-08-10T17:57:33.938798+00:00",
+  "run_mode": "phase2_august9_production",
+  "data_and_artifact_bytes": 83376799,
+  "forecast_origin": "2026-08-09",
   "scoring": {
     "profile": "espn_full_ppr_2026",
     "config_sha256": "744c0cea0e70966966d5446595b0858304c5e941a1951fff8feb078e78792d7e",
     "target_period": "all NFL regular-season games, including Week 18 since 2021"
   },
-  "data": {
-    "player_game_rows": 475626,
-    "player_game_players": 11372,
-    "player_season_rows": 66907,
-    "modeling_rows": 18630,
-    "current_roster_players": 2930,
-    "current_fantasy_players": 958,
-    "snapshot_date": "2026-08-09"
+  "candidate_universe": {
+    "historical": "prior-season roster plus target-year draft/combine entrants",
+    "current": "all fantasy players in the frozen 2026-08-09 roster snapshot",
+    "nonparticipants": "retained with explicit zero outcomes"
   },
-  "search": {
-    "candidate_model_settings": 30,
-    "development_seasons": [
-      2020,
-      2021,
-      2022,
-      2023
-    ],
-    "retrospective_evaluation_seasons": [
-      2024,
-      2025
-    ],
-    "compact_rule": "smallest consensus-ranked prefix with mean Spearman loss <= 0.01 and mean MAE <= 1.02 times the full model, followed by greedy leave-one-atom-out deletion until no removal passes",
-    "scope_caveat": "This is a locally irreducible set on a greedy search path, not a global optimum over every atom combination."
-  },
-  "offense": {
-    "champion": {
-      "cohort": "offense",
-      "spec": {
-        "identifier": "extra_trees_02",
-        "family": "extra_trees",
-        "parameters": {
-          "max_depth": 12,
-          "min_samples_leaf": 5,
-          "max_features": 1.0
-        }
-      },
-      "tier": "base",
-      "training_window": null,
-      "selected_atoms": [
-        "draft_number",
-        "receiving_yards",
-        "rushing_yards",
-        "passing_tds",
-        "age"
-      ],
-      "development_spearman": 0.7386488740283159,
-      "development_mae": 31.770396365122174
+  "discovery_seasons": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021
+  ],
+  "retrospective_evaluation_seasons": [
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "retrospective_outcomes_blinded": false,
+  "promotion_gates": {
+    "passed": true,
+    "checks": {
+      "offense_minimum_spearman": true,
+      "offense_minimum_gain_over_baseline": true,
+      "offense_each_position_minimum_spearman": true,
+      "kicker_not_materially_below_baseline": true,
+      "fixed_prediction_null_centered": true,
+      "end_to_end_null_centered": true
     },
-    "ranking_elastic_spec": {
-      "identifier": "elastic_net_09",
-      "family": "elastic_net",
-      "parameters": {
-        "alpha": 0.2,
-        "l1_ratio": 1.0
+    "offense": {
+      "selected": {
+        "spearman": 0.7509656887681702,
+        "kendall_tau_b": 0.5928076298038015,
+        "mae": 25.24956709070871,
+        "rmse": 43.53763540986679,
+        "r2": 0.6585379697377576,
+        "rank_mae": 47.31301558203483,
+        "ndcg_at_roster_cutoff": 0.7895155517173212,
+        "top_k_recall": 0.5651041666666667,
+        "calibration_intercept": -2.4217230008949286,
+        "calibration_slope": 1.0509464301067006
+      },
+      "baseline": {
+        "spearman": 0.6471565438550133,
+        "kendall_tau_b": 0.5372109811256024,
+        "mae": 27.17580201649863,
+        "rmse": 52.698074521704704,
+        "r2": 0.49973256147358236,
+        "rank_mae": 44.08180568285976,
+        "ndcg_at_roster_cutoff": 0.7849727198584101,
+        "top_k_recall": 0.5546875,
+        "calibration_intercept": 9.800502768340026,
+        "calibration_slope": 0.7472448256164671
+      },
+      "gain_over_baseline": 0.10380914491315685,
+      "by_position": {
+        "QB": {
+          "spearman": 0.7091998781027414,
+          "kendall_tau_b": 0.5506149857921941,
+          "mae": 37.76572365106545,
+          "rmse": 63.484207644045206,
+          "r2": 0.618148146255393,
+          "rank_mae": 22.42526690391459,
+          "ndcg_at_roster_cutoff": 0.7673117921380191,
+          "top_k_recall": 0.47916666666666663,
+          "calibration_intercept": 1.0012918277002534,
+          "calibration_slope": 0.9982244707107386
+        },
+        "RB": {
+          "spearman": 0.7484667377862497,
+          "kendall_tau_b": 0.5848834123691082,
+          "mae": 29.281917724160422,
+          "rmse": 48.68070185928907,
+          "r2": 0.6107146132319922,
+          "rank_mae": 40.99437675726335,
+          "ndcg_at_roster_cutoff": 0.7686250331302704,
+          "top_k_recall": 0.6145833333333333,
+          "calibration_intercept": -5.191048575761763,
+          "calibration_slope": 1.157261912197617
+        },
+        "TE": {
+          "spearman": 0.7867245707989469,
+          "kendall_tau_b": 0.6298904659463449,
+          "mae": 17.381467518689927,
+          "rmse": 29.54100922686397,
+          "r2": 0.66696736904275,
+          "rank_mae": 32.41100323624595,
+          "ndcg_at_roster_cutoff": 0.7957221189849298,
+          "top_k_recall": 0.5208333333333334,
+          "calibration_intercept": -1.7400798570579599,
+          "calibration_slope": 1.0759201813457968
+        },
+        "WR": {
+          "spearman": 0.7594715683847424,
+          "kendall_tau_b": 0.6058416551075587,
+          "mae": 23.01346653232814,
+          "rmse": 38.425326863870254,
+          "r2": 0.7011010118640486,
+          "rank_mae": 66.41869469026548,
+          "ndcg_at_roster_cutoff": 0.8264032626160657,
+          "top_k_recall": 0.6458333333333333,
+          "calibration_intercept": -3.2023728389894814,
+          "calibration_slope": 1.0256181995676428
+        }
       }
     },
-    "model_column_count": 24,
-    "retrospective_2024_2025": {
-      "spearman": 0.7574565586795353,
-      "kendall_tau_b": 0.5916947656953888,
-      "mae": 29.461687135420792,
-      "rmse": 46.00708060400479,
-      "r2": 0.654090596187691,
-      "rank_mae": 41.85041407867495,
-      "ndcg_at_roster_cutoff": 0.7939964304154803,
-      "top_k_recall": 0.5746527777777778,
-      "calibration_intercept": -6.072914612642654,
-      "calibration_slope": 1.0401831730344562
-    },
-    "previous_points_baseline": {
-      "spearman": 0.6687989062474189,
-      "kendall_tau_b": 0.5522247063530602,
-      "mae": 29.579213250517597,
-      "rmse": 56.09609710260535,
-      "r2": 0.4857452527302554,
-      "rank_mae": 40.11128364389234,
-      "ndcg_at_roster_cutoff": 0.7642037443376438,
-      "top_k_recall": 0.5381944444444444,
-      "calibration_intercept": 12.789506628556245,
-      "calibration_slope": 0.7400602042869058
-    },
-    "intervals": {
-      "model_spearman": {
-        "estimate": 0.7574565586795353,
-        "lower_95": 0.7248577220430785,
-        "upper_95": 0.7822040790900018,
-        "bootstrap_samples": 500
+    "kicker": {
+      "selected": {
+        "spearman": 0.6254832453821897,
+        "kendall_tau_b": 0.4572413368895263,
+        "mae": 37.88422001584807,
+        "rmse": 47.81586324230216,
+        "r2": 0.4279975362625873,
+        "rank_mae": 11.004310344827585,
+        "ndcg_at_roster_cutoff": 0.7752053155835562,
+        "top_k_recall": 0.45833333333333337,
+        "calibration_intercept": 1.8020690732464577,
+        "calibration_slope": 0.9976494294969824
       },
-      "difference_vs_previous_points": {
-        "estimate": 0.08865765243211643,
-        "lower_95": 0.06024238710798219,
-        "upper_95": 0.11571623118207507,
-        "bootstrap_samples": 500
+      "baseline": {
+        "spearman": 0.5995085952357143,
+        "kendall_tau_b": 0.4383629909967894,
+        "mae": 35.96293103448276,
+        "rmse": 52.53235292130247,
+        "r2": 0.3095891552528557,
+        "rank_mae": 11.116379310344827,
+        "ndcg_at_roster_cutoff": 0.8007748089969339,
+        "top_k_recall": 0.41666666666666663,
+        "calibration_intercept": 23.459269063679187,
+        "calibration_slope": 0.6599723638365892
+      },
+      "gain_over_baseline": 0.025974650146475375
+    },
+    "fixed_prediction_null": {
+      "offense": {
+        "repeats": 499,
+        "mean_spearman": 0.0003751118342757924,
+        "lower_95": -0.029506139976961672,
+        "upper_95": 0.03326216711924555,
+        "minimum": -0.05217176379086851,
+        "maximum": 0.04666137895197813
+      },
+      "kicker": {
+        "repeats": 499,
+        "mean_spearman": 0.0007674980235911191,
+        "lower_95": -0.1328014567188706,
+        "upper_95": 0.12856927262447057,
+        "minimum": -0.2000723116464882,
+        "maximum": 0.19013000957617163
+      }
+    },
+    "end_to_end_null": {
+      "offense": {
+        "repeats": 11,
+        "mean_spearman": 0.0008833524998994084,
+        "lower_95": -0.01789125236040906,
+        "upper_95": 0.031591986724933276,
+        "minimum": -0.018729769742463473,
+        "maximum": 0.03761752876694789,
+        "spearman": [
+          0.013515360598889428,
+          -0.010064057697068179,
+          -0.0038495688218611514,
+          0.010633036473916184,
+          -0.015375700214245825,
+          0.00520983534297128,
+          -0.013916867271773388,
+          -0.003957085708400205,
+          -0.018729769742463473,
+          0.03761752876694789,
+          0.008634165771980935
+        ]
+      },
+      "kicker": {
+        "repeats": 11,
+        "mean_spearman": 0.028726028388772477,
+        "lower_95": -0.06281699153098311,
+        "upper_95": 0.08973180646250355,
+        "minimum": -0.08170943407104675,
+        "maximum": 0.09523288648567683,
+        "spearman": [
+          -0.006139663910792195,
+          0.0732285663929837,
+          0.055285776951154525,
+          0.025801203319824214,
+          0.009444501343300576,
+          0.019666023311445013,
+          0.09523288648567683,
+          0.042109131423629084,
+          0.060010430337305784,
+          0.023056890693016467,
+          -0.08170943407104675
+        ]
       }
     }
   },
-  "kicker": {
-    "champion": {
-      "cohort": "kicker",
-      "spec": {
-        "identifier": "svr_01",
-        "family": "svr",
-        "parameters": {
-          "C": 1.0,
-          "epsilon": 0.1,
-          "gamma": "scale"
-        }
-      },
-      "tier": "base",
-      "training_window": null,
-      "selected_atoms": [
-        "pat_made"
-      ],
-      "development_spearman": 0.5088989909057068,
-      "development_mae": 45.895045473757484
-    },
-    "ranking_elastic_spec": {
-      "identifier": "elastic_net_02",
-      "family": "elastic_net",
-      "parameters": {
-        "alpha": 0.01,
-        "l1_ratio": 0.95
-      }
-    },
-    "model_column_count": 5,
-    "retrospective_2024_2025": {
-      "spearman": 0.4664090029963182,
-      "kendall_tau_b": 0.3354522528035587,
-      "mae": 43.50954061498345,
-      "rmse": 52.00257305542493,
-      "r2": 0.21607498129857927,
-      "rank_mae": 10.393617021276595,
-      "ndcg_at_roster_cutoff": 0.7024592731419477,
-      "top_k_recall": 0.45833333333333337,
-      "calibration_intercept": -23.634266663546317,
-      "calibration_slope": 1.211511183758108
-    },
-    "previous_points_baseline": {
-      "spearman": 0.5121396505257859,
-      "kendall_tau_b": 0.3681616410073335,
-      "mae": 43.674468085106376,
-      "rmse": 59.887870401915244,
-      "r2": -0.03968696567571195,
-      "rank_mae": 10.329787234042554,
-      "ndcg_at_roster_cutoff": 0.8101987268151407,
-      "top_k_recall": 0.5,
-      "calibration_intercept": 50.36735129199095,
-      "calibration_slope": 0.4898586532029819
-    },
-    "intervals": {
-      "model_spearman": {
-        "estimate": 0.4664090029963182,
-        "lower_95": 0.30475091706004337,
-        "upper_95": 0.6280436537753931,
-        "bootstrap_samples": 500
-      },
-      "difference_vs_previous_points": {
-        "estimate": -0.045730647529467705,
-        "lower_95": -0.1589323349110938,
-        "upper_95": 0.06659405038921799,
-        "bootstrap_samples": 500
-      }
-    }
+  "selected_procedures": {
+    "offense": "off_stable_core_et_all",
+    "kicker": "k_stable_core_et_32"
+  },
+  "model_column_counts": {
+    "offense": 228,
+    "kicker": 32
   },
   "current_predictions": {
     "rows": 958,
+    "available_for_draft": 951,
     "position_counts": {
       "WR": 388,
       "RB": 213,
       "TE": 195,
       "QB": 119,
       "K": 43
-    },
-    "note": "Ranks cover fantasy-position players in the nflverse snapshot; non-fantasy roster rows remain metadata-only in the catalog."
-  }
+    }
+  },
+  "claim_boundary": "The retrospective is chronological but not analyst-blinded. The 2026 forecast is the sealed prospective test."
 }

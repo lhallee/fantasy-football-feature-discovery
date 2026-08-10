@@ -1,0 +1,10 @@
+{
+  "audit_intervals.json": "f188325721b9d2f0ae35b16c151d4eb12ca7a43f11702ae92d3aa0cb71072a77",
+  "audit_predictions.parquet": "0bc0c0ef6c45d940ffa551507cd5a3c0692558c0a675abe71f8d1ea4c684e02c",
+  "kicker_model.joblib": "b7e463aa13d60fb554aed9853f4ff26d98b013205efdcaa5b9bcf097e0f1c657",
+  "model_manifest.json": "1e84c54a4bd8c0e3176d663268c08cb56ef6f9d366210e964327facc2eb86001",
+  "offense_model.joblib": "4f804e093784907a40757bdaae641ebeb56c5631ebedc7b987b2188673f7e243",
+  "predictions_2026.parquet": "157f2dec91743cf53b221b621d3fa539ea869dfea566f4d70531569d47f3f337",
+  "result_summary.json": "d20d98ca7136c32766a339ea492a578dd396d6d5a5f194a441142bdd56fece2a",
+  "run_manifest.json": "6eb077f6e72611722f6cd2dbd61cd92b8981e42a572893955ad4bc8c2b9d0b3c"
+}

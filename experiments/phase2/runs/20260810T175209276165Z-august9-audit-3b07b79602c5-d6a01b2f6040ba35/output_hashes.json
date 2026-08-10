@@ -1,0 +1,11 @@
+{
+  "audit_report.json": "8ec80f3bffb17c3c2c720a77577b0483de2cda79b37c7ba5a6c7363c19ddfc9f",
+  "candidate_summary.csv": "d2dc3d6938d9001f9af7492e8ecc7359f32a3306b60d25c2afe0920217da8b99",
+  "cohort_audit.csv": "a8571272db32aa95d3aa0a18ad747ce8362e6125cd64150bbe585750162f4520",
+  "feature_lineage.json": "0de6fe03814ef07332b9bf974cbc49aebd39a4b9f98044b78e84da12d601d834",
+  "fold_metrics.csv": "1d6e758b4070787d9ea94ee66346550aedc4ea09965071852291a2365274efc1",
+  "predictions.parquet": "5fd6e9b1777cb45becae38d2017ce6b156a19f09dd27331412c0552bdc5027ba",
+  "run_manifest.json": "e27aeb95088dd3692136ed85d5bd528836a7946160656aefec2514e893b7ff51",
+  "selected_audit_predictions.parquet": "8a548b623f70908cc1846d24b540d84856c25f0e148194bf5ea24ab9736f41e4",
+  "selected_features.csv": "54d415981fd2346edbe0baa53b52f56c621996a27cd91ba50a259569abf62cb2"
+}

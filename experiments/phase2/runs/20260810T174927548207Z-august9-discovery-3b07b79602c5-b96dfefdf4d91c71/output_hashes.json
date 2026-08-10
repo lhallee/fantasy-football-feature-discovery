@@ -1,0 +1,10 @@
+{
+  "candidate_summary.csv": "1f9399885a2e77ac8bf93d0f55c18be0a03c427cd0d57d0f6d81d07cc953c752",
+  "cohort_audit.csv": "c907bec143b03e24c70ee97d89d7e0970b0efb4a26480d42ac68917a071d002a",
+  "feature_lineage.json": "376a1892b7a5fded622b592dc43f1b1ccc34413bfb4cc44b57f76de3dc503900",
+  "fold_metrics.csv": "c3a7aa5f7121aac0432734fe0648a4a5adac4a037f6df27817b8e43ab1bc61a2",
+  "predictions.parquet": "b7195da723440571761a060229e1690be0635c1e71ee822aa5b6bce816eeb7e7",
+  "run_manifest.json": "10cf5c8037d9782eb927e90300c3451da0ce461a75f8a21a12b9b971f6e643ab",
+  "selected_features.csv": "c9b795a48ae4c2c3c9b224f457f8d0b051c83aa606fd4cba5a6da6ea8cb4b41a",
+  "selection.json": "f95b0414326999a83577022def8f65adfba3bc0daa656740054f03b2175b2674"
+}

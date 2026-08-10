@@ -1,14 +1,14 @@
 # Experiments
 
-This directory separates the production forecast from later feature-discovery research.
+The repository has two research phases. Phase 2 is production. Phase 1 and the earlier Phase 2 source-proxy studies remain available as immutable audit history.
 
-| Phase | Purpose | Status | Start here |
+| Phase | Purpose | Current status | Start here |
 |---|---|---|---|
-| [Phase 1](phase1/README.md) | Build the 2026 full-PPR player catalog and compact next-season forecast | Complete production baseline | [Experiment ledger](phase1/EXPERIMENT_LEDGER.md) |
-| [Phase 2](phase2/README.md) | Test richer leakage-controlled feature sets and the 0.90 Spearman target | Complete retrospective stress test; target not reached | [Pre-fit ledger](phase2/EXPERIMENT_LEDGER.md) and [results ledger](phase2/RESULTS_LEDGER.md) |
+| [Phase 1](phase1/README.md) | Build the source data, scoring target, first compact model, and catalog | Archived baseline | [Phase 1 ledger](phase1/EXPERIMENT_LEDGER.md) |
+| [Phase 2](phase2/README.md) | Replace production with an August 9 candidate universe, richer raw lags, chronological selection, and negative controls | Production; ρ = 0.751, below the 0.90 research target | [Production record](phase2/production/README.md) |
 
-The Phase 1 catalog, processed data, and production model artifacts remain in their repository-level package, `data/`, and `artifacts/` locations because the application loads them directly. Experiment narratives, protocols, manifests, diagnostics, and research-only outputs live here.
+Repository-level `artifacts/` and `fantasy_football/players_2026.py` contain the gated Phase 2 production generation. The former Phase 1 production files are preserved in [`phase1/production_archive/`](phase1/production_archive/).
 
-[`organization_manifest.json`](organization_manifest.json) records the path migration from the published pre-organization commit. Historical hashes remain identifiable after the move.
+The earlier post-cut source-proxy experiments remain under [`phase2/runs/`](phase2/runs/) with their original manifests. Their roster-origin contract is not compatible with the August 9 production question, so they are historical diagnostics rather than active forecast evidence.
 
-The [organization audit](ORGANIZATION_AUDIT.md) records the move contract and release checks.
+[`organization_manifest.json`](organization_manifest.json) records historical path and hash migrations. The [organization audit](ORGANIZATION_AUDIT.md) documents the directory contract.

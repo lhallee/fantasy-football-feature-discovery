@@ -3,10 +3,10 @@
 import json
 import subprocess
 import sys
-from pathlib import Path
-
 import numpy as np
 import pandas as pd
+
+from pathlib import Path
 
 from fantasy_football.dataset import _new_depth_tier
 from fantasy_football.metrics import macro_rank_metric, metric_summary
@@ -60,8 +60,11 @@ def test_processed_tables_have_one_row_per_declared_entity() -> None:
 
 def test_headline_offense_metrics_recompute_from_saved_predictions() -> None:
     predictions = pd.read_parquet(  # (n_audit_players, c_audit)
-        ROOT / "artifacts" / "offense_audit_predictions.parquet"
+        ROOT / "artifacts" / "audit_predictions.parquet"
     )
+    predictions = predictions.loc[  # (n_offense_audit_players, c_audit)
+        predictions["model_position"].ne("K")
+    ].copy()
     summary = metric_summary(
         predictions["actual_points"],
         predictions["predicted_points"],
@@ -69,7 +72,7 @@ def test_headline_offense_metrics_recompute_from_saved_predictions() -> None:
         predictions["target_season"],
     )
     reported = json.loads((ROOT / "artifacts" / "result_summary.json").read_text())
-    expected = reported["offense"]["retrospective_2024_2025"]
+    expected = reported["promotion_gates"]["offense"]["selected"]
 
     assert np.isclose(summary["spearman"], expected["spearman"], atol=1e-6)
     assert np.isclose(summary["mae"], expected["mae"], atol=1e-6)
@@ -77,59 +80,52 @@ def test_headline_offense_metrics_recompute_from_saved_predictions() -> None:
     assert np.isclose(summary["r2"], expected["r2"], atol=1e-6)
 
 
-def test_compact_model_meets_declared_development_thresholds() -> None:
-    subsets = pd.read_csv(  # (n_subset_settings, c_subset_metrics)
-        ROOT / "artifacts" / "offense_subset_search.csv"
+def test_discovery_selection_rejects_smaller_offense_vectors() -> None:
+    run_dir = ROOT / "experiments" / "phase2" / "runs" / (
+        "20260810T174927548207Z-august9-discovery-"
+        "3b07b79602c5-b96dfefdf4d91c71"
     )
-    full = subsets.loc[  # (c_subset_metrics,)
-        subsets["feature_atom_count"].eq(subsets["feature_atom_count"].max())
-    ].iloc[0]
-    compact_prefix = subsets.loc[  # (c_subset_metrics,)
-        subsets["selected_by_compact_rule"].eq(True)
-    ].iloc[0]
+    candidates = pd.read_csv(  # (n_candidates, c_metrics)
+        run_dir / "candidate_summary.csv"
+    )
+    selection = json.loads((run_dir / "selection.json").read_text())
+    offense_mask = candidates["cohort"].eq("offense")  # (n_candidates,)
+    offense = candidates.loc[offense_mask].copy()  # (n_offense_candidates, c_metrics)
+    best_rho = float(offense["spearman"].max())
+    eligible_mask = offense["spearman"].ge(best_rho - 0.005)  # (n_offense_candidates,)
+    eligible = offense.loc[eligible_mask].copy()  # (n_eligible, c_metrics)
+    chosen = eligible.sort_values(
+        ["median_selected_feature_count", "mae", "candidate"],
+        kind="stable",
+    ).iloc[0]
 
-    assert full["spearman"] - compact_prefix["spearman"] <= 0.01
-    assert compact_prefix["mae"] <= full["mae"] * 1.02
+    assert chosen["candidate"] == selection["cohorts"]["offense"]["identifier"]
+    assert int(chosen["median_selected_feature_count"]) == 228
+    smaller_mask = offense["median_selected_feature_count"].lt(228)  # (n_offense_candidates,)
+    assert offense.loc[smaller_mask, "spearman"].max() < best_rho - 0.005
 
+
+def test_selected_columns_have_complete_finite_training_scores() -> None:
     manifest = json.loads((ROOT / "artifacts" / "model_manifest.json").read_text())
-    selected_atoms = ",".join(manifest["offense_champion"]["selected_atoms"])
-    refinement = pd.read_csv(  # (n_refinement_trials, c_refinement)
-        ROOT / "artifacts" / "offense_backward_refinement.csv"
-    )
-    if selected_atoms != compact_prefix["selected_atoms"]:
-        selected_mask = refinement["selected_atoms"].eq(  # (n_refinement_trials,)
-            selected_atoms
-        )
-        selected_row = refinement[selected_mask]  # (n_selected_rows, c_refinement)
-        assert len(selected_row) == 1
-        assert bool(selected_row.iloc[0]["passes_compact_rule"])
-    elif not refinement.empty:
-        assert not refinement["passes_compact_rule"].any()
+    offense = manifest["models"]["offense"]
+    selected = offense["feature_columns"]
+    scores = offense["feature_selection_scores"]
 
-
-def test_selected_atoms_have_complete_finite_importance_evidence() -> None:
-    manifest = json.loads((ROOT / "artifacts" / "model_manifest.json").read_text())
-    selected = set(manifest["offense_champion"]["selected_atoms"])
-    importance = pd.read_csv(  # (n_importance_rows, c_importance)
-        ROOT / "artifacts" / "offense_fold_permutation_importance.csv"
-    )
-    selected_mask = importance["atom"].isin(selected)  # (n_importance_rows,)
-    selected_importance = importance[selected_mask]  # (n_selected_rows, c_importance)
-
-    assert set(selected_importance["atom"]) == selected
-    assert (
-        selected_importance.groupby("atom")["validation_season"].nunique().eq(4).all()
-    )
-    assert np.isfinite(selected_importance["permutation_importance"]).all()
-    assert (
-        selected_importance.groupby("atom")["permutation_importance"].mean().gt(0).all()
-    )
+    assert len(selected) == 228
+    assert set(scores) == set(selected)
+    assert np.isfinite(list(scores.values())).all()
+    lowered = " ".join(selected).lower()
+    for forbidden in ("target_points", "fantasy", "status", "depth", "room_"):
+        assert forbidden not in lowered
 
 
 def test_prior_points_baseline_is_weaker_on_primary_metric() -> None:
     predictions = pd.read_parquet(  # (n_audit_players, c_audit)
-        ROOT / "artifacts" / "offense_audit_predictions.parquet"
+        ROOT / "artifacts" / "audit_predictions.parquet"
     )
+    predictions = predictions.loc[  # (n_offense_audit_players, c_audit)
+        predictions["model_position"].ne("K")
+    ].copy()
     model_rho = macro_rank_metric(
         predictions["actual_points"],
         predictions["predicted_points"],

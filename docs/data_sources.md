@@ -38,17 +38,19 @@ The nflverse data dictionary defines the weekly-stat fields. [Player-stat data d
 |---|---:|---|
 | `player_games.parquet` | 475,626 | Identified player-game rows, raw counts, and reconstructed scores |
 | `player_seasons.parquet` | 66,907 | Regular-season raw aggregates, roster availability, and snaps |
-| `preseason_players.parquet` | 56,505 | Historical Week 1 roster proxies plus current snapshot metadata |
-| `modeling_table.parquet` | 18,630 | Fantasy-position player-seasons with one- and two-year lags |
+| `preseason_players.parquet` | 56,505 | Historical Week 1 proxies for Phase 1 plus current snapshot metadata |
+| `modeling_table.parquet` | 18,630 | Archived Phase 1 player-season table with one- and two-year lags |
 | `players_2026.py` | 2,930 | Typed current-snapshot catalog, including 958 fantasy-eligible players |
 
 The player-game table covers every season from 1999-2025 and 11,372 identified players. Historical roster proxies cover 2002-2026. The current raw roster, processed table, and generated catalog contain identical GSIS ID sets across all 32 teams. Backups are retained; current depth ranks extend to 15.
 
-The complete `data/` and `artifacts/` directories use 82,802,977 bytes. The generated Python catalog adds 3,468,732 bytes, for 86,271,709 bytes total. This is 8.63% of decimal 1 GB and remains below the project's conservative 900 MiB guard.
+The current `data/` and production `artifacts/` directories use 83,376,799 bytes. The richer Phase 2 Python catalog adds 9,082,576 bytes, for 92,459,375 bytes total. The complete size-cap scope, including isolated Phase 2 research runs, is recorded in the production experiment manifest and remains below the project's conservative 900 MiB guard.
 
 ## Cohort and schema decisions
 
-Weekly rosters begin in 2002, so 1999-2001 statistics are lag history but cannot define complete roster cohorts. Historical files do not carry reliable as-of timestamps; `preseason_players` is therefore a Week 1 roster proxy, not a proven preseason snapshot. A rostered player without a box-score row receives zero target points, which avoids selecting only eventual participants.
+Weekly rosters begin in 2002, so 1999-2001 statistics are lag history but cannot define complete roster cohorts. Historical files do not carry reliable as-of timestamps. The Phase 1 `preseason_players` cohort is therefore a Week 1 proxy, not a proven preseason snapshot.
+
+Phase 2 production does not use historical target-year Week 1 membership. For target season `t`, it constructs candidates from the `t - 1` regular-season roster and target-year draft or combine entrants. A candidate without a box-score row in `t` receives zero target points. This avoids conditioning on eventual participation while matching the August 9 information origin more closely.
 
 The source statistics include 530 unresolved rows with no player ID, display name, or position. Of those, 156 use the generic `player_name="Team"`. They contribute 6.68 PPR points across 2001-2025 and cannot represent individual players, so the builder excludes them and records the count.
 
@@ -60,7 +62,7 @@ Current status is also excluded from modeling. About half of historical Week 1 f
 
 "All players" means every player in the nflverse August 9 team-roster file, not every unattached free agent. The source contains 2,852 `ACT`, 36 `RES`, 28 `E14`, 11 `RET`, and 3 `CUT` records. The full catalog preserves them; default queries exclude cut and retired records.
 
-The current snapshot has no 2026 game statistics, which is expected before the regular season. It also lacks a current injury feed, schedule effects, and team-context features. A forced post-cut refresh is required for draft-day use.
+The current snapshot has no 2026 game statistics, which is expected before the regular season. It also lacks a current injury feed, schedule effects, and team-context features. A post-cut refresh would answer a later information-origin question and must be versioned separately rather than overwriting the August 9 prospective forecast.
 
 ## Public sources considered but not used
 

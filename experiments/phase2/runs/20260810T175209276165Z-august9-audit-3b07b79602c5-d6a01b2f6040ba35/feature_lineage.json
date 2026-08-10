@@ -1,0 +1,4317 @@
+{
+  "stable": {
+    "age": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "preseason cutoff value; missing values become zero"
+    },
+    "missing_age": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when preseason age is missing, else 0"
+    },
+    "years_exp": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "preseason cutoff value; missing values become zero"
+    },
+    "missing_years_exp": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when preseason years_exp is missing, else 0"
+    },
+    "height": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "preseason cutoff value; missing values become zero"
+    },
+    "missing_height": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when preseason height is missing, else 0"
+    },
+    "weight": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "preseason cutoff value; missing values become zero"
+    },
+    "missing_weight": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when preseason weight is missing, else 0"
+    },
+    "draft_number": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "preseason cutoff value; missing values become zero"
+    },
+    "missing_draft_number": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when preseason draft_number is missing, else 0"
+    },
+    "draft_round": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "preseason cutoff value; missing values become zero"
+    },
+    "missing_draft_round": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when preseason draft_round is missing, else 0"
+    },
+    "was_drafted": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "preseason cutoff value; missing values become zero"
+    },
+    "missing_was_drafted": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when preseason was_drafted is missing, else 0"
+    },
+    "is_rookie": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "preseason cutoff value; missing values become zero"
+    },
+    "missing_is_rookie": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when preseason is_rookie is missing, else 0"
+    },
+    "team_changed": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "preseason cutoff value; missing values become zero"
+    },
+    "missing_team_changed": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when preseason team_changed is missing, else 0"
+    },
+    "combine_forty": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "preseason cutoff value; missing values become zero"
+    },
+    "missing_combine_forty": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when preseason combine_forty is missing, else 0"
+    },
+    "combine_bench": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "preseason cutoff value; missing values become zero"
+    },
+    "missing_combine_bench": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when preseason combine_bench is missing, else 0"
+    },
+    "combine_vertical": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "preseason cutoff value; missing values become zero"
+    },
+    "missing_combine_vertical": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when preseason combine_vertical is missing, else 0"
+    },
+    "combine_broad_jump": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "preseason cutoff value; missing values become zero"
+    },
+    "missing_combine_broad_jump": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when preseason combine_broad_jump is missing, else 0"
+    },
+    "combine_cone": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "preseason cutoff value; missing values become zero"
+    },
+    "missing_combine_cone": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when preseason combine_cone is missing, else 0"
+    },
+    "combine_shuttle": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "preseason cutoff value; missing values become zero"
+    },
+    "missing_combine_shuttle": {
+      "sources": [
+        "modeling_table"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when preseason combine_shuttle is missing, else 0"
+    },
+    "position_QB": {
+      "sources": [
+        "modeling_table.cutoff_metadata"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when cutoff model_position is QB, else 0"
+    },
+    "position_RB": {
+      "sources": [
+        "modeling_table.cutoff_metadata"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when cutoff model_position is RB, else 0"
+    },
+    "position_WR": {
+      "sources": [
+        "modeling_table.cutoff_metadata"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when cutoff model_position is WR, else 0"
+    },
+    "position_TE": {
+      "sources": [
+        "modeling_table.cutoff_metadata"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "1 when cutoff model_position is TE, else 0"
+    },
+    "lag1_history_available": {
+      "sources": [
+        "weekly_stats",
+        "player_seasons"
+      ],
+      "source_offsets": [
+        1,
+        1
+      ],
+      "recipe": "1 when a target_season-1 player-season exists, else 0"
+    },
+    "lag1_completions": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season completions from target_season-1; missing history becomes zero"
+    },
+    "lag1_attempts": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season attempts from target_season-1; missing history becomes zero"
+    },
+    "lag1_passing_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season passing_yards from target_season-1; missing history becomes zero"
+    },
+    "lag1_passing_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season passing_tds from target_season-1; missing history becomes zero"
+    },
+    "lag1_passing_interceptions": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season passing_interceptions from target_season-1; missing history becomes zero"
+    },
+    "lag1_sacks_suffered": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season sacks_suffered from target_season-1; missing history becomes zero"
+    },
+    "lag1_sack_yards_lost": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season sack_yards_lost from target_season-1; missing history becomes zero"
+    },
+    "lag1_sack_fumbles": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season sack_fumbles from target_season-1; missing history becomes zero"
+    },
+    "lag1_sack_fumbles_lost": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season sack_fumbles_lost from target_season-1; missing history becomes zero"
+    },
+    "lag1_passing_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season passing_first_downs from target_season-1; missing history becomes zero"
+    },
+    "lag1_passing_10": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season passing_10 from target_season-1; missing history becomes zero"
+    },
+    "lag1_passing_16": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season passing_16 from target_season-1; missing history becomes zero"
+    },
+    "lag1_passing_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season passing_20 from target_season-1; missing history becomes zero"
+    },
+    "lag1_passing_40": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season passing_40 from target_season-1; missing history becomes zero"
+    },
+    "lag1_carries": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season carries from target_season-1; missing history becomes zero"
+    },
+    "lag1_rushing_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season rushing_yards from target_season-1; missing history becomes zero"
+    },
+    "lag1_rushing_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season rushing_tds from target_season-1; missing history becomes zero"
+    },
+    "lag1_rushing_fumbles": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season rushing_fumbles from target_season-1; missing history becomes zero"
+    },
+    "lag1_rushing_fumbles_lost": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season rushing_fumbles_lost from target_season-1; missing history becomes zero"
+    },
+    "lag1_rushing_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season rushing_first_downs from target_season-1; missing history becomes zero"
+    },
+    "lag1_rushing_10": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season rushing_10 from target_season-1; missing history becomes zero"
+    },
+    "lag1_rushing_12": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season rushing_12 from target_season-1; missing history becomes zero"
+    },
+    "lag1_rushing_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season rushing_20 from target_season-1; missing history becomes zero"
+    },
+    "lag1_rushing_40": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season rushing_40 from target_season-1; missing history becomes zero"
+    },
+    "lag1_receptions": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season receptions from target_season-1; missing history becomes zero"
+    },
+    "lag1_receiving_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season receiving_yards from target_season-1; missing history becomes zero"
+    },
+    "lag1_receiving_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season receiving_tds from target_season-1; missing history becomes zero"
+    },
+    "lag1_receiving_fumbles": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season receiving_fumbles from target_season-1; missing history becomes zero"
+    },
+    "lag1_receiving_fumbles_lost": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season receiving_fumbles_lost from target_season-1; missing history becomes zero"
+    },
+    "lag1_receiving_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season receiving_first_downs from target_season-1; missing history becomes zero"
+    },
+    "lag1_receiving_10": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season receiving_10 from target_season-1; missing history becomes zero"
+    },
+    "lag1_receiving_16": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season receiving_16 from target_season-1; missing history becomes zero"
+    },
+    "lag1_receiving_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season receiving_20 from target_season-1; missing history becomes zero"
+    },
+    "lag1_receiving_40": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season receiving_40 from target_season-1; missing history becomes zero"
+    },
+    "lag1_special_teams_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season special_teams_tds from target_season-1; missing history becomes zero"
+    },
+    "lag1_fumbles_total": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fumbles_total from target_season-1; missing history becomes zero"
+    },
+    "lag1_fumbles_lost_total": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fumbles_lost_total from target_season-1; missing history becomes zero"
+    },
+    "lag1_punt_returns": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season punt_returns from target_season-1; missing history becomes zero"
+    },
+    "lag1_punt_return_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season punt_return_yards from target_season-1; missing history becomes zero"
+    },
+    "lag1_kickoff_returns": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season kickoff_returns from target_season-1; missing history becomes zero"
+    },
+    "lag1_kickoff_return_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season kickoff_return_yards from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_made": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_made from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_att from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_missed": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_missed from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_blocked": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_blocked from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_made_0_19": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_made_0_19 from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_made_20_29": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_made_20_29 from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_made_30_39": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_made_30_39 from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_made_40_49": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_made_40_49 from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_made_50_59": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_made_50_59 from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_made_60_": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_made_60_ from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_missed_0_19": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_missed_0_19 from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_missed_20_29": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_missed_20_29 from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_missed_30_39": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_missed_30_39 from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_missed_40_49": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_missed_40_49 from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_missed_50_59": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_missed_50_59 from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_missed_60_": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_missed_60_ from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_made_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_made_distance from target_season-1; missing history becomes zero"
+    },
+    "lag1_fg_missed_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season fg_missed_distance from target_season-1; missing history becomes zero"
+    },
+    "lag1_pat_made": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season pat_made from target_season-1; missing history becomes zero"
+    },
+    "lag1_pat_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season pat_att from target_season-1; missing history becomes zero"
+    },
+    "lag1_pat_missed": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season pat_missed from target_season-1; missing history becomes zero"
+    },
+    "lag1_pat_blocked": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season pat_blocked from target_season-1; missing history becomes zero"
+    },
+    "lag1_gwfg_made": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season gwfg_made from target_season-1; missing history becomes zero"
+    },
+    "lag1_gwfg_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season gwfg_att from target_season-1; missing history becomes zero"
+    },
+    "lag1_gwfg_missed": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season gwfg_missed from target_season-1; missing history becomes zero"
+    },
+    "lag1_gwfg_blocked": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season gwfg_blocked from target_season-1; missing history becomes zero"
+    },
+    "lag1_gwfg_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season gwfg_distance from target_season-1; missing history becomes zero"
+    },
+    "lag1_games": {
+      "sources": [
+        "player_seasons"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season games from target_season-1; missing history becomes zero"
+    },
+    "lag1_roster_weeks": {
+      "sources": [
+        "player_seasons"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "regular-season roster_weeks from target_season-1; missing history becomes zero"
+    },
+    "lag2_history_available": {
+      "sources": [
+        "weekly_stats",
+        "player_seasons"
+      ],
+      "source_offsets": [
+        2,
+        2
+      ],
+      "recipe": "1 when a target_season-2 player-season exists, else 0"
+    },
+    "lag2_completions": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season completions from target_season-2; missing history becomes zero"
+    },
+    "lag2_attempts": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season attempts from target_season-2; missing history becomes zero"
+    },
+    "lag2_passing_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season passing_yards from target_season-2; missing history becomes zero"
+    },
+    "lag2_passing_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season passing_tds from target_season-2; missing history becomes zero"
+    },
+    "lag2_passing_interceptions": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season passing_interceptions from target_season-2; missing history becomes zero"
+    },
+    "lag2_sacks_suffered": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season sacks_suffered from target_season-2; missing history becomes zero"
+    },
+    "lag2_sack_yards_lost": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season sack_yards_lost from target_season-2; missing history becomes zero"
+    },
+    "lag2_sack_fumbles": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season sack_fumbles from target_season-2; missing history becomes zero"
+    },
+    "lag2_sack_fumbles_lost": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season sack_fumbles_lost from target_season-2; missing history becomes zero"
+    },
+    "lag2_passing_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season passing_first_downs from target_season-2; missing history becomes zero"
+    },
+    "lag2_passing_10": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season passing_10 from target_season-2; missing history becomes zero"
+    },
+    "lag2_passing_16": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season passing_16 from target_season-2; missing history becomes zero"
+    },
+    "lag2_passing_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season passing_20 from target_season-2; missing history becomes zero"
+    },
+    "lag2_passing_40": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season passing_40 from target_season-2; missing history becomes zero"
+    },
+    "lag2_carries": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season carries from target_season-2; missing history becomes zero"
+    },
+    "lag2_rushing_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season rushing_yards from target_season-2; missing history becomes zero"
+    },
+    "lag2_rushing_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season rushing_tds from target_season-2; missing history becomes zero"
+    },
+    "lag2_rushing_fumbles": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season rushing_fumbles from target_season-2; missing history becomes zero"
+    },
+    "lag2_rushing_fumbles_lost": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season rushing_fumbles_lost from target_season-2; missing history becomes zero"
+    },
+    "lag2_rushing_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season rushing_first_downs from target_season-2; missing history becomes zero"
+    },
+    "lag2_rushing_10": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season rushing_10 from target_season-2; missing history becomes zero"
+    },
+    "lag2_rushing_12": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season rushing_12 from target_season-2; missing history becomes zero"
+    },
+    "lag2_rushing_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season rushing_20 from target_season-2; missing history becomes zero"
+    },
+    "lag2_rushing_40": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season rushing_40 from target_season-2; missing history becomes zero"
+    },
+    "lag2_receptions": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season receptions from target_season-2; missing history becomes zero"
+    },
+    "lag2_receiving_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season receiving_yards from target_season-2; missing history becomes zero"
+    },
+    "lag2_receiving_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season receiving_tds from target_season-2; missing history becomes zero"
+    },
+    "lag2_receiving_fumbles": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season receiving_fumbles from target_season-2; missing history becomes zero"
+    },
+    "lag2_receiving_fumbles_lost": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season receiving_fumbles_lost from target_season-2; missing history becomes zero"
+    },
+    "lag2_receiving_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season receiving_first_downs from target_season-2; missing history becomes zero"
+    },
+    "lag2_receiving_10": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season receiving_10 from target_season-2; missing history becomes zero"
+    },
+    "lag2_receiving_16": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season receiving_16 from target_season-2; missing history becomes zero"
+    },
+    "lag2_receiving_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season receiving_20 from target_season-2; missing history becomes zero"
+    },
+    "lag2_receiving_40": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season receiving_40 from target_season-2; missing history becomes zero"
+    },
+    "lag2_special_teams_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season special_teams_tds from target_season-2; missing history becomes zero"
+    },
+    "lag2_fumbles_total": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fumbles_total from target_season-2; missing history becomes zero"
+    },
+    "lag2_fumbles_lost_total": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fumbles_lost_total from target_season-2; missing history becomes zero"
+    },
+    "lag2_punt_returns": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season punt_returns from target_season-2; missing history becomes zero"
+    },
+    "lag2_punt_return_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season punt_return_yards from target_season-2; missing history becomes zero"
+    },
+    "lag2_kickoff_returns": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season kickoff_returns from target_season-2; missing history becomes zero"
+    },
+    "lag2_kickoff_return_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season kickoff_return_yards from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_made": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_made from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_att from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_missed": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_missed from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_blocked": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_blocked from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_made_0_19": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_made_0_19 from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_made_20_29": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_made_20_29 from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_made_30_39": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_made_30_39 from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_made_40_49": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_made_40_49 from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_made_50_59": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_made_50_59 from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_made_60_": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_made_60_ from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_missed_0_19": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_missed_0_19 from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_missed_20_29": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_missed_20_29 from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_missed_30_39": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_missed_30_39 from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_missed_40_49": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_missed_40_49 from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_missed_50_59": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_missed_50_59 from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_missed_60_": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_missed_60_ from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_made_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_made_distance from target_season-2; missing history becomes zero"
+    },
+    "lag2_fg_missed_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season fg_missed_distance from target_season-2; missing history becomes zero"
+    },
+    "lag2_pat_made": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season pat_made from target_season-2; missing history becomes zero"
+    },
+    "lag2_pat_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season pat_att from target_season-2; missing history becomes zero"
+    },
+    "lag2_pat_missed": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season pat_missed from target_season-2; missing history becomes zero"
+    },
+    "lag2_pat_blocked": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season pat_blocked from target_season-2; missing history becomes zero"
+    },
+    "lag2_gwfg_made": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season gwfg_made from target_season-2; missing history becomes zero"
+    },
+    "lag2_gwfg_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season gwfg_att from target_season-2; missing history becomes zero"
+    },
+    "lag2_gwfg_missed": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season gwfg_missed from target_season-2; missing history becomes zero"
+    },
+    "lag2_gwfg_blocked": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season gwfg_blocked from target_season-2; missing history becomes zero"
+    },
+    "lag2_gwfg_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season gwfg_distance from target_season-2; missing history becomes zero"
+    },
+    "lag2_games": {
+      "sources": [
+        "player_seasons"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season games from target_season-2; missing history becomes zero"
+    },
+    "lag2_roster_weeks": {
+      "sources": [
+        "player_seasons"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "regular-season roster_weeks from target_season-2; missing history becomes zero"
+    },
+    "lag3_history_available": {
+      "sources": [
+        "weekly_stats",
+        "player_seasons"
+      ],
+      "source_offsets": [
+        3,
+        3
+      ],
+      "recipe": "1 when a target_season-3 player-season exists, else 0"
+    },
+    "lag3_completions": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season completions from target_season-3; missing history becomes zero"
+    },
+    "lag3_attempts": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season attempts from target_season-3; missing history becomes zero"
+    },
+    "lag3_passing_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season passing_yards from target_season-3; missing history becomes zero"
+    },
+    "lag3_passing_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season passing_tds from target_season-3; missing history becomes zero"
+    },
+    "lag3_passing_interceptions": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season passing_interceptions from target_season-3; missing history becomes zero"
+    },
+    "lag3_sacks_suffered": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season sacks_suffered from target_season-3; missing history becomes zero"
+    },
+    "lag3_sack_yards_lost": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season sack_yards_lost from target_season-3; missing history becomes zero"
+    },
+    "lag3_sack_fumbles": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season sack_fumbles from target_season-3; missing history becomes zero"
+    },
+    "lag3_sack_fumbles_lost": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season sack_fumbles_lost from target_season-3; missing history becomes zero"
+    },
+    "lag3_passing_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season passing_first_downs from target_season-3; missing history becomes zero"
+    },
+    "lag3_passing_10": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season passing_10 from target_season-3; missing history becomes zero"
+    },
+    "lag3_passing_16": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season passing_16 from target_season-3; missing history becomes zero"
+    },
+    "lag3_passing_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season passing_20 from target_season-3; missing history becomes zero"
+    },
+    "lag3_passing_40": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season passing_40 from target_season-3; missing history becomes zero"
+    },
+    "lag3_carries": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season carries from target_season-3; missing history becomes zero"
+    },
+    "lag3_rushing_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season rushing_yards from target_season-3; missing history becomes zero"
+    },
+    "lag3_rushing_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season rushing_tds from target_season-3; missing history becomes zero"
+    },
+    "lag3_rushing_fumbles": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season rushing_fumbles from target_season-3; missing history becomes zero"
+    },
+    "lag3_rushing_fumbles_lost": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season rushing_fumbles_lost from target_season-3; missing history becomes zero"
+    },
+    "lag3_rushing_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season rushing_first_downs from target_season-3; missing history becomes zero"
+    },
+    "lag3_rushing_10": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season rushing_10 from target_season-3; missing history becomes zero"
+    },
+    "lag3_rushing_12": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season rushing_12 from target_season-3; missing history becomes zero"
+    },
+    "lag3_rushing_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season rushing_20 from target_season-3; missing history becomes zero"
+    },
+    "lag3_rushing_40": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season rushing_40 from target_season-3; missing history becomes zero"
+    },
+    "lag3_receptions": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season receptions from target_season-3; missing history becomes zero"
+    },
+    "lag3_receiving_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season receiving_yards from target_season-3; missing history becomes zero"
+    },
+    "lag3_receiving_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season receiving_tds from target_season-3; missing history becomes zero"
+    },
+    "lag3_receiving_fumbles": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season receiving_fumbles from target_season-3; missing history becomes zero"
+    },
+    "lag3_receiving_fumbles_lost": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season receiving_fumbles_lost from target_season-3; missing history becomes zero"
+    },
+    "lag3_receiving_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season receiving_first_downs from target_season-3; missing history becomes zero"
+    },
+    "lag3_receiving_10": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season receiving_10 from target_season-3; missing history becomes zero"
+    },
+    "lag3_receiving_16": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season receiving_16 from target_season-3; missing history becomes zero"
+    },
+    "lag3_receiving_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season receiving_20 from target_season-3; missing history becomes zero"
+    },
+    "lag3_receiving_40": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season receiving_40 from target_season-3; missing history becomes zero"
+    },
+    "lag3_special_teams_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season special_teams_tds from target_season-3; missing history becomes zero"
+    },
+    "lag3_fumbles_total": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fumbles_total from target_season-3; missing history becomes zero"
+    },
+    "lag3_fumbles_lost_total": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fumbles_lost_total from target_season-3; missing history becomes zero"
+    },
+    "lag3_punt_returns": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season punt_returns from target_season-3; missing history becomes zero"
+    },
+    "lag3_punt_return_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season punt_return_yards from target_season-3; missing history becomes zero"
+    },
+    "lag3_kickoff_returns": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season kickoff_returns from target_season-3; missing history becomes zero"
+    },
+    "lag3_kickoff_return_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season kickoff_return_yards from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_made": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_made from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_att from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_missed": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_missed from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_blocked": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_blocked from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_made_0_19": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_made_0_19 from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_made_20_29": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_made_20_29 from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_made_30_39": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_made_30_39 from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_made_40_49": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_made_40_49 from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_made_50_59": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_made_50_59 from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_made_60_": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_made_60_ from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_missed_0_19": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_missed_0_19 from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_missed_20_29": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_missed_20_29 from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_missed_30_39": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_missed_30_39 from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_missed_40_49": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_missed_40_49 from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_missed_50_59": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_missed_50_59 from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_missed_60_": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_missed_60_ from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_made_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_made_distance from target_season-3; missing history becomes zero"
+    },
+    "lag3_fg_missed_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season fg_missed_distance from target_season-3; missing history becomes zero"
+    },
+    "lag3_pat_made": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season pat_made from target_season-3; missing history becomes zero"
+    },
+    "lag3_pat_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season pat_att from target_season-3; missing history becomes zero"
+    },
+    "lag3_pat_missed": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season pat_missed from target_season-3; missing history becomes zero"
+    },
+    "lag3_pat_blocked": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season pat_blocked from target_season-3; missing history becomes zero"
+    },
+    "lag3_gwfg_made": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season gwfg_made from target_season-3; missing history becomes zero"
+    },
+    "lag3_gwfg_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season gwfg_att from target_season-3; missing history becomes zero"
+    },
+    "lag3_gwfg_missed": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season gwfg_missed from target_season-3; missing history becomes zero"
+    },
+    "lag3_gwfg_blocked": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season gwfg_blocked from target_season-3; missing history becomes zero"
+    },
+    "lag3_gwfg_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season gwfg_distance from target_season-3; missing history becomes zero"
+    },
+    "lag3_games": {
+      "sources": [
+        "player_seasons"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season games from target_season-3; missing history becomes zero"
+    },
+    "lag3_roster_weeks": {
+      "sources": [
+        "player_seasons"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "regular-season roster_weeks from target_season-3; missing history becomes zero"
+    },
+    "lag4_history_available": {
+      "sources": [
+        "weekly_stats",
+        "player_seasons"
+      ],
+      "source_offsets": [
+        4,
+        4
+      ],
+      "recipe": "1 when a target_season-4 player-season exists, else 0"
+    },
+    "lag4_completions": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season completions from target_season-4; missing history becomes zero"
+    },
+    "lag4_attempts": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season attempts from target_season-4; missing history becomes zero"
+    },
+    "lag4_passing_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season passing_yards from target_season-4; missing history becomes zero"
+    },
+    "lag4_passing_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season passing_tds from target_season-4; missing history becomes zero"
+    },
+    "lag4_passing_interceptions": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season passing_interceptions from target_season-4; missing history becomes zero"
+    },
+    "lag4_sacks_suffered": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season sacks_suffered from target_season-4; missing history becomes zero"
+    },
+    "lag4_sack_yards_lost": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season sack_yards_lost from target_season-4; missing history becomes zero"
+    },
+    "lag4_sack_fumbles": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season sack_fumbles from target_season-4; missing history becomes zero"
+    },
+    "lag4_sack_fumbles_lost": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season sack_fumbles_lost from target_season-4; missing history becomes zero"
+    },
+    "lag4_passing_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season passing_first_downs from target_season-4; missing history becomes zero"
+    },
+    "lag4_passing_10": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season passing_10 from target_season-4; missing history becomes zero"
+    },
+    "lag4_passing_16": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season passing_16 from target_season-4; missing history becomes zero"
+    },
+    "lag4_passing_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season passing_20 from target_season-4; missing history becomes zero"
+    },
+    "lag4_passing_40": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season passing_40 from target_season-4; missing history becomes zero"
+    },
+    "lag4_carries": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season carries from target_season-4; missing history becomes zero"
+    },
+    "lag4_rushing_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season rushing_yards from target_season-4; missing history becomes zero"
+    },
+    "lag4_rushing_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season rushing_tds from target_season-4; missing history becomes zero"
+    },
+    "lag4_rushing_fumbles": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season rushing_fumbles from target_season-4; missing history becomes zero"
+    },
+    "lag4_rushing_fumbles_lost": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season rushing_fumbles_lost from target_season-4; missing history becomes zero"
+    },
+    "lag4_rushing_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season rushing_first_downs from target_season-4; missing history becomes zero"
+    },
+    "lag4_rushing_10": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season rushing_10 from target_season-4; missing history becomes zero"
+    },
+    "lag4_rushing_12": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season rushing_12 from target_season-4; missing history becomes zero"
+    },
+    "lag4_rushing_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season rushing_20 from target_season-4; missing history becomes zero"
+    },
+    "lag4_rushing_40": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season rushing_40 from target_season-4; missing history becomes zero"
+    },
+    "lag4_receptions": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season receptions from target_season-4; missing history becomes zero"
+    },
+    "lag4_receiving_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season receiving_yards from target_season-4; missing history becomes zero"
+    },
+    "lag4_receiving_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season receiving_tds from target_season-4; missing history becomes zero"
+    },
+    "lag4_receiving_fumbles": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season receiving_fumbles from target_season-4; missing history becomes zero"
+    },
+    "lag4_receiving_fumbles_lost": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season receiving_fumbles_lost from target_season-4; missing history becomes zero"
+    },
+    "lag4_receiving_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season receiving_first_downs from target_season-4; missing history becomes zero"
+    },
+    "lag4_receiving_10": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season receiving_10 from target_season-4; missing history becomes zero"
+    },
+    "lag4_receiving_16": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season receiving_16 from target_season-4; missing history becomes zero"
+    },
+    "lag4_receiving_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season receiving_20 from target_season-4; missing history becomes zero"
+    },
+    "lag4_receiving_40": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season receiving_40 from target_season-4; missing history becomes zero"
+    },
+    "lag4_special_teams_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season special_teams_tds from target_season-4; missing history becomes zero"
+    },
+    "lag4_fumbles_total": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fumbles_total from target_season-4; missing history becomes zero"
+    },
+    "lag4_fumbles_lost_total": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fumbles_lost_total from target_season-4; missing history becomes zero"
+    },
+    "lag4_punt_returns": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season punt_returns from target_season-4; missing history becomes zero"
+    },
+    "lag4_punt_return_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season punt_return_yards from target_season-4; missing history becomes zero"
+    },
+    "lag4_kickoff_returns": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season kickoff_returns from target_season-4; missing history becomes zero"
+    },
+    "lag4_kickoff_return_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season kickoff_return_yards from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_made": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_made from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_att from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_missed": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_missed from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_blocked": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_blocked from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_made_0_19": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_made_0_19 from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_made_20_29": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_made_20_29 from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_made_30_39": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_made_30_39 from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_made_40_49": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_made_40_49 from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_made_50_59": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_made_50_59 from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_made_60_": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_made_60_ from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_missed_0_19": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_missed_0_19 from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_missed_20_29": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_missed_20_29 from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_missed_30_39": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_missed_30_39 from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_missed_40_49": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_missed_40_49 from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_missed_50_59": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_missed_50_59 from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_missed_60_": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_missed_60_ from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_made_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_made_distance from target_season-4; missing history becomes zero"
+    },
+    "lag4_fg_missed_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season fg_missed_distance from target_season-4; missing history becomes zero"
+    },
+    "lag4_pat_made": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season pat_made from target_season-4; missing history becomes zero"
+    },
+    "lag4_pat_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season pat_att from target_season-4; missing history becomes zero"
+    },
+    "lag4_pat_missed": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season pat_missed from target_season-4; missing history becomes zero"
+    },
+    "lag4_pat_blocked": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season pat_blocked from target_season-4; missing history becomes zero"
+    },
+    "lag4_gwfg_made": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season gwfg_made from target_season-4; missing history becomes zero"
+    },
+    "lag4_gwfg_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season gwfg_att from target_season-4; missing history becomes zero"
+    },
+    "lag4_gwfg_missed": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season gwfg_missed from target_season-4; missing history becomes zero"
+    },
+    "lag4_gwfg_blocked": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season gwfg_blocked from target_season-4; missing history becomes zero"
+    },
+    "lag4_gwfg_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season gwfg_distance from target_season-4; missing history becomes zero"
+    },
+    "lag4_games": {
+      "sources": [
+        "player_seasons"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season games from target_season-4; missing history becomes zero"
+    },
+    "lag4_roster_weeks": {
+      "sources": [
+        "player_seasons"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "regular-season roster_weeks from target_season-4; missing history becomes zero"
+    },
+    "lag1_completion_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "lag1_completions / lag1_attempts; zero when denominator is not positive"
+    },
+    "lag1_pass_yards_per_attempt": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "lag1_passing_yards / lag1_attempts; zero when denominator is not positive"
+    },
+    "lag1_pass_td_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "lag1_passing_tds / lag1_attempts; zero when denominator is not positive"
+    },
+    "lag1_interception_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "lag1_passing_interceptions / lag1_attempts; zero when denominator is not positive"
+    },
+    "lag1_rush_yards_per_carry": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "lag1_rushing_yards / lag1_carries; zero when denominator is not positive"
+    },
+    "lag1_rush_first_down_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "lag1_rushing_first_downs / lag1_carries; zero when denominator is not positive"
+    },
+    "lag1_rush_20_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "lag1_rushing_20 / lag1_carries; zero when denominator is not positive"
+    },
+    "lag1_receiving_yards_per_reception": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "lag1_receiving_yards / lag1_receptions; zero when denominator is not positive"
+    },
+    "lag1_receiving_first_down_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "lag1_receiving_first_downs / lag1_receptions; zero when denominator is not positive"
+    },
+    "lag1_receiving_20_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "lag1_receiving_20 / lag1_receptions; zero when denominator is not positive"
+    },
+    "lag1_field_goal_make_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "lag1_fg_made / lag1_fg_att; zero when denominator is not positive"
+    },
+    "lag1_made_field_goal_mean_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "lag1_fg_made_distance / lag1_fg_made; zero when denominator is not positive"
+    },
+    "lag1_missed_field_goal_mean_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "lag1_fg_missed_distance / lag1_fg_missed; zero when denominator is not positive"
+    },
+    "lag1_pat_make_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "lag1_pat_made / lag1_pat_att; zero when denominator is not positive"
+    },
+    "lag2_completion_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "lag2_completions / lag2_attempts; zero when denominator is not positive"
+    },
+    "lag2_pass_yards_per_attempt": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "lag2_passing_yards / lag2_attempts; zero when denominator is not positive"
+    },
+    "lag2_pass_td_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "lag2_passing_tds / lag2_attempts; zero when denominator is not positive"
+    },
+    "lag2_interception_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "lag2_passing_interceptions / lag2_attempts; zero when denominator is not positive"
+    },
+    "lag2_rush_yards_per_carry": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "lag2_rushing_yards / lag2_carries; zero when denominator is not positive"
+    },
+    "lag2_rush_first_down_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "lag2_rushing_first_downs / lag2_carries; zero when denominator is not positive"
+    },
+    "lag2_rush_20_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "lag2_rushing_20 / lag2_carries; zero when denominator is not positive"
+    },
+    "lag2_receiving_yards_per_reception": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "lag2_receiving_yards / lag2_receptions; zero when denominator is not positive"
+    },
+    "lag2_receiving_first_down_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "lag2_receiving_first_downs / lag2_receptions; zero when denominator is not positive"
+    },
+    "lag2_receiving_20_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "lag2_receiving_20 / lag2_receptions; zero when denominator is not positive"
+    },
+    "lag2_field_goal_make_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "lag2_fg_made / lag2_fg_att; zero when denominator is not positive"
+    },
+    "lag2_made_field_goal_mean_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "lag2_fg_made_distance / lag2_fg_made; zero when denominator is not positive"
+    },
+    "lag2_missed_field_goal_mean_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "lag2_fg_missed_distance / lag2_fg_missed; zero when denominator is not positive"
+    },
+    "lag2_pat_make_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        2
+      ],
+      "recipe": "lag2_pat_made / lag2_pat_att; zero when denominator is not positive"
+    },
+    "lag3_completion_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "lag3_completions / lag3_attempts; zero when denominator is not positive"
+    },
+    "lag3_pass_yards_per_attempt": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "lag3_passing_yards / lag3_attempts; zero when denominator is not positive"
+    },
+    "lag3_pass_td_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "lag3_passing_tds / lag3_attempts; zero when denominator is not positive"
+    },
+    "lag3_interception_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "lag3_passing_interceptions / lag3_attempts; zero when denominator is not positive"
+    },
+    "lag3_rush_yards_per_carry": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "lag3_rushing_yards / lag3_carries; zero when denominator is not positive"
+    },
+    "lag3_rush_first_down_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "lag3_rushing_first_downs / lag3_carries; zero when denominator is not positive"
+    },
+    "lag3_rush_20_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "lag3_rushing_20 / lag3_carries; zero when denominator is not positive"
+    },
+    "lag3_receiving_yards_per_reception": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "lag3_receiving_yards / lag3_receptions; zero when denominator is not positive"
+    },
+    "lag3_receiving_first_down_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "lag3_receiving_first_downs / lag3_receptions; zero when denominator is not positive"
+    },
+    "lag3_receiving_20_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "lag3_receiving_20 / lag3_receptions; zero when denominator is not positive"
+    },
+    "lag3_field_goal_make_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "lag3_fg_made / lag3_fg_att; zero when denominator is not positive"
+    },
+    "lag3_made_field_goal_mean_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "lag3_fg_made_distance / lag3_fg_made; zero when denominator is not positive"
+    },
+    "lag3_missed_field_goal_mean_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "lag3_fg_missed_distance / lag3_fg_missed; zero when denominator is not positive"
+    },
+    "lag3_pat_make_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        3
+      ],
+      "recipe": "lag3_pat_made / lag3_pat_att; zero when denominator is not positive"
+    },
+    "lag4_completion_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "lag4_completions / lag4_attempts; zero when denominator is not positive"
+    },
+    "lag4_pass_yards_per_attempt": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "lag4_passing_yards / lag4_attempts; zero when denominator is not positive"
+    },
+    "lag4_pass_td_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "lag4_passing_tds / lag4_attempts; zero when denominator is not positive"
+    },
+    "lag4_interception_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "lag4_passing_interceptions / lag4_attempts; zero when denominator is not positive"
+    },
+    "lag4_rush_yards_per_carry": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "lag4_rushing_yards / lag4_carries; zero when denominator is not positive"
+    },
+    "lag4_rush_first_down_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "lag4_rushing_first_downs / lag4_carries; zero when denominator is not positive"
+    },
+    "lag4_rush_20_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "lag4_rushing_20 / lag4_carries; zero when denominator is not positive"
+    },
+    "lag4_receiving_yards_per_reception": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "lag4_receiving_yards / lag4_receptions; zero when denominator is not positive"
+    },
+    "lag4_receiving_first_down_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "lag4_receiving_first_downs / lag4_receptions; zero when denominator is not positive"
+    },
+    "lag4_receiving_20_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "lag4_receiving_20 / lag4_receptions; zero when denominator is not positive"
+    },
+    "lag4_field_goal_make_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "lag4_fg_made / lag4_fg_att; zero when denominator is not positive"
+    },
+    "lag4_made_field_goal_mean_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "lag4_fg_made_distance / lag4_fg_made; zero when denominator is not positive"
+    },
+    "lag4_missed_field_goal_mean_distance": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "lag4_fg_missed_distance / lag4_fg_missed; zero when denominator is not positive"
+    },
+    "lag4_pat_make_rate": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        4
+      ],
+      "recipe": "lag4_pat_made / lag4_pat_att; zero when denominator is not positive"
+    },
+    "lag1_late6_attempts": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_attempts": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_attempts": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "lag1_late6_passing_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_passing_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_passing_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "lag1_late6_passing_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_passing_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_passing_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "lag1_late6_passing_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_passing_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_passing_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "lag1_late6_carries": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_carries": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_carries": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "lag1_late6_rushing_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_rushing_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_rushing_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "lag1_late6_rushing_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_rushing_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_rushing_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "lag1_late6_rushing_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_rushing_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_rushing_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "lag1_late6_receptions": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_receptions": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_receptions": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "lag1_late6_receiving_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_receiving_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_receiving_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "lag1_late6_receiving_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_receiving_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_receiving_first_downs": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "lag1_late6_receiving_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_receiving_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_receiving_20": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "lag1_late6_punt_return_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_punt_return_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_punt_return_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "lag1_late6_kickoff_return_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_kickoff_return_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_kickoff_return_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "lag1_late6_fg_made": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_fg_made": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_fg_made": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "lag1_late6_fg_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_fg_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_fg_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "lag1_late6_pat_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum over the final 6 regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_weekly_slope_pat_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "least-squares weekly slope across all regular-season league weeks of target_season-1; missing weeks count as zero"
+    },
+    "lag1_late6_mean_delta_pat_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "target_season-1 mean over its final 6 league weeks minus its earlier-week mean; missing weeks count as zero"
+    },
+    "room_competitor_count": {
+      "sources": [
+        "modeling_table.target_roster"
+      ],
+      "source_offsets": [
+        0
+      ],
+      "recipe": "other players on the cutoff roster with the same team and position"
+    },
+    "room_lag1_other_attempts": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "sum of lag1_attempts for other cutoff-roster players on the same team and position"
+    },
+    "room_lag1_nonzero_competitors_attempts": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "number of other same-team, same-position cutoff-roster players with positive lag1_attempts"
+    },
+    "room_lag1_margin_attempts": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "own lag1_attempts minus the mean lag1_attempts of other same-team, same-position cutoff-roster players"
+    },
+    "room_lag1_other_carries": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "sum of lag1_carries for other cutoff-roster players on the same team and position"
+    },
+    "room_lag1_nonzero_competitors_carries": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "number of other same-team, same-position cutoff-roster players with positive lag1_carries"
+    },
+    "room_lag1_margin_carries": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "own lag1_carries minus the mean lag1_carries of other same-team, same-position cutoff-roster players"
+    },
+    "room_lag1_other_receptions": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "sum of lag1_receptions for other cutoff-roster players on the same team and position"
+    },
+    "room_lag1_nonzero_competitors_receptions": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "number of other same-team, same-position cutoff-roster players with positive lag1_receptions"
+    },
+    "room_lag1_margin_receptions": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "own lag1_receptions minus the mean lag1_receptions of other same-team, same-position cutoff-roster players"
+    },
+    "room_lag1_other_passing_yards": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "sum of lag1_passing_yards for other cutoff-roster players on the same team and position"
+    },
+    "room_lag1_nonzero_competitors_passing_yards": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "number of other same-team, same-position cutoff-roster players with positive lag1_passing_yards"
+    },
+    "room_lag1_margin_passing_yards": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "own lag1_passing_yards minus the mean lag1_passing_yards of other same-team, same-position cutoff-roster players"
+    },
+    "room_lag1_other_rushing_yards": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "sum of lag1_rushing_yards for other cutoff-roster players on the same team and position"
+    },
+    "room_lag1_nonzero_competitors_rushing_yards": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "number of other same-team, same-position cutoff-roster players with positive lag1_rushing_yards"
+    },
+    "room_lag1_margin_rushing_yards": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "own lag1_rushing_yards minus the mean lag1_rushing_yards of other same-team, same-position cutoff-roster players"
+    },
+    "room_lag1_other_receiving_yards": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "sum of lag1_receiving_yards for other cutoff-roster players on the same team and position"
+    },
+    "room_lag1_nonzero_competitors_receiving_yards": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "number of other same-team, same-position cutoff-roster players with positive lag1_receiving_yards"
+    },
+    "room_lag1_margin_receiving_yards": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "own lag1_receiving_yards minus the mean lag1_receiving_yards of other same-team, same-position cutoff-roster players"
+    },
+    "room_lag1_other_fg_att": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "sum of lag1_fg_att for other cutoff-roster players on the same team and position"
+    },
+    "room_lag1_nonzero_competitors_fg_att": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "number of other same-team, same-position cutoff-roster players with positive lag1_fg_att"
+    },
+    "room_lag1_margin_fg_att": {
+      "sources": [
+        "modeling_table.target_roster",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        0,
+        1
+      ],
+      "recipe": "own lag1_fg_att minus the mean lag1_fg_att of other same-team, same-position cutoff-roster players"
+    },
+    "team_lag1_environment_available": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "1 when the current team has target_season-1 raw team counts, else 0"
+    },
+    "team_lag1_attempts": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season attempts for the player's cutoff-roster team"
+    },
+    "team_lag1_passing_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season passing_yards for the player's cutoff-roster team"
+    },
+    "team_lag1_passing_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season passing_tds for the player's cutoff-roster team"
+    },
+    "team_lag1_carries": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season carries for the player's cutoff-roster team"
+    },
+    "team_lag1_rushing_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season rushing_yards for the player's cutoff-roster team"
+    },
+    "team_lag1_rushing_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season rushing_tds for the player's cutoff-roster team"
+    },
+    "team_lag1_receptions": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season receptions for the player's cutoff-roster team"
+    },
+    "team_lag1_receiving_yards": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season receiving_yards for the player's cutoff-roster team"
+    },
+    "team_lag1_receiving_tds": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season receiving_tds for the player's cutoff-roster team"
+    },
+    "team_lag1_fg_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season fg_att for the player's cutoff-roster team"
+    },
+    "team_lag1_pat_att": {
+      "sources": [
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season pat_att for the player's cutoff-roster team"
+    },
+    "prior_team_lag1_environment_available": {
+      "sources": [
+        "player_seasons",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1,
+        1
+      ],
+      "recipe": "1 when the player's final target_season-1 team has raw team counts, else 0"
+    },
+    "prior_team_lag1_attempts": {
+      "sources": [
+        "player_seasons",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1,
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season attempts for the player's final team in that source season"
+    },
+    "prior_team_lag1_passing_yards": {
+      "sources": [
+        "player_seasons",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1,
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season passing_yards for the player's final team in that source season"
+    },
+    "prior_team_lag1_passing_tds": {
+      "sources": [
+        "player_seasons",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1,
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season passing_tds for the player's final team in that source season"
+    },
+    "prior_team_lag1_carries": {
+      "sources": [
+        "player_seasons",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1,
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season carries for the player's final team in that source season"
+    },
+    "prior_team_lag1_rushing_yards": {
+      "sources": [
+        "player_seasons",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1,
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season rushing_yards for the player's final team in that source season"
+    },
+    "prior_team_lag1_rushing_tds": {
+      "sources": [
+        "player_seasons",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1,
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season rushing_tds for the player's final team in that source season"
+    },
+    "prior_team_lag1_receptions": {
+      "sources": [
+        "player_seasons",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1,
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season receptions for the player's final team in that source season"
+    },
+    "prior_team_lag1_receiving_yards": {
+      "sources": [
+        "player_seasons",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1,
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season receiving_yards for the player's final team in that source season"
+    },
+    "prior_team_lag1_receiving_tds": {
+      "sources": [
+        "player_seasons",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1,
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season receiving_tds for the player's final team in that source season"
+    },
+    "prior_team_lag1_fg_att": {
+      "sources": [
+        "player_seasons",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1,
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season fg_att for the player's final team in that source season"
+    },
+    "prior_team_lag1_pat_att": {
+      "sources": [
+        "player_seasons",
+        "weekly_stats"
+      ],
+      "source_offsets": [
+        1,
+        1
+      ],
+      "recipe": "sum of target_season-1 regular-season pat_att for the player's final team in that source season"
+    }
+  }
+}

@@ -1,8 +1,11 @@
 """Tests for predicted-score-only draft-board pages."""
 
 from dataclasses import replace
+from pathlib import Path
 
 from fantasy_football.phase2_draft_board import DRAFT_POSITIONS, draft_board_pages
+from fantasy_football.phase2_draft_board import verify_draft_workbook
+from fantasy_football.phase2_draft_board import write_draft_workbook
 from fantasy_football.players_2026 import PLAYERS
 
 
@@ -42,3 +45,14 @@ def test_unavailable_players_can_be_included_explicitly() -> None:
 
     assert all(record["player_id"] != "cut-player" for record in available["Overall"])
     assert complete["Overall"][0]["player_id"] == "cut-player"
+
+
+def test_excel_fallback_writes_verified_position_sheets(tmp_path: Path) -> None:
+    output_path = tmp_path / "draft_board.xlsx"
+    pages = draft_board_pages()
+
+    written = write_draft_workbook(output_path)
+
+    assert written == output_path
+    assert output_path.stat().st_size > 100_000
+    verify_draft_workbook(output_path, pages)

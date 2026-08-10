@@ -50,12 +50,12 @@ RotoWire found a kicker slot in 88.7% and a defense slot in 83.2% of its sample.
 
 ## Reading a forecast
 
-Use `position_rank` to compare players at the same position. `overall_point_rank` is not a draft order because replacement value differs by position. The approximate 80% interval uses the 80th percentile of absolute 2024-2025 residuals within position. It is a heuristic width estimated and assessed on the same retrospective period, not a coverage guarantee for 2026 injuries, cuts, or role changes.
+Use `position_rank` to compare players at the same position. `overall_point_rank` is not a draft order because replacement value differs by position. The approximate 80% interval uses the 80th percentile of absolute 2022-2025 residuals within position. It is a heuristic width estimated and assessed on the same retrospective period, not a coverage guarantee for 2026 injuries, cuts, or role changes.
 
-Kicker model rank evidence is weaker than prior-year points. An explicit K or PK query therefore uses prior-year points by default:
+The Phase 2 kicker model had higher retrospective Spearman correlation than prior-year points, but worse MAE and NDCG. Its bootstrap interval for the rank gain included zero. An explicit K or PK query therefore retains the conservative prior-points default:
 
 ```python
 query_players(position="K", sort_by="previous_season_points")
 ```
 
-Pass `sort_by="prediction"` to inspect the lower-confidence kicker model order.
+Pass `sort_by="prediction"` to inspect the lower-confidence kicker model order. The draft workbook follows the user's requested predicted-score-only ordering for every position, including K.

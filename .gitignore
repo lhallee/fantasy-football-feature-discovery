@@ -4,5 +4,8 @@ __pycache__/
 build/
 *.egg-info/
 artifacts/*.joblib
+!artifacts/offense_model.joblib
+!artifacts/kicker_model.joblib
 data/raw/*
 !data/raw/manifest.json
+outputs/*/

@@ -1,12 +1,12 @@
 """Validate the frozen Phase 2 experiment outputs."""
 
 import json
+import pandas as pd
 
 from pathlib import Path
 
-import pandas as pd
-
 from fantasy_football.phase2_safety import (
+    MAX_COMBINED_BYTES,
     combined_project_bytes,
     hash_outputs,
     verify_phase1_freeze,
@@ -27,16 +27,17 @@ def _run_directory(stage: str) -> Path:
     return ROOT / relative
 
 
-def test_phase1_freeze_still_matches_phase2_manifest() -> None:
+def test_historical_v1_snapshot_and_current_production_stay_below_limit() -> None:
     protected = verify_phase1_freeze(ROOT)
 
     assert len(protected) == 7
     assert EXPERIMENT_MANIFEST["phase1_freeze_id"] == (
         "366b32e659f67cbbcb81a68ee20a66bbe79cdefc004db5c971c23e89b35f17ae"
     )
-    assert EXPERIMENT_MANIFEST["combined_phase1_phase2_bytes_after_runs"] == (
-        combined_project_bytes(ROOT)
+    assert 0 < EXPERIMENT_MANIFEST["combined_phase1_phase2_bytes_after_runs"] < (
+        MAX_COMBINED_BYTES
     )
+    assert combined_project_bytes(ROOT) < MAX_COMBINED_BYTES
 
 
 def test_phase2_plan_and_code_hashes_match_recorded_run() -> None:

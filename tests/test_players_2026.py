@@ -1,9 +1,9 @@
 """Tests for the generated all-roster query interface."""
 
 import json
-from pathlib import Path
-
 import pandas as pd
+
+from pathlib import Path
 
 from fantasy_football.players_2026 import PLAYERS, get_player, query_players
 
@@ -57,8 +57,8 @@ def test_catalog_exposes_exact_model_feature_vectors() -> None:
     predictions = pd.read_parquet(  # (n_fantasy_players, c_prediction)
         ROOT / "artifacts" / "predictions_2026.parquet"
     ).set_index("player_id")
-    offense_columns = tuple(manifest["offense_model_columns"])
-    kicker_columns = tuple(manifest["kicker_model_columns"])
+    offense_columns = tuple(manifest["feature_columns"]["offense"])
+    kicker_columns = tuple(manifest["feature_columns"]["kicker"])
     for player in PLAYERS:
         if not player.fantasy_eligible:
             assert player.selected_atoms == ()
@@ -75,7 +75,8 @@ def test_catalog_exposes_exact_model_feature_vectors() -> None:
                 assert value is None
             else:
                 assert value == float(source_value)
-        assert player.selected_atoms
+        cohort = "kicker" if player.model_position == "K" else "offense"
+        assert player.selected_atoms == tuple(manifest["models"][cohort]["recipes"])
         assert player.scoring_profile == "espn_full_ppr_2026"
 
 

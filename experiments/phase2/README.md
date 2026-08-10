@@ -1,56 +1,45 @@
-# Phase 2 leakage-controlled ranking experiment
+# Phase 2
 
-Phase 2 tests whether richer elementary NFL inputs can raise next-season within-position Spearman correlation above 0.90 without changing the cohort or using information unavailable at the forecast cutoff.
+Phase 2 is the production forecast generation. Its fixed origin is August 9, 2026. It replaces the target-year Week 1 roster proxy with a historical candidate universe reconstructed from prior-season rosters and target-year draft or combine entrants.
 
-The v1 forecast origin is after final roster cuts and before Week 1. Historical membership comes from Week 1 roster proxies, which makes roster-room features valid only at that origin. The old files lack reliable publication timestamps, so this is a source-season-safe proxy analysis, not a timestamp-proven as-of study. This result must not be used to validate or replace the August 9 camp forecast. An August-origin model requires timestamp-aligned historical August roster snapshots.
+The selected offense model reached chronological 2022-2025 mean within-position-season Spearman ρ = 0.751, compared with 0.647 for prior-season points. It passed every predeclared promotion gate, including position-specific minimums and two shuffled-target controls. It did not reach the exploratory 0.90 target.
 
-The first locked result did not reach that threshold, but a later cohort audit invalidated its post-cut interpretation. V1 scored 0.7661 on an outcome-exposed 2022-2025 Week 1 source-row proxy that included cut and retired rows. It is preserved as a superseded audit trail. `plan_v2.json` declares the corrected status-filtered rerun before fitting, and `prefit_manifest_v2.json` locks its implementation and tests. The status rule applies to frozen upstream-deduplicated player rows; the ledger records the one mixed-status raw group that this conservative proxy excludes.
+## Start here
 
-## Reproduce
+- [August 9 production record](production/README.md)
+- [Production results](production/RESULTS.md)
+- [Production experiment ledger](production/EXPERIMENT_LEDGER.md)
+- [Locked pre-fit plan](production/august9_plan_v1.json)
+- [Pre-fit code and data lock](production/august9_prefit_manifest_v1.json)
+- [Production release manifest](production/experiment_manifest_v1.json)
+- [Draft workbook guide](DRAFT_BOARD.md)
+- [Scoring-scheme correlations](SCORING_CORRELATIONS.md)
 
-Run from the project root:
+The root [`artifacts/`](../../artifacts/) directory, generated [`players_2026.py`](../../fantasy_football/players_2026.py), and [draft workbook](../../outputs/fantasy_football_draft_board_2026.xlsx) now use this production generation.
 
-```powershell
-python -m fantasy_football.phase2_runner_v2 `
-  --plan experiments/phase2/plan_v2.json `
-  --stage discovery
-```
+## Production runs
 
-The discovery command prints a unique run directory. Pass its `selection.json` to the retrospective stage:
+| Stage | Purpose | Run directory |
+|---|---|---|
+| Discovery | Choose model family, recipe, source tier, and feature count using 2016-2021 only | [`20260810T174927...`](runs/20260810T174927548207Z-august9-discovery-3b07b79602c5-b96dfefdf4d91c71/) |
+| Audit | Evaluate the locked procedures on 2022-2025 and run negative controls | [`20260810T175209...`](runs/20260810T175209276165Z-august9-audit-3b07b79602c5-d6a01b2f6040ba35/) |
+| Fit | Refit through 2025 and forecast the frozen 2026 roster | [`20260810T175655...`](runs/20260810T175655682503Z-august9-fit-3b07b79602c5-134b25c8b34a916a/) |
 
-```powershell
-python -m fantasy_football.phase2_runner_v2 `
-  --plan experiments/phase2/plan_v2.json `
-  --stage retrospective `
-  --selection experiments/phase2/runs/<discovery-run>/selection.json
-```
+Every run has a manifest, declared input hashes, and hashes for every output. Audit cannot proceed if its selection, plan, code, or pre-fit lock differs from discovery. Final fitting cannot proceed unless all audit gates pass. Promotion re-verifies the fit before replacing production files.
 
-Each run verifies the Phase 1 freeze before and after fitting, verifies the v2 pre-fit lock, hashes declared inputs and outputs, caps native numerical pools at four threads, and writes only inside its unique run directory. The retrospective stage also rejects any code or pre-fit-manifest hash that differs from discovery.
+## Earlier Phase 2 studies
 
-## Files
+Phase 2 first explored a post-final-cuts question using historical Week 1 roster files. Those source files did not have verified publication timestamps. The first cohort also included CUT and RET rows in both the scored cohort and roster-room aggregates. A status-filtered rerun corrected that cohort issue but still answered a post-cut source-proxy question, not the user's August 9 question. Its grouped-label null also failed its zero-centering sentinel.
 
-- `../phase1/phase1_freeze_manifest.json`: current protected Phase 1 tree and critical-file hashes.
-- `../phase1/phase1_freeze_manifest_v1.json`: original pre-Phase 2 freeze record.
-- `plan_v1.json`: superseded fixed feature, model, split, and selection menu.
-- `plan_v2.json`: pre-fit cohort and audit-control amendment over the unchanged v1 candidate menu.
-- `prefit_manifest_v2.json`: exact pre-fit hashes for the amended plan, code, tests, ledger, and this guide.
-- `experiment_manifest_v1.json`: superseded v1 plan and code hashes, run directories, and result summary.
-- `experiment_manifest_v2.json`: corrected v2 result, validity decisions, and artifact hashes.
-- `EXPERIMENT_LEDGER.md`: immutable pre-fit research narrative, relocated from the repository root.
-- `RESULTS_LEDGER.md`: post-fit findings and decisions.
-- `RESULTS_V2.md`: concise result guide.
-- `null_diagnostic_v2.json`: post-selection null diagnostics and limitations.
-- `runs/*/run_manifest.json`: exact source-input hashes and runtime environment for each run.
-- `runs/*/output_hashes.json`: exact hashes for every generated run artifact.
-- `runs/*/candidate_summary.csv`: aggregate metrics for every evaluated candidate.
-- `runs/*/fold_metrics.csv`: season-level metrics.
-- `runs/*/predictions.parquet`: row-level out-of-time predictions.
-- `runs/*/selected_features.csv`: fold-local feature scores and selections.
-- `runs/*/feature_lineage.json`: source, offset, and recipe for every input.
-- `runs/*/uncertainty.json`: player-cluster and season-block intervals.
+These studies are preserved, not erased:
 
-The complete research narrative is in the [pre-fit ledger](EXPERIMENT_LEDGER.md) and [results ledger](RESULTS_LEDGER.md).
+- [`plan_v1.json`](plan_v1.json) and [`experiment_manifest_v1.json`](experiment_manifest_v1.json): superseded first source-proxy study
+- [`plan_v2.json`](plan_v2.json) and [`experiment_manifest_v2.json`](experiment_manifest_v2.json): corrected post-cut proxy stress test
+- [`EXPERIMENT_LEDGER.md`](EXPERIMENT_LEDGER.md), [`RESULTS_LEDGER.md`](RESULTS_LEDGER.md), and [`RESULTS_V2.md`](RESULTS_V2.md): historical narrative and limitations
+- [`null_diagnostic_v2.json`](null_diagnostic_v2.json): diagnostic follow-up to the failed grouped-label sentinel
 
-## Interpretation
+They remain useful for failure analysis. They do not validate or replace the August 9 production forecast.
 
-The 2022-2025 period is not a blinded holdout because Phase 1 already exposed those outcomes. The only sealed test is the future 2026 season, evaluated from an equivalent timestamped post-cut snapshot. Realized target-season games and snaps exceed 0.90 in an explicitly forbidden look-ahead diagnostic; they are not model inputs. They show that realized exposure is strongly co-ranked with fantasy points, not that a preseason model can predict that exposure or attain 0.90.
+## Claim boundary
+
+The 2022-2025 production audit is chronological and procedure-locked, but its outcomes were seen during earlier project work. It is not analyst-blinded. Public historical data still do not reconstruct exact August 9 injury, transaction, depth-chart, or roster states. The 2026 season is the sealed prospective test.
