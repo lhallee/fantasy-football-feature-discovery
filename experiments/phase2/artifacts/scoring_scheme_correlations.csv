@@ -1,0 +1,19 @@
+method,scheme_a,scheme_b,correlation,player_seasons
+Pearson,Non-PPR,Non-PPR,1.0,16586
+Pearson,Non-PPR,Half PPR,0.9903160992638876,16586
+Pearson,Non-PPR,Full PPR (ours),0.9676071912845888,16586
+Pearson,Half PPR,Non-PPR,0.9903160992638876,16586
+Pearson,Half PPR,Half PPR,1.0,16586
+Pearson,Half PPR,Full PPR (ours),0.9932863073459693,16586
+Pearson,Full PPR (ours),Non-PPR,0.9676071912845888,16586
+Pearson,Full PPR (ours),Half PPR,0.9932863073459693,16586
+Pearson,Full PPR (ours),Full PPR (ours),1.0,16586
+Spearman,Non-PPR,Non-PPR,1.0,16586
+Spearman,Non-PPR,Half PPR,0.9964943648710387,16586
+Spearman,Non-PPR,Full PPR (ours),0.989017805930958,16586
+Spearman,Half PPR,Non-PPR,0.9964943648710387,16586
+Spearman,Half PPR,Half PPR,1.0,16586
+Spearman,Half PPR,Full PPR (ours),0.9978252242270281,16586
+Spearman,Full PPR (ours),Non-PPR,0.989017805930958,16586
+Spearman,Full PPR (ours),Half PPR,0.9978252242270281,16586
+Spearman,Full PPR (ours),Full PPR (ours),1.0,16586
