@@ -11,6 +11,7 @@ from fantasy_football.phase2_safety import (
     hash_outputs,
     verify_phase1_freeze,
 )
+from fantasy_football.phase2_layout import verify_historical_file
 from fantasy_football.provenance import file_sha256
 
 
@@ -50,7 +51,7 @@ def test_phase2_plan_and_code_hashes_match_recorded_run() -> None:
         == (EXPERIMENT_MANIFEST["plan"]["sha256"])
     )
     for relative, expected in EXPERIMENT_MANIFEST["code"].items():
-        assert file_sha256(ROOT / relative) == expected
+        verify_historical_file(ROOT, relative, expected)
 
 
 def test_phase2_run_output_hash_manifests_match() -> None:

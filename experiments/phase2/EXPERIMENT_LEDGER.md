@@ -20,15 +20,15 @@ A machine-readable freeze manifest will record Phase 1 file hashes before Phase 
 
 Phase 2 v1 has one declared forecast origin: after final roster cuts and before the first regular-season game. Historical player membership comes from nflverse Week 1 roster files, so it is a proxy for that origin. Those old files do not provide reliable publication timestamps. The performance lineage is source-season safe, but the roster cutoff is not a timestamp-proven as-of archive. The result is not valid evidence for the August 9 camp snapshot. Applying the room-context features in August would import later roster-survival information into the historical folds while withholding it from 2026.
 
-For target season \(t\), every numeric performance input must be computable by that forecast origin. Performance inputs must come from seasons strictly earlier than \(t\). Stable target-season metadata may include age, draft and combine measurements, and post-cut team assignment. The primary model excludes target-season statistics, imported fantasy scores, expert projections, ADP, betting data, depth rank, and roster status.
+For target season `t`, every numeric performance input must be computable by that forecast origin. Performance inputs must come from seasons strictly earlier than `t`. Stable target-season metadata may include age, draft and combine measurements, and post-cut team assignment. The primary model excludes target-season statistics, imported fantasy scores, expert projections, ADP, betting data, depth rank, and roster status.
 
-Derived features are allowed only when their lineage is explicit. Examples include lagged per-game rates, exponentially weighted history, career totals through \(t-1\), and teammate or team aggregates built from pre-\(t\) player statistics. Any target encoding must be fit inside the training fold.
+Derived features are allowed only when their lineage is explicit. Examples include lagged per-game rates, exponentially weighted history, career totals through `t - 1`, and teammate or team aggregates built from pre-`t` player statistics. Any target encoding must be fit inside the training fold.
 
 The scored population remains every QB, RB, WR, or TE in the historical Week 1 roster proxy, including rookies, backups, and eventual zero scorers. Segment results may diagnose the problem but cannot replace the full-cohort primary metric.
 
 ### Temporal selection protocol
 
-1. **Discovery period:** rolling target seasons 2016-2021. A candidate trained for season \(t\) may use only rows with `target_season < t`.
+1. **Discovery period:** rolling target seasons 2016-2021. A candidate trained for season `t` may use only rows with `target_season < t`.
 2. **Fixed candidate evaluation:** feature recipes, feature-count limits, model parameters, target forms, and blend formulas are declared before fitting. Imputation, scaling, and any adaptive top-k selector are fit separately inside each training fold.
 3. **Procedure selection:** one Phase 2 procedure is selected from aggregate discovery results. Ties within 0.005 Spearman favor fewer input columns, then lower compute. The retrospective years do not choose a feature count or parameter.
 4. **Retrospective stress test:** the selected procedure is run on 2022-2025, with no later manual tuning based on those results.
@@ -53,7 +53,7 @@ Unlisted feature sources or model classes require a dated ledger amendment befor
 
 ### Primary metric and success rule
 
-The primary metric is the unweighted mean of Spearman correlations across position-season groups. Secondary metrics are Kendall \(\tau_b\), MAE, RMSE, NDCG at roster cutoffs, top-k recall, and position-rank MAE.
+The primary metric is the unweighted mean of Spearman correlations across position-season groups. Secondary metrics are Kendall τ-b, MAE, RMSE, NDCG at roster cutoffs, top-k recall, and position-rank MAE.
 
 A cross-validated `Spearman > 0.90` result must satisfy all of the following, but it remains provisional until the prospective 2026 test:
 
@@ -63,7 +63,7 @@ A cross-validated `Spearman > 0.90` result must satisfy all of the following, bu
 - Discovery-to-retrospective degradation is no more than 0.03.
 - At least three of four retrospective seasons exceed 0.88.
 - Shuffled-target and forbidden-column sentinels pass.
-- The lineage audit finds no feature whose source season is \(t\) or later.
+- The lineage audit finds no feature whose source season is `t` or later.
 
 If the point estimate exceeds 0.90 but these checks fail, the ledger will label it unstable or contaminated rather than successful.
 
@@ -109,11 +109,11 @@ The read-only design audit also found that the source-season-controlled informat
 
 The Phase 1 freeze ID is `366b32e659f67cbbcb81a68ee20a66bbe79cdefc004db5c971c23e89b35f17ae`. It covers 160 protected files and 86,490,574 bytes. The Phase 2 safety wrapper verified the seven protected tree digests before and after each run. The safety wrapper writes run outputs only below `experiments/phase2/runs/` and cannot promote a result into the production catalog.
 
-The fixed [plan_v1.json](experiments/phase2/plan_v1.json) hash is `ace43d1ce173302f401f7616f25a4c7a74bb0317064a2d5ece395ab635cd9b17`. It declares 27 model configurations, three rank blends, and the prior-points benchmark. The candidates cover Extra Trees, histogram boosting, XGBoost, ridge, a hurdle model, pooled and position-specific fits, three target forms, and feature limits from 8 through the full pool.
+The fixed [plan_v1.json](plan_v1.json) hash is `ace43d1ce173302f401f7616f25a4c7a74bb0317064a2d5ece395ab635cd9b17`. It declares 27 model configurations, three rank blends, and the prior-points benchmark. The candidates cover Extra Trees, histogram boosting, XGBoost, ridge, a hurdle model, pooled and position-specific fits, three target forms, and feature limits from 8 through the full pool.
 
 The stable builder generated 471 columns. The recent builder generated 539. The offense-only exclusions reduced the full candidate pools to 305 and 373 columns. Every column has a source table, source offset, and recipe. Runtime assertions reject fantasy or target values, target-season performance, EPA, CPOE, PACR, RACR, WOPR, provider-created shares, depth, status, active-roster features, and identifiers.
 
-The plan, code hashes, and run directories are recorded in [experiment_manifest_v1.json](experiments/phase2/experiment_manifest_v1.json). Each run's `run_manifest.json` records its exact source-input hashes, and its `output_hashes.json` records every generated output. The test suite had 39 passing tests before fitting.
+The plan, code hashes, and run directories are recorded in [experiment_manifest_v1.json](experiment_manifest_v1.json). Each run's `run_manifest.json` records its exact source-input hashes, and its `output_hashes.json` records every generated output. The test suite had 39 passing tests before fitting.
 
 ## Entry 3: 2016-2021 discovery
 
@@ -209,7 +209,7 @@ Phase 2 v1 is complete as a retrospective research result. Its prospective 2026 
 
 The final model audit found that v1 did not implement the intended post-cut population. The Week 1 source files retain rows whose status is `CUT` or `RET`. V1 included 778 such rows in the 2022-2025 retrospective cohort and in its same-team position-room aggregates. Of those rows, 94.9% eventually scored zero. Their inclusion changed the room count for 80.1% of otherwise retained 2022-2025 rows. V1's saved Spearman 0.7661 reconstructs exactly, but it is invalid evidence for a post-cut cohort and is superseded.
 
-The correction is declared in [plan_v2.json](experiments/phase2/plan_v2.json) before fitting. It makes no change to the v1 candidate menu, temporal splits, hyperparameters, selection tolerance, blend rule, metric, or success rule. It changes only the cohort definition.
+The correction is declared in [plan_v2.json](plan_v2.json) before fitting. It makes no change to the v1 candidate menu, temporal splits, hyperparameters, selection tolerance, blend rule, metric, or success rule. It changes only the cohort definition.
 
 V2 uses the official [nflreadr roster-status dictionary](https://nflreadr.nflverse.com/articles/dictionary_roster_status.html). It includes `ACT`, `DEV`, `E14`, `EXE`, `INA`, `PUP`, `RES`, `RSN`, and `SUS`, which represent active, practice-squad, exempt, inactive-under-contract, physically-unable-to-perform, reserve, non-football-injury reserve, or suspended players whose team retains their rights. It excludes `CUT`, `RET`, `RFA`, `UFA`, likely-waived `NWT`, released-from-injured-reserve `RSR`, and practice-squad-release codes `TRC`, `TRD`, and `TRT`. The observed `E01` code has no authoritative mapping and is conservatively excluded.
 

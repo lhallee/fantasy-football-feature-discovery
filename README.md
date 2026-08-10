@@ -12,7 +12,7 @@ The offense result is a locally irreducible five-atom Extra Trees model:
 
 Those atoms expand into 24 fitted columns: raw values, one- and two-year lags, `log1p` transforms, one-year trends, age transforms, and four position indicators. The model excludes imported fantasy scores, projections, ADP, depth ranks, roster-status flags, and other composite fantasy features.
 
-On chronological 2024-2025 retrospective evaluation, the model reached mean within-position Spearman \(\rho=0.757\), compared with 0.669 for prior-year points. MAE was 29.46 versus 29.58 points. A 500-sample player-cluster bootstrap placed the model correlation at 0.725 to 0.782 and the paired correlation gain at 0.060 to 0.116. These are retrospective results; 2026 is the first prospective season.
+On chronological 2024-2025 retrospective evaluation, the model reached mean within-position Spearman (ρ = 0.757), compared with 0.669 for prior-year points. MAE was 29.46 versus 29.58 points. A 500-sample player-cluster bootstrap placed the model correlation at 0.725 to 0.782 and the paired correlation gain at 0.060 to 0.116. These are retrospective results; 2026 is the first prospective season.
 
 Kicker ranking did not beat prior-year points. Kicker forecasts remain available with a low-confidence label. An explicit K or PK query uses prior-season points by default; pass `sort_by="prediction"` to inspect model order.
 
@@ -68,8 +68,10 @@ Archive the current `artifacts/` directory and `fantasy_football/players_2026.py
 - [Fantasy football and scoring](docs/fantasy_football.md)
 - [Data sources and coverage](docs/data_sources.md)
 - [Methods and results](docs/methods_and_results.md)
-- [Experiment and excitement ledger](EXPERIMENT_LEDGER.md)
-- [Completion audit](COMPLETION_AUDIT.md)
+- [Experiment index](experiments/README.md)
+- [Phase 1 experiment and excitement ledger](experiments/phase1/EXPERIMENT_LEDGER.md)
+- [Phase 1 completion audit](experiments/phase1/COMPLETION_AUDIT.md)
+- [Phase 2 research record](experiments/phase2/README.md)
 - [Generated 2026 Python catalog](fantasy_football/players_2026.py)
 - [Model decision manifest](artifacts/model_manifest.json)
 - [Machine-readable result summary](artifacts/result_summary.json)

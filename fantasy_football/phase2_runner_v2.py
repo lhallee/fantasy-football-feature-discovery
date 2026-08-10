@@ -23,6 +23,7 @@ from .phase2_cohort import EXCLUDED_STATUS_CODES
 from .phase2_cohort import TEAM_CONTROLLED_STATUS_CODES
 from .phase2_cohort import build_phase2_offense_cohort
 from .phase2_features import Phase2FeatureBundle, build_phase2_features
+from .phase2_layout import ExperimentLayoutError, verify_historical_file
 from .phase2_safety import hash_inputs, hash_outputs, isolated_phase2_run
 from .phase2_safety import load_freeze_manifest
 from .provenance import file_sha256, package_versions
@@ -65,6 +66,7 @@ EXPECTED_UPSTREAM_DEDUP_AUDIT = {
 PHASE2_CODE_FILENAMES = (
     "phase2_cohort.py",
     "phase2_features.py",
+    "phase2_layout.py",
     "phase2_modeling.py",
     "phase2_runner.py",
     "phase2_runner_v2.py",
@@ -249,7 +251,13 @@ def _verify_prefit_manifest(
     if manifest.get("base_plan_sha256") != amendment["base_plan_sha256"]:
         raise ValueError("Phase 2 v2 pre-fit manifest has the wrong base-plan hash.")
     phase1_freeze = load_freeze_manifest(root)
-    if manifest.get("phase1_freeze_id") != phase1_freeze["freeze_id"]:
+    valid_freeze_ids = {phase1_freeze["freeze_id"]}
+    previous_freeze = phase1_freeze.get("previous_freeze")
+    if isinstance(previous_freeze, Mapping):
+        previous_freeze_id = previous_freeze.get("freeze_id")
+        if isinstance(previous_freeze_id, str):
+            valid_freeze_ids.add(previous_freeze_id)
+    if manifest.get("phase1_freeze_id") not in valid_freeze_ids:
         raise ValueError("Phase 2 v2 pre-fit manifest has the wrong Phase 1 freeze ID.")
 
     locked_files = manifest.get("locked_files")
@@ -265,15 +273,12 @@ def _verify_prefit_manifest(
             f"missing={missing!r}, extra={extra!r}."
         )
     for relative_path, expected_hash in sorted(locked_files.items()):
-        candidate = (root / relative_path).resolve()
         try:
-            candidate.relative_to(root)
-        except ValueError as error:
+            verify_historical_file(root, relative_path, str(expected_hash))
+        except ExperimentLayoutError as error:
             raise ValueError(
-                f"Phase 2 v2 pre-fit input escapes the project root: {relative_path}"
+                f"Phase 2 v2 pre-fit input hash differs: {relative_path}."
             ) from error
-        if not candidate.is_file() or file_sha256(candidate) != expected_hash:
-            raise ValueError(f"Phase 2 v2 pre-fit input hash differs: {relative_path}.")
     return manifest_path, manifest
 
 

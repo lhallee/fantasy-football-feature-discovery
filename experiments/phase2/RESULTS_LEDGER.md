@@ -1,6 +1,6 @@
 # Phase 2 V2 Post-Fit Experiment Ledger
 
-This file continues the immutable pre-fit [Phase 2 ledger](EXPERIMENT_LEDGER_PHASE2.md). The pre-fit file remains unchanged so `prefit_manifest_v2.json` can continue to verify the exact protocol that ran.
+This file continues the immutable pre-fit [Phase 2 ledger](EXPERIMENT_LEDGER.md). The original pre-fit bytes and path are recorded in the [organization manifest](../organization_manifest.json) and `prefit_manifest_v2.json` so the exact protocol remains auditable after reorganization.
 
 ## Entry 7: corrected discovery run
 

@@ -8,4 +8,4 @@ The raw grouped-label null did not center at zero. Eleven discovery-only permuta
 
 The historical Week 1 membership files do not have verified publication timestamps. The result is therefore a source-proxy retrospective stress test, not a sealed prospective estimate. No Phase 2 model or prediction replaced the Phase 1 2026 catalog.
 
-See the [post-fit ledger](../../EXPERIMENT_LEDGER_PHASE2_RESULTS.md), [machine-readable manifest](experiment_manifest_v2.json), [pre-fit plan](plan_v2.json), and [null diagnostic](null_diagnostic_v2.json).
+See the [post-fit ledger](RESULTS_LEDGER.md), [machine-readable manifest](experiment_manifest_v2.json), [pre-fit plan](plan_v2.json), and [null diagnostic](null_diagnostic_v2.json).

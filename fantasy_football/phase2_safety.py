@@ -30,7 +30,16 @@ PROTECTED_SCOPE_NAMES = (
 MAX_COMBINED_BYTES = 900 * 1024**2
 _RUN_LABEL = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]{0,63}\Z")
 _HASH = re.compile(r"[0-9a-f]{64}\Z")
-_CLAIM_DOCUMENTS = (
+_CURRENT_CLAIM_DOCUMENTS = (
+    "README.md",
+    "experiments/phase1/EXPERIMENT_LEDGER.md",
+    "experiments/phase1/COMPLETION_AUDIT.md",
+    "NOTICE.md",
+    "docs/data_sources.md",
+    "docs/fantasy_football.md",
+    "docs/methods_and_results.md",
+)
+_LEGACY_CLAIM_DOCUMENTS = (
     "README.md",
     "EXPERIMENT_LEDGER.md",
     "COMPLETION_AUDIT.md",
@@ -109,12 +118,21 @@ def _phase1_code_files(root: Path) -> list[Path]:
     return files
 
 
+def _claim_document_paths(root: Path) -> list[Path]:
+    """Return current paths, with a legacy fallback for frozen test fixtures."""
+    phase1_root = root / "experiments" / "phase1"
+    relative_paths = (
+        _CURRENT_CLAIM_DOCUMENTS if phase1_root.is_dir() else _LEGACY_CLAIM_DOCUMENTS
+    )
+    return [root / path for path in relative_paths]
+
+
 def _protected_scope_files(root: Path) -> dict[str, list[Path]]:
     scopes = {
         "data/raw": _regular_files(root / "data" / "raw"),
         "data/processed": _regular_files(root / "data" / "processed"),
         "artifacts": _regular_files(root / "artifacts"),
-        "phase1_claim_documents": [root / path for path in _CLAIM_DOCUMENTS],
+        "phase1_claim_documents": _claim_document_paths(root),
         "config": _regular_files(root / "config"),
         "phase1_code_tests_pyproject": _phase1_code_files(root),
         "players_2026.py": [root / "fantasy_football" / "players_2026.py"],
@@ -123,7 +141,9 @@ def _protected_scope_files(root: Path) -> dict[str, list[Path]]:
         missing = [path for path in paths if not path.is_file()]
         if missing:
             display = ", ".join(str(path) for path in missing)
-            raise Phase2SafetyError(f"Protected scope {scope!r} is incomplete: {display}")
+            raise Phase2SafetyError(
+                f"Protected scope {scope!r} is incomplete: {display}"
+            )
     return scopes
 
 
@@ -131,7 +151,9 @@ def _file_record(root: Path, path: Path) -> _FileRecord:
     try:
         relative_path = path.relative_to(root).as_posix()
     except ValueError as error:
-        raise Phase2SafetyError(f"Protected file is outside the repository: {path}") from error
+        raise Phase2SafetyError(
+            f"Protected file is outside the repository: {path}"
+        ) from error
 
     before = path.stat()
     digest = hashlib.sha256()
@@ -204,15 +226,21 @@ def _compute_protected_snapshot(
 def load_freeze_manifest(root: Path) -> dict[str, Any]:
     """Load and structurally validate the Phase 1 freeze manifest."""
     repository = _repository_root(root)
-    path = repository / "experiments" / "phase2" / "phase1_freeze_manifest.json"
+    current_path = repository / "experiments" / "phase1" / "phase1_freeze_manifest.json"
+    legacy_path = repository / "experiments" / "phase2" / "phase1_freeze_manifest.json"
+    path = current_path if current_path.is_file() else legacy_path
     try:
         manifest = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as error:
-        raise Phase2SafetyError(f"Cannot load Phase 1 freeze manifest: {path}") from error
+        raise Phase2SafetyError(
+            f"Cannot load Phase 1 freeze manifest: {path}"
+        ) from error
     if not isinstance(manifest, dict):
         raise Phase2SafetyError("Phase 1 freeze manifest must contain a JSON object.")
     if manifest.get("digest_contract") != TREE_DIGEST_CONTRACT:
-        raise Phase2SafetyError("Phase 1 freeze manifest has an unknown digest contract.")
+        raise Phase2SafetyError(
+            "Phase 1 freeze manifest has an unknown digest contract."
+        )
     freeze_id = manifest.get("freeze_id")
     if not isinstance(freeze_id, str) or _HASH.fullmatch(freeze_id) is None:
         raise Phase2SafetyError("Phase 1 freeze manifest has an invalid freeze_id.")
@@ -260,7 +288,9 @@ def verify_phase1_freeze(
     repository = _repository_root(root)
     loaded = load_freeze_manifest(repository) if manifest is None else dict(manifest)
     if loaded.get("digest_contract") != TREE_DIGEST_CONTRACT:
-        raise Phase2SafetyError("Phase 1 freeze manifest has an unknown digest contract.")
+        raise Phase2SafetyError(
+            "Phase 1 freeze manifest has an unknown digest contract."
+        )
     expected_trees = loaded.get("trees")
     if not isinstance(expected_trees, Mapping) or set(expected_trees) != set(
         PROTECTED_SCOPE_NAMES
@@ -321,7 +351,9 @@ def _runs_root(root: Path, *, create: bool) -> Path:
     if not phase2_root.is_dir() or not runs_root.is_dir():
         raise Phase2SafetyError(f"Phase 2 runs directory is unavailable: {runs_root}")
     if phase2_root.resolve() != phase2_root or runs_root.resolve() != runs_root:
-        raise Phase2SafetyError("Phase 2 output directories must not use symbolic links.")
+        raise Phase2SafetyError(
+            "Phase 2 output directories must not use symbolic links."
+        )
     return runs_root
 
 
@@ -380,7 +412,9 @@ def _validated_run_directory(root: Path, run_dir: Path) -> Path:
     try:
         resolved = run_dir.resolve(strict=True)
     except OSError as error:
-        raise Phase2SafetyError(f"Phase 2 run directory does not exist: {run_dir}") from error
+        raise Phase2SafetyError(
+            f"Phase 2 run directory does not exist: {run_dir}"
+        ) from error
     if not resolved.is_dir() or resolved.parent != runs_root or resolved.is_symlink():
         raise Phase2SafetyError(
             f"Output directory must be a direct child of {runs_root}: {resolved}"
@@ -394,7 +428,9 @@ def hash_outputs(run_dir: Path, *, root: Path | None = None) -> dict[str, str]:
         try:
             inferred_root = run_dir.resolve(strict=True).parents[3]
         except (IndexError, OSError) as error:
-            raise Phase2SafetyError(f"Cannot infer repository root from {run_dir}") from error
+            raise Phase2SafetyError(
+                f"Cannot infer repository root from {run_dir}"
+            ) from error
         repository = _repository_root(inferred_root)
     else:
         repository = _repository_root(root)
@@ -403,7 +439,9 @@ def hash_outputs(run_dir: Path, *, root: Path | None = None) -> dict[str, str]:
     symbolic_links = [path for path in entries if path.is_symlink()]
     if symbolic_links:
         display = ", ".join(str(path) for path in symbolic_links)
-        raise Phase2SafetyError(f"Phase 2 outputs must not contain symbolic links: {display}")
+        raise Phase2SafetyError(
+            f"Phase 2 outputs must not contain symbolic links: {display}"
+        )
     outputs: dict[str, str] = {}
     for path in entries:
         if not path.is_file():
@@ -438,7 +476,11 @@ def enforce_size_limit(
     limit_bytes: int = MAX_COMBINED_BYTES,
 ) -> int:
     """Fail when combined Phase 1 and Phase 2 storage exceeds the declared cap."""
-    if not isinstance(limit_bytes, int) or isinstance(limit_bytes, bool) or limit_bytes <= 0:
+    if (
+        not isinstance(limit_bytes, int)
+        or isinstance(limit_bytes, bool)
+        or limit_bytes <= 0
+    ):
         raise ValueError("limit_bytes must be a positive integer.")
     total_bytes = combined_project_bytes(root)
     if total_bytes > limit_bytes:
@@ -463,7 +505,9 @@ def _finalize_run(
     try:
         final_inputs = hash_inputs(run.root, input_paths)
         if final_inputs != run.input_hashes:
-            errors.append(Phase2SafetyError("A declared Phase 2 input changed during the run."))
+            errors.append(
+                Phase2SafetyError("A declared Phase 2 input changed during the run.")
+            )
     except Exception as error:  # noqa: BLE001 - aggregate all final safety failures
         errors.append(error)
     try:
@@ -473,12 +517,16 @@ def _finalize_run(
     try:
         run.protected_after = verify_phase1_freeze(run.root, manifest)
         if run.protected_after != run.protected_before:
-            errors.append(Phase2SafetyError("Protected Phase 1 digests changed during the run."))
+            errors.append(
+                Phase2SafetyError("Protected Phase 1 digests changed during the run.")
+            )
     except Exception as error:  # noqa: BLE001 - aggregate all final safety failures
         errors.append(error)
     if errors:
         details = "; ".join(f"{type(error).__name__}: {error}" for error in errors)
-        raise Phase2SafetyError(f"Phase 2 final safety checks failed: {details}") from errors[0]
+        raise Phase2SafetyError(
+            f"Phase 2 final safety checks failed: {details}"
+        ) from errors[0]
 
 
 @contextmanager

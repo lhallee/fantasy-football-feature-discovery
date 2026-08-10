@@ -1,0 +1,109 @@
+{
+  "manifest_version": 1,
+  "created_at_utc": "2026-08-10T16:18:05Z",
+  "updated_at_utc": "2026-08-10T16:30:01Z",
+  "base_commit": "f128c46d2cf503e2ddba7c8cb4aad06d2b32d972",
+  "purpose": "Record documentation relocations, GitHub Markdown notation repairs, and path-only verification maintenance without rewriting historical run artifacts.",
+  "historical_phase1_freeze_id": "366b32e659f67cbbcb81a68ee20a66bbe79cdefc004db5c971c23e89b35f17ae",
+  "current_phase1_freeze_id": "18ea337b73037645d5f6ec8e26d9ecfc24f4c080a38b6e7896594af1e3b842ac",
+  "records": [
+    {
+      "kind": "relocation_and_link_repair",
+      "historical_path": "COMPLETION_AUDIT.md",
+      "current_path": "experiments/phase1/COMPLETION_AUDIT.md",
+      "historical_sha256": "3b486c3585f53083e79a2196a003a3313b8dcad66be9c654e4c07291860fe2f5",
+      "current_sha256": "07dc44b18fe00d891f162f8d03ce4433f4151ccc320c49c94c2c97b450c3d0cb"
+    },
+    {
+      "kind": "relocation",
+      "historical_path": "EXPERIMENT_LEDGER.md",
+      "current_path": "experiments/phase1/EXPERIMENT_LEDGER.md",
+      "historical_sha256": "6cb1e45fe3b30ca96168bd3cd5e5b4e1a0bed4969203baf89e9d713cb61a6f7e",
+      "current_sha256": "6cb1e45fe3b30ca96168bd3cd5e5b4e1a0bed4969203baf89e9d713cb61a6f7e"
+    },
+    {
+      "kind": "relocation_and_link_repair",
+      "historical_path": "EXPERIMENT_LEDGER_PHASE2.md",
+      "current_path": "experiments/phase2/EXPERIMENT_LEDGER.md",
+      "historical_sha256": "5f122365462bf718752d027f3f7eb6cd6d95f82d040d1fcfd4161070d4813b7f",
+      "current_sha256": "60c0407b73045e94cbda9c781395d09bd31096b9a372f0cd3ed3ab0bff431f43"
+    },
+    {
+      "kind": "relocation_and_link_repair",
+      "historical_path": "EXPERIMENT_LEDGER_PHASE2_RESULTS.md",
+      "current_path": "experiments/phase2/RESULTS_LEDGER.md",
+      "historical_sha256": "140b1a0e1e0f8b51122bfa7908c719167408dd5422fe72e8dd48ef5ecabd699a",
+      "current_sha256": "8a9ef3789db79252204ed999dc3f7ccde9918bc148e622507f9f61c38221170c"
+    },
+    {
+      "kind": "relocation",
+      "historical_path": "experiments/phase2/phase1_freeze_manifest.json",
+      "current_path": "experiments/phase1/phase1_freeze_manifest_v1.json",
+      "historical_sha256": "9c205b5aa7a3fb1d9422b0a3ef6a70785511cae2f2eb08626f06169ad8b6bc56",
+      "current_sha256": "9c205b5aa7a3fb1d9422b0a3ef6a70785511cae2f2eb08626f06169ad8b6bc56"
+    },
+    {
+      "kind": "navigation_update",
+      "historical_path": "README.md",
+      "current_path": "README.md",
+      "historical_sha256": "3619b93e739778ae40b187d2b47f823f76191d9f80c455d3528a883564be04ac",
+      "current_sha256": "0e2be289ea0c8e3a352067eaaef271ebb223570bfd87e1f2c3bf92048d74902a"
+    },
+    {
+      "kind": "github_markdown_rendering",
+      "historical_path": "docs/fantasy_football.md",
+      "current_path": "docs/fantasy_football.md",
+      "historical_sha256": "a1bcf43113713167f48358a1ae8c895e1e46e43f8984e7f3d87f42bff5b0fb1a",
+      "current_sha256": "808aee8f34f7b2f134b558ad577f1db302e96116003e694b44713b6765afd920"
+    },
+    {
+      "kind": "github_markdown_rendering",
+      "historical_path": "docs/methods_and_results.md",
+      "current_path": "docs/methods_and_results.md",
+      "historical_sha256": "ab797668c53e2198b091563396921095a84cf48a35021f8cb0f5e4dfcb9094f7",
+      "current_sha256": "26ebe92ed51f5263244fa9a4fc3fb46dbd21f8b86f02f5631bd5dff8a3d8e00d"
+    },
+    {
+      "kind": "navigation_update",
+      "historical_path": "experiments/phase2/README.md",
+      "current_path": "experiments/phase2/README.md",
+      "historical_sha256": "9bda170505826d02d4403608594641ccabbbc5b0214c6a92b2e4358bfd630f07",
+      "current_sha256": "b409b4c5c791f57da755bec30011e03fd6096728aa45f97772702cf6106c5c64"
+    },
+    {
+      "kind": "navigation_update",
+      "historical_path": "experiments/phase2/RESULTS_V2.md",
+      "current_path": "experiments/phase2/RESULTS_V2.md",
+      "historical_sha256": "47f8b693f25b7dc263bf2fc5c84dc3a44865ef60a0ca3a3830e88d60de40f298",
+      "current_sha256": "d8f13233afc437e9e9954687454a34fd1ec31edf9e1c567176dd2bc781211377"
+    },
+    {
+      "kind": "path_resolution_maintenance",
+      "historical_path": "fantasy_football/phase2_safety.py",
+      "current_path": "fantasy_football/phase2_safety.py",
+      "historical_sha256": "983918a1332b90764da08f54e22f50be7eb0a515065441b295cad0384597512f",
+      "current_sha256": "30fe347de2596813925cde77567d08458439c4b4e26f6abe0bcb4e70b9536d3d"
+    },
+    {
+      "kind": "path_resolution_maintenance",
+      "historical_path": "fantasy_football/phase2_runner_v2.py",
+      "current_path": "fantasy_football/phase2_runner_v2.py",
+      "historical_sha256": "0a5026ea3bd2750d7ce685786aba270b188563af0373e6aa07d9b0b4b9b81583",
+      "current_sha256": "73b422bf147f9c35bc0b6dabc44bc54a83bb00c064fdc72cd5c2283239121aa3"
+    },
+    {
+      "kind": "path_resolution_test_maintenance",
+      "historical_path": "tests/test_phase2_artifacts.py",
+      "current_path": "tests/test_phase2_artifacts.py",
+      "historical_sha256": "f42d131f1c57c5f19150aff388020f3b716dff090d7f699a2b4eb3ecf267f5de",
+      "current_sha256": "c615cba3c8e87c893d3c2081c432101fca8c232e25fb689dc82ba5e2560c4f41"
+    },
+    {
+      "kind": "path_resolution_test_maintenance",
+      "historical_path": "tests/test_phase2_v2_artifacts.py",
+      "current_path": "tests/test_phase2_v2_artifacts.py",
+      "historical_sha256": "e81af88b97072fc8d734df491f2c989c359a0daa63ecd2ecc9c7cc5a6c3f3a24",
+      "current_sha256": "9aea830e58fcd6afcccd91d1649b5bcbe67ba8a3bbf6c4ebfc69235c2cbabb40"
+    }
+  ]
+}

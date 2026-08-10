@@ -32,13 +32,11 @@ The executable profile is [scoring_espn_full_ppr_2026.json](../config/scoring_es
 
 These coefficients follow ESPN's July 2026 public table. Yardage is fractional, so 17 receiving yards contribute 1.7 points. Kicker targets include any reception points plus kicking points. [ESPN scoring formats](https://support.espn.com/hc/en-us/articles/360003914032-Scoring-Formats)
 
-For reception coefficient \(r\),
+For reception coefficient `r`:
 
-\[
-FP_r = FP_{\mathrm{non\mbox{-}PPR}} + rR,
-\]
+`fantasy points = non-PPR fantasy points + r × R`
 
-where \(R\) is receptions and \(r\) is 0, 0.5, or 1 for non-PPR, half PPR, or full PPR. The player-game table stores all three offense scoring variants. The season target sums every source row with `season_type == "REG"`, including Week 18 since 2021.
+Here, `R` is receptions and `r` is 0, 0.5, or 1 for non-PPR, half PPR, or full PPR. The player-game table stores all three offense scoring variants. The season target sums every source row with `season_type == "REG"`, including Week 18 since 2021.
 
 ## Defensive-touchdown limitation
 

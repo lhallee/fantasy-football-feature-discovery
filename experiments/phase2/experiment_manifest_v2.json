@@ -98,11 +98,15 @@
     "observed_minus_null_mean_descriptive_only": 0.6047304622146608
   },
   "documents": {
-    "postfit_ledger": "EXPERIMENT_LEDGER_PHASE2_RESULTS.md",
-    "postfit_ledger_sha256": "140b1a0e1e0f8b51122bfa7908c719167408dd5422fe72e8dd48ef5ecabd699a",
+    "postfit_ledger": "experiments/phase2/RESULTS_LEDGER.md",
+    "postfit_ledger_sha256": "8a9ef3789db79252204ed999dc3f7ccde9918bc148e622507f9f61c38221170c",
     "results_guide": "experiments/phase2/RESULTS_V2.md",
-    "results_guide_sha256": "47f8b693f25b7dc263bf2fc5c84dc3a44865ef60a0ca3a3830e88d60de40f298"
+    "results_guide_sha256": "d8f13233afc437e9e9954687454a34fd1ec31edf9e1c567176dd2bc781211377"
   },
-  "combined_phase1_phase2_bytes": 96930013,
+  "current_layout": {
+    "organization_manifest": "experiments/organization_manifest.json",
+    "current_phase1_freeze_id": "18ea337b73037645d5f6ec8e26d9ecfc24f4c080a38b6e7896594af1e3b842ac"
+  },
+  "combined_phase1_phase2_bytes": 96956855,
   "size_limit_bytes": 943718400
 }

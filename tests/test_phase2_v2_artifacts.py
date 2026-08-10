@@ -7,6 +7,7 @@ import pytest
 from pathlib import Path
 
 from fantasy_football.phase2_modeling import summarize_predictions
+from fantasy_football.phase2_layout import verify_historical_file
 from fantasy_football.phase2_safety import combined_project_bytes
 from fantasy_football.phase2_safety import hash_outputs, verify_phase1_freeze
 from fantasy_football.provenance import file_sha256
@@ -34,7 +35,7 @@ def test_v2_plan_prefit_code_documents_and_size_are_bound() -> None:
         == MANIFEST["prefit_lock"]["sha256"]
     )
     for relative_path, expected_hash in MANIFEST["code"].items():
-        assert file_sha256(ROOT / relative_path) == expected_hash
+        verify_historical_file(ROOT, relative_path, expected_hash)
     documents = MANIFEST["documents"]
     assert (
         file_sha256(ROOT / documents["postfit_ledger"])

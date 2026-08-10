@@ -29,11 +29,17 @@ Each run verifies the Phase 1 freeze before and after fitting, verifies the v2 p
 
 ## Files
 
-- `phase1_freeze_manifest.json`: protected Phase 1 tree and critical-file hashes.
+- `../phase1/phase1_freeze_manifest.json`: current protected Phase 1 tree and critical-file hashes.
+- `../phase1/phase1_freeze_manifest_v1.json`: original pre-Phase 2 freeze record.
 - `plan_v1.json`: superseded fixed feature, model, split, and selection menu.
 - `plan_v2.json`: pre-fit cohort and audit-control amendment over the unchanged v1 candidate menu.
 - `prefit_manifest_v2.json`: exact pre-fit hashes for the amended plan, code, tests, ledger, and this guide.
 - `experiment_manifest_v1.json`: superseded v1 plan and code hashes, run directories, and result summary.
+- `experiment_manifest_v2.json`: corrected v2 result, validity decisions, and artifact hashes.
+- `EXPERIMENT_LEDGER.md`: immutable pre-fit research narrative, relocated from the repository root.
+- `RESULTS_LEDGER.md`: post-fit findings and decisions.
+- `RESULTS_V2.md`: concise result guide.
+- `null_diagnostic_v2.json`: post-selection null diagnostics and limitations.
 - `runs/*/run_manifest.json`: exact source-input hashes and runtime environment for each run.
 - `runs/*/output_hashes.json`: exact hashes for every generated run artifact.
 - `runs/*/candidate_summary.csv`: aggregate metrics for every evaluated candidate.
@@ -43,7 +49,7 @@ Each run verifies the Phase 1 freeze before and after fitting, verifies the v2 p
 - `runs/*/feature_lineage.json`: source, offset, and recipe for every input.
 - `runs/*/uncertainty.json`: player-cluster and season-block intervals.
 
-The complete research narrative is in [EXPERIMENT_LEDGER_PHASE2.md](../../EXPERIMENT_LEDGER_PHASE2.md).
+The complete research narrative is in the [pre-fit ledger](EXPERIMENT_LEDGER.md) and [results ledger](RESULTS_LEDGER.md).
 
 ## Interpretation
 
