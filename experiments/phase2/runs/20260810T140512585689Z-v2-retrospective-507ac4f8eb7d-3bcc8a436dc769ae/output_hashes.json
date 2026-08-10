@@ -1,0 +1,21 @@
+{
+  "candidate_summary.csv": "2b2ce35f4b6e2e9e03b31686fdf8e840730e0262c8ac36c1208325dfedd4dafc",
+  "cohort_audit.json": "ae0fa3f679cc4abe1cf53197f9dbd693153756c44b36844e9f4683a27b3cec04",
+  "end_to_end_null_fold_metrics.csv": "3d88c0d02ce1c63343e0946ce85cf77927f5010d104be9911e47f5ae7450bde5",
+  "end_to_end_null_predictions.parquet": "1ac383794339b827c2d3e2e97bc128b795dd0b11d1f781b1721f226cdbd1dd33",
+  "end_to_end_null_selected_features.csv": "2ecdcc5515bad01fe63f20599960ecea1f722675a9d919d5cc96345217ef796c",
+  "end_to_end_null_summary.json": "ef7aa163881a6d7844f846c610424751d627bb6bcfd0a6229cf5ed06eedaf772",
+  "feature_lineage.json": "0de6fe03814ef07332b9bf974cbc49aebd39a4b9f98044b78e84da12d601d834",
+  "fold_metrics.csv": "24b010dda61ec55b619a3e136c498fd06227e916a23688c8be3ddd45014741fd",
+  "LEDGER.md": "9e3ef470fedd18ccd34bdcdb29e0f91e23b7658bf63c43400550a10eeddd6c8a",
+  "metric_validity.json": "bdcbfd0de8558eb6682575955ad50d55246965db169b6c1c47d959396c63ecb0",
+  "no_draft_fold_metrics.csv": "b080d52d32e7889b760fe63b74295034806877c08be140581bccf28c55d6fae2",
+  "no_draft_predictions.parquet": "66ba4eac4bf48736f05d93b6749ded8410a24fa371606d370dff4ac5cd3e7096",
+  "no_draft_selected_features.csv": "211341553a6d3d6192850ee8912cf7f9eeeda9f7be8e3df4f5355e6e44bb1dd4",
+  "no_draft_summary.json": "c0c025de5508ccac47eea5420cabfe28584715420d050478d61d9e545b718fd9",
+  "position_metrics.json": "3ffcfe5b31db1064d7cfffaa82f53d2000333dc2976e71b9e81916eefa4538af",
+  "predictions.parquet": "e3ad482a14d663125f52a6a39c698066844e935ee1d5c32be6bd97517cbceb2e",
+  "run_manifest.json": "705507f0f75c2a812c48f8a70dc83988008f3bb3420432162264f4fcba0c1d42",
+  "selected_features.csv": "5bbef829e2aa8e821cf01ec8161c29825eeb644a3be4d0a1f15ff8eb83c7c6ac",
+  "uncertainty.json": "517804838656c8044b0f63b2ef23977041de0bfd3656cc320d79c8ff74f3eee4"
+}

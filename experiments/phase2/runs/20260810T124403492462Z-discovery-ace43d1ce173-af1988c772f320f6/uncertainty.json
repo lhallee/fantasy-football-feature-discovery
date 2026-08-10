@@ -1,0 +1,14 @@
+{
+  "player_cluster": {
+    "estimate": 0.7138253076104588,
+    "lower_95": 0.6868115561546567,
+    "upper_95": 0.7331106875654422,
+    "bootstrap_samples": 500
+  },
+  "season_block": {
+    "estimate": 0.7138253076104589,
+    "lower_95": 0.6927653128845264,
+    "upper_95": 0.7297603136032152,
+    "bootstrap_samples": 2000
+  }
+}

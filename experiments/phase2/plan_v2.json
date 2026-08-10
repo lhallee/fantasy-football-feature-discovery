@@ -1,0 +1,64 @@
+{
+  "plan_version": 2,
+  "plan_name": "phase2_postcut_status_filtered_raw_rank_v2",
+  "recorded_before_fit_utc": "2026-08-10T13:49:38Z",
+  "amendment_reason": "Remove non-rostered Week-1-file rows from both the scored cohort and roster-room aggregates before fitting.",
+  "base_plan_path": "experiments/phase2/plan_v1.json",
+  "base_plan_sha256": "ace43d1ce173302f401f7616f25a4c7a74bb0317064a2d5ece395ab635cd9b17",
+  "prefit_manifest_path": "experiments/phase2/prefit_manifest_v2.json",
+  "candidate_menu_change": "none",
+  "split_change": "none",
+  "selection_rule_change": "none",
+  "cohort_contract": {
+    "forecast_origin": "post_final_cuts_pre_week_1_proxy",
+    "included_statuses": [
+      "ACT",
+      "DEV",
+      "E14",
+      "EXE",
+      "INA",
+      "PUP",
+      "RES",
+      "RSN",
+      "SUS"
+    ],
+    "excluded_statuses": [
+      "CUT",
+      "E01",
+      "MISSING",
+      "NWT",
+      "RET",
+      "RFA",
+      "RSR",
+      "TRC",
+      "TRD",
+      "TRT",
+      "UFA"
+    ],
+    "status_dictionary": "https://nflreadr.nflverse.com/articles/dictionary_roster_status.html",
+    "missing_status_action": "exclude_and_audit",
+    "unexpected_nonmissing_status_action": "fail",
+    "status_is_a_cohort_definition_not_a_model_feature": true,
+    "apply_before_room_aggregation": true,
+    "status_application_grain": "frozen_upstream_deduplicated_week_1_player_row",
+    "upstream_deduplication_audit": {
+      "mixed_included_excluded_status_groups": 712,
+      "deduplicated_to_included_status": 711,
+      "deduplicated_to_excluded_status": 1,
+      "known_excluded_player_id": "00-0029343",
+      "known_excluded_target_season": 2014,
+      "known_raw_statuses": ["RSN", "TRD"]
+    },
+    "historical_snapshot_timestamp_verified": false
+  },
+  "metric_contract": {
+    "signed_log_predictions": "inverse_transform_before_point_metrics",
+    "rank_hurdle_and_blend_point_metrics": "omit_as_scale_incompatible",
+    "order_metrics": "retain_for_every_candidate"
+  },
+  "nonselecting_diagnostics": {
+    "end_to_end_null": "clone the discovery-selected procedure and shuffle target points within training position-season groups before feature selection and fitting",
+    "no_draft": "clone the discovery-selected procedure with draft_number, draft_round, and was_drafted excluded at the same feature-limit setting"
+  },
+  "interpretation": "V1 is superseded for post-cut claims. V2 remains a roster-proxy retrospective study until tested prospectively from a timestamped 2026 post-cut snapshot."
+}

@@ -1,0 +1,52 @@
+{
+  "recorded_at_utc": "2026-08-10T14:06:42Z",
+  "status": "post_selection_exploratory_diagnostic",
+  "confirmatory_use": false,
+  "execution_provenance": "The locked seed is persisted in the discovery run. Additional controls were executed read-only from the same frozen inputs and transcribed from terminal output; they were not part of the pre-fit lock and cannot select or alter the champion.",
+  "discovery_run": "experiments/phase2/runs/20260810T135032148895Z-v2-discovery-507ac4f8eb7d-60bed99cda8e1b66",
+  "selected_candidate": "stable_core_room_et_all_points",
+  "observed_discovery_spearman": 0.7222631125476182,
+  "original_vs_locked_shuffled_target_spearman": 0.002022038022963868,
+  "raw_grouped_target_permutations": {
+    "description": "Permute observed targets independently within every target-season and position group before fitting the already-selected procedure.",
+    "seeds": [20260809, 9101, 9102, 9103, 9104, 9105, 9106, 9107, 9108, 9109, 9110],
+    "spearman": [0.10955553266253215, 0.177245809, 0.195551552, 0.098335046, 0.148081104, 0.111069306, 0.059482633, 0.069059979, 0.120188889, 0.125150199, 0.079139104],
+    "mean": 0.11753265033295746,
+    "sample_standard_deviation": 0.042799914749068184,
+    "minimum": 0.059482633,
+    "maximum": 0.195551552,
+    "observed_minus_null_mean_descriptive_only": 0.6047304622146608,
+    "interpretation": "The predeclared zero-null sentinel does not center at zero. Eleven conditional repeats are insufficient for a confirmatory full-selection permutation test."
+  },
+  "fixed_prediction_validation_label_permutations": {
+    "description": "Hold the selected discovery predictions fixed and permute validation labels within target-season and position groups.",
+    "seed": 9300,
+    "permutations": 1000,
+    "mean_spearman": -0.0003889642199600843,
+    "sample_standard_deviation": 0.01551924937864677,
+    "minimum": -0.0523794298345967,
+    "maximum": 0.04919169356116266
+  },
+  "iid_rademacher_training_labels": {
+    "description": "Replace every training target with independent centered -1 or +1 noise before fitting the selected procedure.",
+    "seeds": [9201, 9202, 9203, 9204, 9205, 9206],
+    "spearman": [0.097336886, 0.040466134, -0.101988875, 0.043139595, -0.169198503, -0.06887804],
+    "mean": -0.02652046716666667,
+    "sample_standard_deviation": 0.10249589201218334
+  },
+  "antithetic_centered_noise": {
+    "seed": 9401,
+    "positive_noise_spearman": 0.004427703230728807,
+    "negative_noise_spearman": -0.0027107402573834974,
+    "sum": 0.0017169629733453091,
+    "maximum_absolute_prediction_sum": 0.2070908646418324
+  },
+  "within_group_standardized_target_permutations": {
+    "description": "Z-score targets inside each target-season and position group, then permute before fitting.",
+    "seeds": [9501, 9502, 9503],
+    "spearman": [-0.22775212279234458, -0.08379935938388988, 0.029162380365562235],
+    "mean": -0.09412970060355741,
+    "sample_standard_deviation": 0.12876840623966967
+  },
+  "conclusion": "Restoration and scoring controls center near zero, antithetic centered labels reverse sign, and three exploratory standardized-target repeats did not reproduce the positive raw-null mean. Evidence favors a skew-and-feature-geometry effect over a direct real-label path. The raw shuffled-target sentinel nevertheless failed its zero-null interpretation and must be reported as failed."
+}

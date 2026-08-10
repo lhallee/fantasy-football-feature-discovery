@@ -1,0 +1,108 @@
+{
+  "manifest_version": 2,
+  "created_at_utc": "2026-08-10T14:09:35Z",
+  "phase1_freeze_id": "366b32e659f67cbbcb81a68ee20a66bbe79cdefc004db5c971c23e89b35f17ae",
+  "validity": {
+    "status": "completed_source_proxy_stress_test",
+    "exceeds_0_90": false,
+    "raw_grouped_label_zero_null_passed": false,
+    "direct_real_label_path_found": false,
+    "historical_snapshot_timestamp_verified": false,
+    "retrospective_outcomes_blinded": false,
+    "prospective_2026_test_complete": false,
+    "global_minimum_feature_combination_found": false
+  },
+  "plan": {
+    "path": "experiments/phase2/plan_v2.json",
+    "sha256": "507ac4f8eb7dfcdc016e7c750baed13a4d936fa86c41c91931c30b39df241916",
+    "base_plan_path": "experiments/phase2/plan_v1.json",
+    "base_plan_sha256": "ace43d1ce173302f401f7616f25a4c7a74bb0317064a2d5ece395ab635cd9b17"
+  },
+  "prefit_lock": {
+    "path": "experiments/phase2/prefit_manifest_v2.json",
+    "sha256": "eb2833f1a62202035092f02e0efc35e0d77bc0049d622e93f9819b5f2941b245",
+    "locked_before_fit_utc": "2026-08-10T13:49:38Z"
+  },
+  "code": {
+    "fantasy_football/phase2_cohort.py": "55f4d62be3fc774b90cd453cd01a638d249d0f8e0aba3335ca69ac371e4ad881",
+    "fantasy_football/phase2_features.py": "d8576816bce3efe6696e74f23e9e75f2bc98a4482dd9ab03e416f619443222e3",
+    "fantasy_football/phase2_modeling.py": "8f489253c9a93ac66baec8d5bce57f5645f59ac0d9057db095b1e4f4371b9286",
+    "fantasy_football/phase2_runner.py": "be3b7a4d224b4119a2ecb65d41f2e8acea29c11d3c86b26e8ed350c7dca25523",
+    "fantasy_football/phase2_runner_v2.py": "0a5026ea3bd2750d7ce685786aba270b188563af0373e6aa07d9b0b4b9b81583",
+    "fantasy_football/phase2_safety.py": "983918a1332b90764da08f54e22f50be7eb0a515065441b295cad0384597512f"
+  },
+  "selected_procedure": {
+    "identifier": "stable_core_room_et_all_points",
+    "estimator": "extra_trees",
+    "target": "points",
+    "columns": 248,
+    "lagged_performance_history_rate_columns": 196,
+    "cutoff_metadata_and_missingness_columns": 29,
+    "position_columns": 4,
+    "roster_room_columns": 19,
+    "feature_limit": null,
+    "interpretation": "smallest qualifying declared procedure within the fixed tolerance, not a global or irreducible minimum"
+  },
+  "runs": {
+    "discovery": {
+      "directory": "experiments/phase2/runs/20260810T135032148895Z-v2-discovery-507ac4f8eb7d-60bed99cda8e1b66",
+      "selection_sha256": "526a68f1889501bc1c79d7dcbd0ada5f8600cabdbec662e608e97f81f89ade22",
+      "run_manifest_sha256": "403ed2ba2bce1c6cd4e4495ea65dcb2ed3a9bf770cc4e337c84bc50326c75423",
+      "output_hashes_sha256": "28d50b4496aa3e4b317a69bd7aa27cac89f4e89fd7006fd73399ade4415495ba",
+      "validation_seasons": [2016, 2017, 2018, 2019, 2020, 2021],
+      "rows_before_status_filter": 12893,
+      "rows_after_status_filter": 11615,
+      "selected_spearman": 0.7222631125476182,
+      "best_eligible_spearman": 0.7225780317464446,
+      "previous_points_spearman": 0.606341780212971,
+      "no_draft_spearman": 0.6755061263502914,
+      "locked_grouped_label_null_spearman": 0.10955553266253215,
+      "elapsed_seconds": 195.30545019963756
+    },
+    "retrospective": {
+      "directory": "experiments/phase2/runs/20260810T140512585689Z-v2-retrospective-507ac4f8eb7d-3bcc8a436dc769ae",
+      "run_manifest_sha256": "705507f0f75c2a812c48f8a70dc83988008f3bb3420432162264f4fcba0c1d42",
+      "output_hashes_sha256": "fc5ec1774a84201c9144c0860e6bbb0153b164b523e520810fb526dd00b90c47",
+      "validation_seasons": [2022, 2023, 2024, 2025],
+      "rows_before_status_filter": 16726,
+      "rows_after_status_filter": 14669,
+      "evaluated_rows": 3054,
+      "selected_spearman": 0.7658263353236539,
+      "selected_mae": 33.786448282431444,
+      "previous_points_spearman": 0.6459394015063161,
+      "no_draft_spearman": 0.721759781855505,
+      "locked_grouped_label_null_spearman": 0.09039469711226955,
+      "player_cluster_lower_95": 0.739415886522115,
+      "player_cluster_upper_95": 0.7855513389395601,
+      "position_spearman": {
+        "QB": 0.7344915736054676,
+        "RB": 0.7349081547079078,
+        "WR": 0.786240641283978,
+        "TE": 0.807664971697262
+      },
+      "season_spearman": {
+        "2022": 0.7625300927121949,
+        "2023": 0.7440701005387031,
+        "2024": 0.7775386289483186,
+        "2025": 0.7791665190953989
+      },
+      "elapsed_seconds": 46.73523860005662
+    }
+  },
+  "null_diagnostic": {
+    "path": "experiments/phase2/null_diagnostic_v2.json",
+    "sha256": "712e494bfc482ec65fe6eb5efd055798247bf3f0587141dcb0955ca6cd4e0aa5",
+    "confirmatory_use": false,
+    "raw_grouped_label_null_mean": 0.11753265033295746,
+    "raw_grouped_label_null_repeats": 11,
+    "observed_minus_null_mean_descriptive_only": 0.6047304622146608
+  },
+  "documents": {
+    "postfit_ledger": "EXPERIMENT_LEDGER_PHASE2_RESULTS.md",
+    "postfit_ledger_sha256": "140b1a0e1e0f8b51122bfa7908c719167408dd5422fe72e8dd48ef5ecabd699a",
+    "results_guide": "experiments/phase2/RESULTS_V2.md",
+    "results_guide_sha256": "47f8b693f25b7dc263bf2fc5c84dc3a44865ef60a0ca3a3830e88d60de40f298"
+  },
+  "combined_phase1_phase2_bytes": 95079901,
+  "size_limit_bytes": 943718400
+}

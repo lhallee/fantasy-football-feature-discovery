@@ -1,0 +1,14 @@
+{
+  "model_spearman": {
+    "estimate": 0.6992470475428919,
+    "lower_95": 0.6550201604053044,
+    "upper_95": 0.7361764263925703,
+    "bootstrap_samples": 500
+  },
+  "difference_vs_previous_points": {
+    "estimate": 0.0617799924397997,
+    "lower_95": 0.029238989163918615,
+    "upper_95": 0.09637192187035508,
+    "bootstrap_samples": 500
+  }
+}

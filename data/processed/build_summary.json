@@ -1,0 +1,21 @@
+{
+  "current_season": 2026,
+  "player_game_rows": 475626,
+  "player_game_players": 11372,
+  "unidentified_game_rows_dropped": 530,
+  "player_season_rows": 66907,
+  "modeling_rows": 18630,
+  "current_roster_players": 2930,
+  "current_fantasy_players": 958,
+  "recomputed_ppr_exact_fraction": 0.9933029182517091,
+  "recomputed_ppr_mean_absolute_delta": 0.01528291346332905,
+  "depth_tier_coverage": 0.72914653784219,
+  "snap_id_match_fraction": 0.9992946291971978,
+  "snapshot_date": "2026-08-09",
+  "scoring_profile": "espn_full_ppr_2026",
+  "scoring_config_sha256": "744c0cea0e70966966d5446595b0858304c5e941a1951fff8feb078e78792d7e",
+  "target_period": "all NFL regular-season games, including Week 18 since 2021",
+  "total_project_data_bytes": 82802977,
+  "built_at_utc": "2026-08-10T04:51:11+00:00",
+  "week_one_duplicate_rows_resolved": 1655
+}

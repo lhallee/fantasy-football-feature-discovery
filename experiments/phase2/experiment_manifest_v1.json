@@ -1,0 +1,46 @@
+{
+  "created_at_utc": "2026-08-10T12:49:47.0342482Z",
+  "phase1_freeze_id": "366b32e659f67cbbcb81a68ee20a66bbe79cdefc004db5c971c23e89b35f17ae",
+  "plan": {
+    "path": "experiments/phase2/plan_v1.json",
+    "sha256": "ace43d1ce173302f401f7616f25a4c7a74bb0317064a2d5ece395ab635cd9b17"
+  },
+  "forecast_origin": {
+    "intended_definition": "post_final_cuts_pre_week_1",
+    "implemented_cohort": "all offense rows in nflverse Week 1 source files, including CUT and RET",
+    "historical_membership_proxy": "nflverse_week_1_roster",
+    "historical_snapshot_timestamp_verified": false,
+    "august_9_catalog_compatible": false,
+    "prospective_2026_requirement": "rerun from an equivalent timestamped post-cut snapshot"
+  },
+  "validity": {
+    "status": "superseded",
+    "reason": "CUT and RET source rows entered both the scored cohort and roster-room aggregates; the shuffled-fit control also selected features using unshuffled labels",
+    "replacement_plan": "experiments/phase2/plan_v2.json"
+  },
+  "code": {
+    "fantasy_football/phase2_features.py": "d8576816bce3efe6696e74f23e9e75f2bc98a4482dd9ab03e416f619443222e3",
+    "fantasy_football/phase2_modeling.py": "8f489253c9a93ac66baec8d5bce57f5645f59ac0d9057db095b1e4f4371b9286",
+    "fantasy_football/phase2_runner.py": "be3b7a4d224b4119a2ecb65d41f2e8acea29c11d3c86b26e8ed350c7dca25523",
+    "fantasy_football/phase2_safety.py": "983918a1332b90764da08f54e22f50be7eb0a515065441b295cad0384597512f"
+  },
+  "runs": {
+    "discovery": {
+      "directory": "experiments/phase2/runs/20260810T124403492462Z-discovery-ace43d1ce173-af1988c772f320f6",
+      "seasons": [2016, 2017, 2018, 2019, 2020, 2021],
+      "selected_candidate": "stable_core_room_et_all_points",
+      "selected_spearman": 0.7138253076104588,
+      "best_point_estimate_spearman": 0.7156656269320054
+    },
+    "retrospective": {
+      "directory": "experiments/phase2/runs/20260810T124722038967Z-retrospective-ace43d1ce173-f27b159113508c81",
+      "seasons": [2022, 2023, 2024, 2025],
+      "selected_candidate": "stable_core_room_et_all_points",
+      "spearman": 0.7661339665600965,
+      "player_cluster_lower_95": 0.7412819165867428,
+      "player_cluster_upper_95": 0.7876200082084829
+    }
+  },
+  "combined_phase1_phase2_bytes_after_runs": 95079901,
+  "result": "V1 did not approach 0.90, but its 0.7661 result is a superseded Week-1-source-row benchmark rather than a valid post-cut estimate."
+}
