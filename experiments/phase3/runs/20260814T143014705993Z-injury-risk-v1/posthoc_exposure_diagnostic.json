@@ -1,0 +1,49 @@
+{
+  "status": "posthoc_nonselecting_diagnostic",
+  "purpose": "Measure how much audit discrimination comes from prior participation and report exposure rather than within-player fragility.",
+  "audit_rows": 3417,
+  "overall": {
+    "injury_prevalence": 0.3494293239683933,
+    "selected_model_roc_auc": 0.867580140920527,
+    "lag1_games_univariate_roc_auc": 0.772430151959377,
+    "injury_lag2_reported_univariate_roc_auc": 0.6228115385745642
+  },
+  "precutoff_exposure_subsets": [
+    {
+      "rule": "all audit candidates",
+      "rows": 3417,
+      "injury_prevalence": 0.3494293239683933,
+      "selected_model_roc_auc": 0.867580140920527,
+      "lag1_games_univariate_roc_auc": 0.772430151959377
+    },
+    {
+      "rule": "lag1_games > 0",
+      "rows": 1982,
+      "injury_prevalence": 0.49596367305751765,
+      "selected_model_roc_auc": 0.7892062968360019,
+      "lag1_games_univariate_roc_auc": 0.7310545540453983
+    },
+    {
+      "rule": "lag1_games >= 4",
+      "rows": 1594,
+      "injury_prevalence": 0.5734002509410289,
+      "selected_model_roc_auc": 0.7498664564293989,
+      "lag1_games_univariate_roc_auc": 0.6644862594928563
+    },
+    {
+      "rule": "lag1_games >= 8",
+      "rows": 1231,
+      "injury_prevalence": 0.644191714053615,
+      "selected_model_roc_auc": 0.7294707687701176,
+      "lag1_games_univariate_roc_auc": 0.5906101907673882
+    }
+  ],
+  "position_roc_auc": {
+    "K": 0.7093343113882267,
+    "QB": 0.8574403585079742,
+    "RB": 0.8505120882533638,
+    "TE": 0.8472891566265062,
+    "WR": 0.8981536440595504
+  },
+  "interpretation": "The headline classifier separates likely NFL participants and high-exposure players from low-exposure candidates as well as estimating recurrent report risk. The restricted-subset AUC remains above 0.5, but the result must not be described as a pure measure of anatomical fragility."
+}

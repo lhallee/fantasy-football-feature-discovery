@@ -1,0 +1,150 @@
+{
+  "files": [
+    {
+      "path": "injuries_2009.parquet",
+      "retrieved_at_utc": "2026-08-14T14:27:32.048004+00:00",
+      "reused": false,
+      "season": 2009,
+      "sha256": "c2d9f98b35aac9f0f5db1271b7e91235ef30f99c0b67b65125513097f26a1bf1",
+      "size_bytes": 83939,
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2009.parquet"
+    },
+    {
+      "path": "injuries_2010.parquet",
+      "retrieved_at_utc": "2026-08-14T14:27:32.213489+00:00",
+      "reused": false,
+      "season": 2010,
+      "sha256": "9b88157ae5cd3bc7a399bfdaa30eac578e6330b3e17804bd4a95183f6e100b4e",
+      "size_bytes": 107893,
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2010.parquet"
+    },
+    {
+      "path": "injuries_2011.parquet",
+      "retrieved_at_utc": "2026-08-14T14:27:32.401263+00:00",
+      "reused": false,
+      "season": 2011,
+      "sha256": "ed2f42803da27cd4657787bfc0b1cf8a0b305a7886625dce9a3f881a6d78d74b",
+      "size_bytes": 115104,
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2011.parquet"
+    },
+    {
+      "path": "injuries_2012.parquet",
+      "retrieved_at_utc": "2026-08-14T14:27:32.510501+00:00",
+      "reused": false,
+      "season": 2012,
+      "sha256": "6b00cba84db83453d35911a23c509919e1775568be582e6183627171b03a44d7",
+      "size_bytes": 120441,
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2012.parquet"
+    },
+    {
+      "path": "injuries_2013.parquet",
+      "retrieved_at_utc": "2026-08-14T14:27:32.643340+00:00",
+      "reused": false,
+      "season": 2013,
+      "sha256": "b1409e73309efe269f5ac2d6afdcece9a136a4966301d7b01a6c7a2a37b4a1de",
+      "size_bytes": 114312,
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2013.parquet"
+    },
+    {
+      "path": "injuries_2014.parquet",
+      "retrieved_at_utc": "2026-08-14T14:27:32.799612+00:00",
+      "reused": false,
+      "season": 2014,
+      "sha256": "720a8d4b371e1d0266dd0597dfda9a755038a233998d4f84ec286110664566ef",
+      "size_bytes": 115033,
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2014.parquet"
+    },
+    {
+      "path": "injuries_2015.parquet",
+      "retrieved_at_utc": "2026-08-14T14:27:32.968411+00:00",
+      "reused": false,
+      "season": 2015,
+      "sha256": "d958742ff453f057b078813cbf6e01c69f9729365937b8b53b8fc262b9e973ba",
+      "size_bytes": 117594,
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2015.parquet"
+    },
+    {
+      "path": "injuries_2016.parquet",
+      "retrieved_at_utc": "2026-08-14T14:27:33.133300+00:00",
+      "reused": false,
+      "season": 2016,
+      "sha256": "0f771af175147ec1f782aafdc0561e2601f7d843494c533a43d2951115b8495c",
+      "size_bytes": 112500,
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2016.parquet"
+    },
+    {
+      "path": "injuries_2017.parquet",
+      "retrieved_at_utc": "2026-08-14T14:27:33.282115+00:00",
+      "reused": false,
+      "season": 2017,
+      "sha256": "1838af2b2ff29eb5a0cf8da54a672ebc5835a0f430a0067528d675ea5f5c0a40",
+      "size_bytes": 114559,
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2017.parquet"
+    },
+    {
+      "path": "injuries_2018.parquet",
+      "retrieved_at_utc": "2026-08-14T14:27:33.415233+00:00",
+      "reused": false,
+      "season": 2018,
+      "sha256": "2ab4c15d0ce8e3afc57fb147d978076cfef848eec0a02f8da14c39b4a4a6db9b",
+      "size_bytes": 113740,
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2018.parquet"
+    },
+    {
+      "path": "injuries_2019.parquet",
+      "retrieved_at_utc": "2026-08-14T14:27:33.565296+00:00",
+      "reused": false,
+      "season": 2019,
+      "sha256": "b03af1ed05bd6327bb01ce9f12d91ce7eb01ddf605c5755f0643fcfe8702efb4",
+      "size_bytes": 119388,
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2019.parquet"
+    },
+    {
+      "path": "injuries_2020.parquet",
+      "retrieved_at_utc": "2026-08-14T14:27:33.730051+00:00",
+      "reused": false,
+      "season": 2020,
+      "sha256": "fc8d9c2af770a1af11182a8a3203e8ead780bfb1c08874694f2a7a07b2a1f454",
+      "size_bytes": 125134,
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2020.parquet"
+    },
+    {
+      "path": "injuries_2021.parquet",
+      "retrieved_at_utc": "2026-08-14T14:27:33.843485+00:00",
+      "reused": false,
+      "season": 2021,
+      "sha256": "14729f0b5debda57df4fce30465a1dd7a34509472669ea01900dbe611b5f9cd7",
+      "size_bytes": 126242,
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2021.parquet"
+    },
+    {
+      "path": "injuries_2022.parquet",
+      "retrieved_at_utc": "2026-08-14T14:27:33.998909+00:00",
+      "reused": false,
+      "season": 2022,
+      "sha256": "e25a1bd89d5a0c8ac384beef9a08b18de73e4b2e9457e43b4cad7c696ae469a7",
+      "size_bytes": 129611,
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2022.parquet"
+    },
+    {
+      "path": "injuries_2023.parquet",
+      "retrieved_at_utc": "2026-08-14T14:27:34.134132+00:00",
+      "reused": false,
+      "season": 2023,
+      "sha256": "5d8d881aabd613c3172231b33ac0b4397b3f383498f5e4509c31f3c77c3402a3",
+      "size_bytes": 126566,
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2023.parquet"
+    },
+    {
+      "path": "injuries_2024.parquet",
+      "retrieved_at_utc": "2026-08-14T14:27:34.282301+00:00",
+      "reused": false,
+      "season": 2024,
+      "sha256": "7ebabbba930a70bc7e4d257c7c41ca8708f147a4cdd4100956abcfbaf70f7fc1",
+      "size_bytes": 139253,
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/injuries/injuries_2024.parquet"
+    }
+  ],
+  "manifest_version": 1,
+  "source": "nflverse official weekly injury reports"
+}

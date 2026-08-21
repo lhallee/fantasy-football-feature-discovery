@@ -1,8 +1,23 @@
 # Fantasy Football Raw-Feature Discovery
 
-This project predicts full-season ESPN full-PPR points from elementary public NFL data. Phase 2 is the production generation. It uses a fixed August 9, 2026 forecast origin, a historical candidate universe that can be reconstructed without target-season roster knowledge, strictly chronological model selection, a locked four-season retrospective, and two shuffled-target controls.
+This project predicts full-season ESPN full-PPR points from elementary public NFL data. Phase 2 produces the raw fantasy forecast. Phase 3 adds a calibrated estimate of whether each player will receive any physical injury-report designation and combines it with the raw forecast in a draft preference score.
 
 The August 9 snapshot contains 2,930 roster records. The generated catalog includes all of them, with forecasts for 958 fantasy-position players and 951 players available for the draft board.
+
+## Injury-report risk overlay
+
+The Phase 3 Extra Trees classifier reached pooled 2022-2024 ROC AUC 0.868, with a player-cluster 95% interval of 0.854 to 0.880. Average precision was 0.763 at 34.9% prevalence. The model predicts any physical designation on an official regular-season injury or practice report. It does not predict season-ending injury or games missed.
+
+Prior participation is a major part of the result. Prior-year games alone reached audit AUC 0.772. The selected model reached 0.789 among players with at least one prior-year game and 0.729 among players with at least eight. Treat the output as report risk among preseason candidates, not a pure measure of biological fragility.
+
+The default combined score gives 80% weight to the within-position percentile of raw Phase 2 predicted points and 20% to the calibrated probability of no physical injury report. This is a preference index, not expected points or medical advice.
+
+- [2026 injury-adjusted draft workbook](outputs/injury_adjusted_draft_board_2026.xlsx)
+- [Phase 3 methods and results](experiments/phase3/RESULTS.md)
+- [Phase 3 machine-readable player table](experiments/phase3/artifacts/injury_adjusted_players_2026.parquet)
+- [FeatureRanker comparison of points and injury-report inputs](experiments/feature_ranker/README.md)
+
+The current workbook has `ALL`, `QB`, `RB`, `WR`, `TE`, `K`, and `INJURED` pages and no read-me page. Its three decision columns are the risk-adjusted draft score, projected 2026 fantasy points, and predicted physical injury-report probability. A dated August 14, 2026 screen moved 109 current public injury listings to `INJURED`; the other 842 rows have no matched current listing, which is not proof of health.
 
 ## Result
 
@@ -97,6 +112,7 @@ Do not use the original `python -m fantasy_football train` command to recreate t
 - [Production methods and results](docs/methods_and_results.md)
 - [Experiment index](experiments/README.md)
 - [Phase 2 production record](experiments/phase2/production/README.md)
+- [Phase 3 injury-report risk record](experiments/phase3/README.md)
 - [Scoring-scheme correlations](experiments/phase2/SCORING_CORRELATIONS.md)
 - [Generated Python catalog](fantasy_football/players_2026.py)
 - [Model manifest](artifacts/model_manifest.json)

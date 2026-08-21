@@ -1,0 +1,73 @@
+{
+  "audit": {
+    "baseline_pooled": {
+      "average_precision": 0.37226071081737233,
+      "brier_score": 0.22004630477382942,
+      "calibration_intercept": -0.07905713703612995,
+      "calibration_slope": 0.8003588847174411,
+      "log_loss": 0.6226694379861744,
+      "prevalence": 0.3494293239683933,
+      "roc_auc": 0.5513594739328671
+    },
+    "clustered_roc_auc_interval": {
+      "cluster_count": 1646,
+      "estimate": 0.867580140920527,
+      "lower_95": 0.8536685631259909,
+      "repetitions_requested": 2000,
+      "repetitions_valid": 2000,
+      "upper_95": 0.8803669725408882
+    },
+    "roc_auc_gain_over_baseline": 0.31622066698765994,
+    "selected_candidate": "extra_trees_all_leaf20",
+    "selected_pooled": {
+      "average_precision": 0.7631609666794608,
+      "brier_score": 0.1402306145648497,
+      "calibration_intercept": 0.04168835406476941,
+      "calibration_slope": 1.0280543379477585,
+      "log_loss": 0.4296737100887433,
+      "prevalence": 0.3494293239683933,
+      "roc_auc": 0.867580140920527
+    },
+    "success_rule_passed": true,
+    "validation_seasons": [
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "available_current_players": 951,
+  "active_workbook_players_after_current_injury_screen": 842,
+  "combined_score_fantasy_weight": 0.8,
+  "combined_score_interpretation": "Draft preference index, not expected fantasy points or medical advice.",
+  "current_players": 958,
+  "development_mean_roc_auc": 0.8423643961478197,
+  "feature_count_available": 500,
+  "injury_history_offsets": [
+    2,
+    3,
+    4,
+    5
+  ],
+  "injury_source_latest_season": 2024,
+  "negative_control_mean_pooled_roc_auc": 0.5219812923752329,
+  "current_injury_screen": {
+    "as_of_date": "2026-08-14",
+    "current_public_injury_listings": 109,
+    "manifest": "experiments/phase3/current_injury_manifest_v1.json",
+    "players_screened": 951,
+    "players_without_current_listing": 842,
+    "policy": "Operational filter only; predictions and scores are unchanged. No listing found is not confirmed health."
+  },
+  "posthoc_exposure_diagnostic": {
+    "lag1_games_univariate_audit_roc_auc": 0.772430151959377,
+    "selected_audit_roc_auc_lag1_games_positive": 0.7892062968360019,
+    "selected_audit_roc_auc_lag1_games_at_least_8": 0.7294707687701176,
+    "status": "exposure is a substantial component of the observed report-risk signal"
+  },
+  "phase": 3,
+  "plan_sha256": "b3f74279771213fb3c99e95c7a9e83c9f2ec14958914d4b8180174edebf04dcb",
+  "run_directory": "experiments/phase3/runs/20260814T143014705993Z-injury-risk-v1",
+  "selected_candidate": "extra_trees_all_leaf20",
+  "selected_feature_count": 500,
+  "workbook": "outputs/injury_adjusted_draft_board_2026.xlsx"
+}
