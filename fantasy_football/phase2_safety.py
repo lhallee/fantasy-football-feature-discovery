@@ -106,13 +106,16 @@ def _phase1_code_files(root: Path) -> list[Path]:
     files = []
     for path in package_root.rglob("*.py"):
         relative = path.relative_to(package_root)
-        is_phase2 = any(part.casefold().startswith("phase2") for part in relative.parts)
-        if path.name != "players_2026.py" and not is_phase2:
+        is_later_phase = any(
+            part.casefold().startswith(("phase2", "phase3"))
+            for part in relative.parts
+        )
+        if path.name != "players_2026.py" and not is_later_phase:
             files.append(path)
     files.extend(
         path
         for path in test_root.rglob("test_*.py")
-        if not path.stem.casefold().startswith("test_phase2")
+        if not path.stem.casefold().startswith(("test_phase2", "test_phase3"))
     )
     files.append(root / "pyproject.toml")
     return files

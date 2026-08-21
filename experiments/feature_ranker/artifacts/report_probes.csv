@@ -1,0 +1,11 @@
+target,method,score,skill
+Fantasy points,rf,0.4276,0.4276
+Fantasy points,xg,0.4212,0.4212
+Fantasy points,mi,0.38,0.38
+Fantasy points,f_test,0.3897,0.3897
+Fantasy points,l1,0.4638,0.4638
+Injury report,rf,0.6895,0.379
+Injury report,xg,0.6943,0.3885
+Injury report,mi,0.666,0.3319
+Injury report,f_test,0.6842,0.3684
+Injury report,l1,0.6929,0.3858

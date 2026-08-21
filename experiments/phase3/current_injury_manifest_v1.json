@@ -1,0 +1,111 @@
+{
+  "available_players_screened": 951,
+  "current_injury_listings": 109,
+  "files": {
+    "current_injuries": {
+      "bytes": 35240,
+      "path": "experiments/phase3/artifacts/current_injuries_2026-08-14.csv",
+      "sha256": "825f6c84b9ba15e2bf1a13ccb67b0f9f968c7192d6ef29ce104009dae1588f6b"
+    },
+    "player_screen": {
+      "bytes": 162621,
+      "path": "experiments/phase3/artifacts/current_injury_screen_2026-08-14.csv",
+      "sha256": "046b188b936cfe515fdd1c07400e90197183276a9469d610ff0f566b86fce603"
+    },
+    "source_snapshot": {
+      "bytes": 82420,
+      "path": "experiments/phase3/data/current_injuries/mfl_and_official_injuries_2026-08-14.csv",
+      "sha256": "773a65ab05d545b8d0dedca2b3bbc666f2f1f452c94d03d039ec0522ee774bee"
+    },
+    "unmatched_source": {
+      "bytes": 8422,
+      "path": "experiments/phase3/artifacts/unmatched_source_injuries_2026-08-14.csv",
+      "sha256": "13fc14975763edbb3d765a26a56b74560b987617ac2315a8d3c52cc71326183e"
+    }
+  },
+  "manifest_version": 1,
+  "operational_code_sha256": {
+    "fantasy_football/phase3_current_injuries.py": "1b7beb6c586066008bfd8b7910b08f15365d1d71021ce3efe62b65905c40e0b7",
+    "fantasy_football/phase3_draft.py": "83e0318548cfab342dc5c39daa76468fc1c305bbc69e06c9ab60fdd78e327fcb"
+  },
+  "players_without_current_listing": 842,
+  "retrieved_at_utc": "2026-08-14T15:29:18.007503+00:00",
+  "sources": {
+    "interpretation": "Affirmative current public injury listings. Absence means no listing was found, not confirmed health.",
+    "primary": {
+      "documentation_url": "https://myfantasyleague.wordpress.com/2008/08/06/developer-api/",
+      "publisher": "MyFantasyLeague",
+      "url": "https://api.myfantasyleague.com/2026/export?TYPE=injuries&JSON=1"
+    },
+    "supplemental_evidence": [
+      {
+        "evidence_date": "2026-07-31",
+        "player": "Jalen Walthall",
+        "publisher": "NFL",
+        "url": "https://www.nfl.com/transactions/league/reserve-list/2026/7"
+      },
+      {
+        "evidence_date": "2026-08-01",
+        "player": "Gee Scott Jr.",
+        "publisher": "NFL",
+        "url": "https://www.nfl.com/transactions/league/reserve-list/2026/8"
+      },
+      {
+        "evidence_date": "2026-07-23",
+        "player": "Corey Rucker",
+        "publisher": "CBS Sports",
+        "url": "https://www.cbssports.com/nfl/injuries/"
+      },
+      {
+        "evidence_date": "2026-07-29",
+        "player": "Dan Chisena",
+        "publisher": "CBS Sports",
+        "url": "https://www.cbssports.com/nfl/injuries/"
+      },
+      {
+        "evidence_date": "2026-07-26",
+        "player": "Jeremiah Webb",
+        "publisher": "CBS Sports",
+        "url": "https://www.cbssports.com/nfl/injuries/"
+      },
+      {
+        "evidence_date": "2026-07-25",
+        "player": "Jimmy Kibble",
+        "publisher": "CBS Sports",
+        "url": "https://www.cbssports.com/nfl/injuries/"
+      },
+      {
+        "evidence_date": "2026-07-31",
+        "player": "Kye Robichaux",
+        "publisher": "CBS Sports",
+        "url": "https://www.cbssports.com/nfl/injuries/"
+      },
+      {
+        "evidence_date": "2026-08-11",
+        "player": "Kyron Hudson",
+        "publisher": "CBS Sports",
+        "url": "https://www.cbssports.com/nfl/injuries/"
+      },
+      {
+        "evidence_date": "2026-08-12",
+        "player": "Malick Meiga",
+        "publisher": "CBS Sports",
+        "url": "https://www.cbssports.com/nfl/injuries/"
+      },
+      {
+        "evidence_date": "2026-08-06",
+        "player": "Princeton Fant",
+        "publisher": "CBS Sports",
+        "url": "https://www.cbssports.com/nfl/injuries/"
+      },
+      {
+        "evidence_date": "2026-08-13",
+        "player": "R.J. Maryland",
+        "publisher": "CBS Sports",
+        "url": "https://www.cbssports.com/nfl/injuries/"
+      }
+    ]
+  },
+  "status_as_of": "2026-08-14",
+  "unmatched_fantasy_source_rows": 35
+}
