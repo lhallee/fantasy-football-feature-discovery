@@ -241,7 +241,9 @@ class FeatureLineage:
     def __post_init__(self) -> None:
         """Validate one lineage record."""
         if not self.sources or len(self.sources) != len(self.source_offsets):
-            raise ValueError("Lineage sources and offsets must be nonempty and aligned.")
+            raise ValueError(
+                "Lineage sources and offsets must be nonempty and aligned."
+            )
         if any(offset < 0 for offset in self.source_offsets):
             raise ValueError("Source offsets must be zero or positive lookbacks.")
 
@@ -264,11 +266,15 @@ class Phase2FeatureBundle:
         if not self.keys.index.equals(self.frame.index):
             raise ValueError("Bundle keys and features must use the same index.")
         if self.keys.duplicated(list(KEY_COLUMNS)).any():
-            raise ValueError("Bundle keys must be unique at target-season player grain.")
+            raise ValueError(
+                "Bundle keys must be unique at target-season player grain."
+            )
         if not self.frame.columns.is_unique:
             raise ValueError("Feature columns must be unique.")
         if set(self.lineage) != set(self.frame.columns):
-            raise ValueError("Every feature column must have exactly one lineage record.")
+            raise ValueError(
+                "Every feature column must have exactly one lineage record."
+            )
 
         feature_values = self.frame.to_numpy(dtype="float64")  # (n, d)
         if not np.isfinite(feature_values).all():
@@ -279,7 +285,9 @@ class Phase2FeatureBundle:
             if column in KEY_COLUMNS or column == "team" or lowered.endswith("_id"):
                 raise ValueError(f"Identifier leaked into model inputs: {column!r}.")
             if any(fragment in lowered for fragment in PROHIBITED_FEATURE_FRAGMENTS):
-                raise ValueError(f"Prohibited feature leaked into model inputs: {column!r}.")
+                raise ValueError(
+                    f"Prohibited feature leaked into model inputs: {column!r}."
+                )
 
             record = self.lineage[column]
             if record.column != column:
@@ -371,20 +379,20 @@ def _seasonal_player_counts(
     if not weekly_columns and not supplement_columns:
         raise ValueError("No declared Phase 2 raw count columns are available.")
 
-    regular_mask = weekly_stats["season_type"].eq("REG") & weekly_stats[
-        "player_id"
-    ].notna()  # (n_weekly,)
+    regular_mask = (
+        weekly_stats["season_type"].eq("REG") & weekly_stats["player_id"].notna()
+    )  # (n_weekly,)
     regular_weekly = weekly_stats.loc[
         regular_mask,
         ["season", "player_id", *weekly_columns],
     ].copy()  # (n_regular, 2 + c_weekly_selected)
     for column in weekly_columns:
-        regular_weekly[column] = _numeric(regular_weekly[column]).fillna(0.0)  # (n_regular,)
+        regular_weekly[column] = _numeric(regular_weekly[column]).fillna(
+            0.0
+        )  # (n_regular,)
 
     seasonal_weekly = (
-        regular_weekly.groupby(["season", "player_id"], observed=True)[
-            weekly_columns
-        ]
+        regular_weekly.groupby(["season", "player_id"], observed=True)[weekly_columns]
         .sum(min_count=1)
         .reset_index()
     )  # (n_player_seasons_weekly, 2 + c_weekly_selected)
@@ -404,13 +412,13 @@ def _seasonal_player_counts(
         validate="one_to_one",
     )  # (n_player_seasons_union, 2 + c_raw)
     count_columns = [*weekly_columns, *supplement_columns]
-    seasonal_counts[count_columns] = seasonal_counts[count_columns].fillna(0.0)  # (n_player_seasons_union, c_raw)
+    seasonal_counts[count_columns] = seasonal_counts[count_columns].fillna(
+        0.0
+    )  # (n_player_seasons_union, c_raw)
     seasonal_counts["history_available"] = 1.0  # (n_player_seasons_union,)
 
     source_by_column = {column: "weekly_stats" for column in weekly_columns}
-    source_by_column.update(
-        {column: "player_seasons" for column in supplement_columns}
-    )
+    source_by_column.update({column: "player_seasons" for column in supplement_columns})
     return seasonal_counts, source_by_column
 
 
@@ -429,26 +437,27 @@ def _trajectory_table(
     if not trajectory_columns:
         return pd.DataFrame(columns=["season", "player_id"])
 
-    regular_mask = weekly_stats["season_type"].eq("REG") & weekly_stats[
-        "player_id"
-    ].notna()  # (n_weekly,)
+    regular_mask = (
+        weekly_stats["season_type"].eq("REG") & weekly_stats["player_id"].notna()
+    )  # (n_weekly,)
     weekly_values = weekly_stats.loc[
         regular_mask,
         ["season", "player_id", "week", *trajectory_columns],
     ].copy()  # (n_regular, 3 + c_trajectory)
     weekly_values["week"] = _numeric(weekly_values["week"])  # (n_regular,)
-    weekly_values = weekly_values[weekly_values["week"].notna()].copy()  # (n_week_rows, 3 + c_trajectory)
+    weekly_values = weekly_values[
+        weekly_values["week"].notna()
+    ].copy()  # (n_week_rows, 3 + c_trajectory)
     for column in trajectory_columns:
-        weekly_values[column] = _numeric(weekly_values[column]).fillna(0.0)  # (n_week_rows,)
+        weekly_values[column] = _numeric(weekly_values[column]).fillna(
+            0.0
+        )  # (n_week_rows,)
 
-    weekly_values = (
-        weekly_values.groupby(
-            ["season", "player_id", "week"],
-            observed=True,
-            as_index=False,
-        )[trajectory_columns]
-        .sum()
-    )  # (n_player_weeks, 3 + c_trajectory)
+    weekly_values = weekly_values.groupby(
+        ["season", "player_id", "week"],
+        observed=True,
+        as_index=False,
+    )[trajectory_columns].sum()  # (n_player_weeks, 3 + c_trajectory)
     season_max_week = (
         weekly_values.groupby("season", observed=True)["week"]
         .max()
@@ -481,9 +490,9 @@ def _trajectory_table(
     )  # (n_late_player_seasons, 2 + c_trajectory)
 
     weighted_values = weekly_values.loc[:, group_columns].copy()  # (n_player_weeks, 2)
-    weighted_values[trajectory_columns] = weekly_values[
-        trajectory_columns
-    ].mul(weekly_values["week"], axis=0)  # (n_player_weeks, c_trajectory)
+    weighted_values[trajectory_columns] = weekly_values[trajectory_columns].mul(
+        weekly_values["week"], axis=0
+    )  # (n_player_weeks, c_trajectory)
     weighted_totals = (
         weighted_values.groupby(group_columns, observed=True)[trajectory_columns]
         .sum()
@@ -510,7 +519,9 @@ def _trajectory_table(
         validate="many_to_one",
     )  # (n_player_seasons, 3 + 3*c_trajectory)
     late_columns = [f"late_{column}" for column in trajectory_columns]
-    trajectory[late_columns] = trajectory[late_columns].fillna(0.0)  # (n_player_seasons, c_trajectory)
+    trajectory[late_columns] = trajectory[late_columns].fillna(
+        0.0
+    )  # (n_player_seasons, c_trajectory)
 
     week_count = trajectory["season_max_week"].clip(lower=1.0)  # (n_player_seasons,)
     late_week_count = week_count.clip(upper=float(late_weeks))  # (n_player_seasons,)
@@ -519,8 +530,8 @@ def _trajectory_table(
     sum_week_squared = (
         week_count * (week_count + 1.0) * (2.0 * week_count + 1.0) / 6.0
     )  # (n_player_seasons,)
-    slope_denominator = (
-        week_count * sum_week_squared - sum_week.pow(2)
+    slope_denominator = week_count * sum_week_squared - sum_week.pow(
+        2
     )  # (n_player_seasons,)
 
     derived = trajectory.loc[:, group_columns].copy()  # (n_player_seasons, 2)
@@ -542,7 +553,9 @@ def _trajectory_table(
             .fillna(0.0)
         )  # (n_player_seasons,)
 
-        derived[f"late{late_weeks}_{column}"] = late  # (n_player_seasons, c_derived + 1)
+        derived[f"late{late_weeks}_{column}"] = (
+            late  # (n_player_seasons, c_derived + 1)
+        )
         derived[f"weekly_slope_{column}"] = slope  # (n_player_seasons, c_derived + 1)
         derived[f"late{late_weeks}_mean_delta_{column}"] = (
             late_mean - early_mean
@@ -572,7 +585,9 @@ def _team_environment_table(
         regular_mask,
         ["season", "team", *environment_columns],
     ].copy()  # (n_regular, 2 + c_environment)
-    team_values["team"] = team_values["team"].astype("string").str.upper()  # (n_regular,)
+    team_values["team"] = (
+        team_values["team"].astype("string").str.upper()
+    )  # (n_regular,)
     for column in environment_columns:
         team_values[column] = _numeric(team_values[column]).fillna(0.0)  # (n_regular,)
 
@@ -623,9 +638,7 @@ def _add_position_features(
     lineage: dict[str, FeatureLineage],
 ) -> None:
     # target_rows: (n, c_modeling); each feature: (n,)
-    model_positions = (
-        target_rows["model_position"].astype("string").str.upper()
-    )  # (n,)
+    model_positions = target_rows["model_position"].astype("string").str.upper()  # (n,)
     for position in MODEL_POSITIONS:
         indicator = model_positions.eq(position).astype("float32")  # (n,)
         _add_feature(
@@ -757,8 +770,7 @@ def _add_trajectory_features(
     )  # (n, 3 + c_trajectory)
     matched = merged["source_season"].notna()  # (n,)
     assert (
-        merged.loc[matched, "source_season"]
-        == merged.loc[matched, "target_season"] - 1
+        merged.loc[matched, "source_season"] == merged.loc[matched, "target_season"] - 1
     ).all()
 
     for column in trajectory.columns:
@@ -917,8 +929,7 @@ def _add_team_environment_features(
     )  # (n, 4 + c_environment)
     matched = merged["source_season"].notna()  # (n,)
     assert (
-        merged.loc[matched, "source_season"]
-        == merged.loc[matched, "target_season"] - 1
+        merged.loc[matched, "source_season"] == merged.loc[matched, "target_season"] - 1
     ).all()
 
     _add_feature(
@@ -979,9 +990,7 @@ def _add_prior_team_environment_features(
         validate="many_to_one",
         sort=False,
     )  # (n_source, 4 + c_environment)
-    prior_environment["target_season"] = (
-        prior_environment["season"] + 1
-    )  # (n_source,)
+    prior_environment["target_season"] = prior_environment["season"] + 1  # (n_source,)
     prior_environment.rename(
         columns={"season": "source_season"},
         inplace=True,
@@ -995,8 +1004,7 @@ def _add_prior_team_environment_features(
     )  # (n, 5 + c_environment)
     matched = merged["source_season"].notna()  # (n,)
     assert (
-        merged.loc[matched, "source_season"]
-        == merged.loc[matched, "target_season"] - 1
+        merged.loc[matched, "source_season"] == merged.loc[matched, "target_season"] - 1
     ).all()
 
     _add_feature(
@@ -1007,8 +1015,7 @@ def _add_prior_team_environment_features(
         sources=("player_seasons", "weekly_stats"),
         source_offsets=(1, 1),
         recipe=(
-            "1 when the player's final target_season-1 team has raw team counts, "
-            "else 0"
+            "1 when the player's final target_season-1 team has raw team counts, else 0"
         ),
     )
     for column in team_environment.columns:
@@ -1123,9 +1130,7 @@ def build_phase2_features(
     )
 
     assert not any(
-        offset < 0
-        for record in lineage.values()
-        for offset in record.source_offsets
+        offset < 0 for record in lineage.values() for offset in record.source_offsets
     )
     features = pd.DataFrame(feature_values, index=keys.index)  # (n, d)
     return Phase2FeatureBundle(

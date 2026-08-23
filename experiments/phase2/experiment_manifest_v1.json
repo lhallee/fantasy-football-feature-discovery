@@ -1,46 +1,107 @@
 {
-  "created_at_utc": "2026-08-10T12:49:47.0342482Z",
-  "phase1_freeze_id": "366b32e659f67cbbcb81a68ee20a66bbe79cdefc004db5c971c23e89b35f17ae",
+  "manifest_version": 1,
+  "production_generation": "phase2_august9_v1",
+  "status": "production",
+  "forecast_origin": "2026-08-09",
   "plan": {
-    "path": "experiments/phase2/plan_v1.json",
-    "sha256": "ace43d1ce173302f401f7616f25a4c7a74bb0317064a2d5ece395ab635cd9b17"
+    "path": "experiments/phase2/production/august9_plan_v1.json",
+    "sha256": "3b07b79602c5a5e352d008f1cdd1b185011aa76b08140ae2313c940bf98babc0"
   },
-  "forecast_origin": {
-    "intended_definition": "post_final_cuts_pre_week_1",
-    "implemented_cohort": "all offense rows in nflverse Week 1 source files, including CUT and RET",
-    "historical_membership_proxy": "nflverse_week_1_roster",
-    "historical_snapshot_timestamp_verified": false,
-    "august_9_catalog_compatible": false,
-    "prospective_2026_requirement": "rerun from an equivalent timestamped post-cut snapshot"
+  "prefit_lock": {
+    "path": "experiments/phase2/production/august9_prefit_manifest_v1.json",
+    "sha256": "0e82ce7357da8544bc47aa241862e9777a6f530ca6294d014b429a816b39afa5"
   },
-  "validity": {
-    "status": "superseded",
-    "reason": "CUT and RET source rows entered both the scored cohort and roster-room aggregates; the shuffled-fit control also selected features using unshuffled labels",
-    "replacement_plan": "experiments/phase2/plan_v2.json"
-  },
-  "code": {
-    "fantasy_football/phase2_features.py": "d8576816bce3efe6696e74f23e9e75f2bc98a4482dd9ab03e416f619443222e3",
-    "fantasy_football/phase2_modeling.py": "8f489253c9a93ac66baec8d5bce57f5645f59ac0d9057db095b1e4f4371b9286",
-    "fantasy_football/phase2_runner.py": "be3b7a4d224b4119a2ecb65d41f2e8acea29c11d3c86b26e8ed350c7dca25523",
-    "fantasy_football/phase2_safety.py": "983918a1332b90764da08f54e22f50be7eb0a515065441b295cad0384597512f"
+  "production_snapshot": {
+    "path": "experiments/phase1/phase1_freeze_manifest.json",
+    "sha256": "b0c69ce98a2aca2d7da1a1bb3ccb7bec39d26df0ff5a94a4ae236bf1087c2d07",
+    "freeze_id": "a7b83eac642a8b6874d68303e9eedb33b785a106d488b9c5cd64c0e08d9c0ab2"
   },
   "runs": {
     "discovery": {
-      "directory": "experiments/phase2/runs/20260810T124403492462Z-discovery-ace43d1ce173-af1988c772f320f6",
-      "seasons": [2016, 2017, 2018, 2019, 2020, 2021],
-      "selected_candidate": "stable_core_room_et_all_points",
-      "selected_spearman": 0.7138253076104588,
-      "best_point_estimate_spearman": 0.7156656269320054
+      "directory": "experiments/phase2/runs/20260810T174927548207Z-august9-discovery-3b07b79602c5-b96dfefdf4d91c71",
+      "run_manifest_sha256": "10cf5c8037d9782eb927e90300c3451da0ce461a75f8a21a12b9b971f6e643ab",
+      "output_hashes_sha256": "c725076d4be78c4cc458d08f7abfaf827c493bdae04379573e425f9b1cb5a05b",
+      "selection_sha256": "f95b0414326999a83577022def8f65adfba3bc0daa656740054f03b2175b2674"
     },
-    "retrospective": {
-      "directory": "experiments/phase2/runs/20260810T124722038967Z-retrospective-ace43d1ce173-f27b159113508c81",
-      "seasons": [2022, 2023, 2024, 2025],
-      "selected_candidate": "stable_core_room_et_all_points",
-      "spearman": 0.7661339665600965,
-      "player_cluster_lower_95": 0.7412819165867428,
-      "player_cluster_upper_95": 0.7876200082084829
+    "audit": {
+      "directory": "experiments/phase2/runs/20260810T175209276165Z-august9-audit-3b07b79602c5-d6a01b2f6040ba35",
+      "run_manifest_sha256": "e27aeb95088dd3692136ed85d5bd528836a7946160656aefec2514e893b7ff51",
+      "output_hashes_sha256": "a09ed6654b9c7f81cb64e776129c709b869f8bc06871d0ff38b3a39ffa2c0da7",
+      "audit_report_sha256": "8ec80f3bffb17c3c2c720a77577b0483de2cda79b37c7ba5a6c7363c19ddfc9f"
+    },
+    "fit": {
+      "directory": "experiments/phase2/runs/20260810T175655682503Z-august9-fit-3b07b79602c5-134b25c8b34a916a",
+      "run_manifest_sha256": "6eb077f6e72611722f6cd2dbd61cd92b8981e42a572893955ad4bc8c2b9d0b3c",
+      "output_hashes_sha256": "058afeb9e924341a5148b60444a082f8cadf27c46f1192a8e362f471ee360c38"
     }
   },
-  "combined_phase1_phase2_bytes_after_runs": 96956855,
-  "result": "V1 did not approach 0.90, but its 0.7661 result is a superseded Week-1-source-row benchmark rather than a valid post-cut estimate."
+  "canonical_artifacts": {
+    "artifacts/audit_intervals.json": "f188325721b9d2f0ae35b16c151d4eb12ca7a43f11702ae92d3aa0cb71072a77",
+    "artifacts/audit_predictions.parquet": "0bc0c0ef6c45d940ffa551507cd5a3c0692558c0a675abe71f8d1ea4c684e02c",
+    "artifacts/kicker_model.joblib": "b7e463aa13d60fb554aed9853f4ff26d98b013205efdcaa5b9bcf097e0f1c657",
+    "artifacts/model_manifest.json": "1e84c54a4bd8c0e3176d663268c08cb56ef6f9d366210e964327facc2eb86001",
+    "artifacts/offense_model.joblib": "4f804e093784907a40757bdaae641ebeb56c5631ebedc7b987b2188673f7e243",
+    "artifacts/players_2026.parquet": "0879048504047543bb9ff998a60e33b8020345a9a552a975ef56c7725c4f3cad",
+    "artifacts/predictions_2026.parquet": "157f2dec91743cf53b221b621d3fa539ea869dfea566f4d70531569d47f3f337",
+    "artifacts/result_summary.json": "2ee015c42021197bf40e260fedcf8f1c2171d35b1b43474fbfd2c57eb18a9f22",
+    "fantasy_football/players_2026.py": "6249fadf424216d5f6e02ade672157cc97727a27ea12d8553d52ae0c2d510785"
+  },
+  "documents": {
+    "README.md": "80162c52857b5b3342a7a7e5238097aafa237f7fbdefcd16a61a754ca68efeaa",
+    "docs/data_sources.md": "ebda144c6b5225509aac06427f7c661f5c55ee6d3e11d3a955228d52b58b8d62",
+    "docs/fantasy_football.md": "eea32e23e032ced3e345cd7ab5d979195d5c207cbdb94d56374dbb0c50ae789d",
+    "docs/methods_and_results.md": "753147f42e2082db172c05d5f89ca1bec8660c0606d45d64d28c124d2caeea5c",
+    "experiments/README.md": "6ba5f7a9f88eb676fb523d2cfbebc18181ca1e6fed68e0ef10bd243fe1a9cb9a",
+    "experiments/phase1/README.md": "7a7164629bdc1ff22b793cda67df5a8c67c7ce7381c64cf86298ac8b22e9c15c",
+    "experiments/phase2/README.md": "f9de8602d4d869c3f1785756991123cd617f6b886cccf1094625ca59f32f0066",
+    "experiments/phase2/production/README.md": "1dce51e3992239f8747cea2b84f185c3470949c0e29cbc29d52c89e9d0b40321",
+    "experiments/phase2/production/RESULTS.md": "d08e9ab6eced31acab7d0de943bb8e6eded2c5359bccfac5f2bae7e5d229388e",
+    "experiments/phase2/production/EXPERIMENT_LEDGER.md": "bd2f04d7354a940bf20333ea8e9e3eba11f39a65edf522d759728d09fd0d1c0c",
+    "experiments/phase2/DRAFT_BOARD.md": "f85b721962fbd032c5fcbf4d2f19d2e46839b06eba464d4fe3d9ec2635a0e67c",
+    "experiments/phase2/SCORING_CORRELATIONS.md": "05268df9693d65e52d03a65abc80efe27865c9a935f1d2ca6c81ce54eef92d34",
+    "experiments/phase2/STANDARDS_AUDIT.md": "d06941b8198faf3b9ca89f3cd9abdee5db5b7600534d882be1856769c7d53b26"
+  },
+  "deliverables": {
+    "outputs/fantasy_football_draft_board_2026.xlsx": "10580b08a86a46203e6f18a9d3b4ca006971b1b0819d579dca3a4c7ec53bde8b",
+    "experiments/phase2/artifacts/draft_board_2026.json": "81918101e869c3dfc9f39e4e6c85149c9fe61c0f9aa0960cff5b19c882f96070",
+    "experiments/phase2/artifacts/scoring_scheme_correlations.csv": "f6a6a45de0f2dcae791f99eee13c85e1d618f7856c58508a4d391dd70f701ac8",
+    "experiments/phase2/artifacts/scoring_scheme_correlations.png": "3089f1b442c9c021315431e9778cb2e0ed27ad892203a8f1d2175bd1fb1495af"
+  },
+  "release_code": {
+    "fantasy_football/phase2_draft_board.py": "b52e1bd0fdf8a6c5df53b4e73c2155773209dcd344bd9da3a7d3fbd424ef8fff",
+    "tests/test_phase2_august_artifacts.py": "1e644f21a0f3e8ab0be11b885036c1e3514114cdff0f61c6a0bf5c1e3c5a77a7",
+    "tests/test_phase2_draft_board.py": "6f87f08cec52e850f29a68c1a6310f3c6cddcb19555184bc411b19cc39901369"
+  },
+  "claims": {
+    "offense_audit_spearman": 0.7509656887681702,
+    "offense_baseline_spearman": 0.6471565438550133,
+    "offense_spearman_gain": 0.10380914491315685,
+    "kicker_audit_spearman": 0.6254832453821897,
+    "offense_feature_columns": 228,
+    "kicker_feature_columns": 32,
+    "audit_seasons": [2022, 2023, 2024, 2025],
+    "retrospective_outcomes_blinded": false,
+    "prospective_2026_outcomes_observed": false,
+    "spearman_above_point_nine": false
+  },
+  "verification": {
+    "pytest_passed": 99,
+    "pytest_failed": 0,
+    "ruff_passed": true,
+    "workbook_reopened_and_verified": true
+  },
+  "storage": {
+    "combined_project_bytes": 116004913,
+    "limit_bytes": 943718400,
+    "canonical_data_and_artifact_bytes": 83376799,
+    "catalog_module_bytes": 9082576,
+    "draft_workbook_bytes": 312090
+  },
+  "limitations": [
+    "The audit is chronological and procedure-locked but not analyst-blinded because earlier experiments exposed 2022-2025 outcomes.",
+    "Historical public sources do not reconstruct exact August 9 roster, injury, transaction, or depth-chart states.",
+    "The candidate-universe rule is intentionally broader than the eventual active roster and includes explicit zero outcomes.",
+    "The 2026 forecast is prospective and cannot be evaluated until the regular season is complete.",
+    "The locked experiment did not reach the research target of Spearman rho above 0.9."
+  ]
 }

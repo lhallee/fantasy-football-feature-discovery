@@ -65,25 +65,37 @@ class AugustCohort:
         if self.table.loc[current, "target_points"].notna().any():
             raise ValueError("Current-season outcomes must remain unknown.")
         if self.table.loc[~current, "target_points"].isna().any():
-            raise ValueError("Historical candidate outcomes must include explicit zeros.")
+            raise ValueError(
+                "Historical candidate outcomes must include explicit zeros."
+            )
 
         prior_source = self.table["cohort_source_kind"].eq("prior_roster")  # (n_rows,)
         if not (
             self.table.loc[prior_source, "cohort_source_season"]
             < self.table.loc[prior_source, "target_season"]
         ).all():
-            raise ValueError("Prior-roster cohort evidence must predate the target season.")
-        rookie_source = self.table["cohort_source_kind"].eq("draft_or_combine")  # (n_rows,)
+            raise ValueError(
+                "Prior-roster cohort evidence must predate the target season."
+            )
+        rookie_source = self.table["cohort_source_kind"].eq(
+            "draft_or_combine"
+        )  # (n_rows,)
         if not (
             self.table.loc[rookie_source, "cohort_source_season"]
             == self.table.loc[rookie_source, "target_season"]
         ).all():
-            raise ValueError("Rookie evidence must come from the target-year draft/combine.")
-        current_source = self.table["cohort_source_kind"].eq("august_roster")  # (n_rows,)
+            raise ValueError(
+                "Rookie evidence must come from the target-year draft/combine."
+            )
+        current_source = self.table["cohort_source_kind"].eq(
+            "august_roster"
+        )  # (n_rows,)
         if not (
             self.table.loc[current_source, "target_season"].eq(self.current_season)
         ).all():
-            raise ValueError("August-roster evidence is allowed only for current inference.")
+            raise ValueError(
+                "August-roster evidence is allowed only for current inference."
+            )
 
 
 def _first_nonmissing(values: pd.Series) -> object:
@@ -120,7 +132,9 @@ def _player_metadata(raw_dir: Path) -> pd.DataFrame:
         "draft_round",
         "draft_pick",
     ]
-    players = pd.read_parquet(raw_dir / "players.parquet", columns=columns)  # (n_players, 10)
+    players = pd.read_parquet(
+        raw_dir / "players.parquet", columns=columns
+    )  # (n_players, 10)
     identified = players["gsis_id"].notna()  # (n_players,)
     players = players.loc[identified].copy()  # (n_identified, 10)
     players.rename(
@@ -154,7 +168,9 @@ def _combine_candidates(raw_dir: Path, crosswalk: pd.DataFrame) -> pd.DataFrame:
     """Build target-year prospect candidates from combine participants."""
     combine = pd.read_parquet(raw_dir / "combine.parquet")  # (n_combine, c_combine)
     combine["model_position"] = _position(combine["pos"])  # (n_combine,)
-    eligible = combine["model_position"].notna() & combine["season"].notna()  # (n_combine,)
+    eligible = (
+        combine["model_position"].notna() & combine["season"].notna()
+    )  # (n_combine,)
     combine = combine.loc[eligible].copy()  # (n_eligible, c_combine + 1)
     combine["target_season"] = pd.to_numeric(combine["season"], errors="raise").astype(
         "int32"
@@ -335,7 +351,9 @@ def _prior_roster_candidates(
 
 def _current_candidates(processed_dir: Path, current_season: int) -> pd.DataFrame:
     """Use every fantasy player in the actual August roster for inference."""
-    roster = pd.read_parquet(processed_dir / "preseason_players.parquet")  # (n_rows, c_roster)
+    roster = pd.read_parquet(
+        processed_dir / "preseason_players.parquet"
+    )  # (n_rows, c_roster)
     roster["model_position"] = _position(roster["position"])  # (n_rows,)
     eligible = (
         roster["season"].eq(current_season)
@@ -432,7 +450,9 @@ def _enrich_metadata(
     enriched["candidate_name"] = enriched.get("candidate_name").combine_first(
         enriched["master_name"]
     )
-    birth = pd.to_datetime(enriched["master_birth_date"], errors="coerce")  # (n_candidates,)
+    birth = pd.to_datetime(
+        enriched["master_birth_date"], errors="coerce"
+    )  # (n_candidates,)
     reference = pd.to_datetime(
         enriched["target_season"].astype("int32").astype(str) + "-09-01",
         errors="coerce",
@@ -451,11 +471,11 @@ def _enrich_metadata(
 
     rookie_year = pd.to_numeric(enriched["master_rookie_year"], errors="coerce")
     prospect = enriched["cohort_source_kind"].eq("draft_or_combine")  # (n_candidates,)
-    rookie_year = rookie_year.where(~rookie_year.isna(), enriched["target_season"].where(prospect))
-    enriched["is_rookie"] = enriched["target_season"].eq(rookie_year).astype("int8")
-    enriched["years_exp"] = (
-        enriched["target_season"].sub(rookie_year).clip(lower=0)
+    rookie_year = rookie_year.where(
+        ~rookie_year.isna(), enriched["target_season"].where(prospect)
     )
+    enriched["is_rookie"] = enriched["target_season"].eq(rookie_year).astype("int8")
+    enriched["years_exp"] = enriched["target_season"].sub(rookie_year).clip(lower=0)
 
     draft_year = pd.to_numeric(enriched["master_draft_year"], errors="coerce")
     draft_round = pd.to_numeric(enriched["master_draft_round"], errors="coerce")
@@ -485,9 +505,9 @@ def _attach_outcomes(
     current_season: int,
 ) -> pd.DataFrame:
     """Join observed outcomes after cohort construction and preserve current nulls."""
-    outcomes = player_seasons.loc[
-        :, ["season", "player_id", "target_points"]
-    ].rename(columns={"season": "target_season"})  # (n_player_seasons, 3)
+    outcomes = player_seasons.loc[:, ["season", "player_id", "target_points"]].rename(
+        columns={"season": "target_season"}
+    )  # (n_player_seasons, 3)
     enriched = candidates.merge(
         outcomes,
         on=["target_season", "player_id"],
@@ -514,9 +534,9 @@ def _attach_outcomes(
         how="left",
         validate="many_to_one",
     )  # (n_candidates, c_candidates + 2)
-    enriched["previous_points_baseline"] = enriched[
-        "previous_points_baseline"
-    ].fillna(0.0)
+    enriched["previous_points_baseline"] = enriched["previous_points_baseline"].fillna(
+        0.0
+    )
     return enriched
 
 
@@ -530,13 +550,13 @@ def build_august_cohort(
 ) -> AugustCohort:
     """Build the fixed August 9 candidate universe and current inference rows."""
     if roster_lookback != 1:
-        raise ValueError("The locked August contract uses exactly one prior roster season.")
+        raise ValueError(
+            "The locked August contract uses exactly one prior roster season."
+        )
     if minimum_target_season < 2003 or minimum_target_season >= current_season:
         raise ValueError("minimum_target_season is outside the supported range.")
     maximum_target = (
-        current_season
-        if maximum_target_season is None
-        else int(maximum_target_season)
+        current_season if maximum_target_season is None else int(maximum_target_season)
     )
     if not minimum_target_season <= maximum_target <= current_season:
         raise ValueError("maximum_target_season is outside the supported range.")

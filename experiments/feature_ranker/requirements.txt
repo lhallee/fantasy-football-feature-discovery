@@ -1,8 +1,0 @@
-featureranker==3.0.4
-ipykernel
-joblib
-matplotlib
-nbformat
-pandas
-scipy
-threadpoolctl

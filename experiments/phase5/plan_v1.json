@@ -1,0 +1,20 @@
+{
+  "plan_version": 1,
+  "plan_name": "phase5_usage_features_v1",
+  "recorded_before_fit_utc": "2026-08-22T20:13:50+00:00",
+  "question": "Do literature-motivated lag-1 usage shares and per-game rates improve the Phase 4 points forecast or the missed-time injury classifier under the identical locked protocol?",
+  "motivation": "Published fantasy-football models and age-curve analyses identify prior-season opportunity (targets, carries, snaps), per-game production, and age as the strongest predictors; injury studies identify prior injury, age, position, and workload. The Phase 4 inputs carry raw season totals, age, and injury history but no usage shares or per-game rates.",
+  "added_features": {
+    "per_game": [
+      "lag1_{targets,carries,receptions,attempts,receiving_yards,rushing_yards,passing_yards,offense_snaps}_per_game = count / lag1_games"
+    ],
+    "prior_team_shares": [
+      "lag1_share_{targets,carries,receptions,attempts}_prior_team = count / regular-season total of the player's final target_season-1 team"
+    ],
+    "leakage": "all inputs are target_season-1 quantities from weekly_stats and player_seasons; the team is the prior-season team, never the cutoff team"
+  },
+  "inherits": "every declaration of experiments/phase4/plan_v1.json including amendments 1 to 3: training from 2017, discovery 2019-2021, audit 2022-2025 (points) and 2017-2021 development, 2022-2024 audit (injury), the same learner grids, selection and adoption rules, null controls, and feature-ranking evidence",
+  "reference": "phase4_production: the adopted ext_et_all forecast from run experiments/phase4/runs/20260822T193048718307Z-final-ranking-v2, which the new candidates must not fall below on the audit by more than 0.005 Spearman",
+  "decision": "If the adoption rule selects a new candidate, Phase 5 becomes the final deliverable and the workbook is rebuilt; otherwise Phase 4 remains final and Phase 5 is reported as a negative result.",
+  "phase4_plan_sha256_reference": "phase4_final_ranking_v1"
+}

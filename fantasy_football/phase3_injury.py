@@ -183,15 +183,19 @@ def aggregate_injury_history(reports: pd.DataFrame) -> pd.DataFrame:
     physical_columns: list[str] = []
     for column in INJURY_FIELDS:
         physical_column = f"physical__{column}"
-        regular[physical_column] = physical_designation_mask(regular[column])  # (n_regular_reports,)
+        regular[physical_column] = physical_designation_mask(
+            regular[column]
+        )  # (n_regular_reports,)
         physical_columns.append(physical_column)
-    regular["physical_designation_count"] = regular.loc[
-        :, physical_columns
-    ].sum(axis=1)  # (n_regular_reports,)
-    regular["physical_injury_reported"] = regular[
-        "physical_designation_count"
-    ].gt(0)  # (n_regular_reports,)
-    physical = regular.loc[regular["physical_injury_reported"]].copy()  # (n_physical_rows, c_augmented)
+    regular["physical_designation_count"] = regular.loc[:, physical_columns].sum(
+        axis=1
+    )  # (n_regular_reports,)
+    regular["physical_injury_reported"] = regular["physical_designation_count"].gt(
+        0
+    )  # (n_regular_reports,)
+    physical = regular.loc[
+        regular["physical_injury_reported"]
+    ].copy()  # (n_physical_rows, c_augmented)
 
     if physical.empty:
         return pd.DataFrame(
@@ -223,10 +227,12 @@ def aggregate_injury_history(reports: pd.DataFrame) -> pd.DataFrame:
             "physical_designation_count",
         ],
     ]  # (n_positive_player_seasons, 5)
-    history["season"] = history["season"].astype("int32")  # (n_positive_player_seasons,)
-    history["physical_injury_reported"] = history[
-        "physical_injury_reported"
-    ].astype("int8")  # (n_positive_player_seasons,)
+    history["season"] = history["season"].astype(
+        "int32"
+    )  # (n_positive_player_seasons,)
+    history["physical_injury_reported"] = history["physical_injury_reported"].astype(
+        "int8"
+    )  # (n_positive_player_seasons,)
     return history
 
 
@@ -241,7 +247,10 @@ def _safe_phase2_columns(
         if column.startswith(("room_", "team_", "prior_team_")):
             continue
         feature_lineage = lineage[column]
-        if any(source == "modeling_table.target_roster" for source in feature_lineage.sources):
+        if any(
+            source == "modeling_table.target_roster"
+            for source in feature_lineage.sources
+        ):
             continue
         if any(
             source in {"weekly_stats", "player_seasons"} and offset < 1
@@ -268,14 +277,20 @@ def _load_weekly_stats(root: Path) -> pd.DataFrame:
             continue
         available = set(pq.read_schema(path).names)
         columns = [column for column in WEEKLY_FEATURE_COLUMNS if column in available]
-        frame = pd.read_parquet(path, columns=columns)  # (n_season_player_weeks, c_weekly)
+        frame = pd.read_parquet(
+            path, columns=columns
+        )  # (n_season_player_weeks, c_weekly)
         for column in WEEKLY_FEATURE_COLUMNS:
             if column not in frame:
                 frame[column] = np.nan  # (n_season_player_weeks,)
         frames.append(frame.loc[:, WEEKLY_FEATURE_COLUMNS])
     if not frames:
-        raise FileNotFoundError(f"No weekly player statistics found below {stats_directory}.")
-    return pd.concat(frames, ignore_index=True, sort=False)  # (n_player_weeks, c_weekly)
+        raise FileNotFoundError(
+            f"No weekly player statistics found below {stats_directory}."
+        )
+    return pd.concat(
+        frames, ignore_index=True, sort=False
+    )  # (n_player_weeks, c_weekly)
 
 
 def _injury_history_features(
@@ -292,7 +307,9 @@ def _injury_history_features(
         "physical_designation_count",
     )
     for offset in INJURY_HISTORY_OFFSETS:
-        lookup = history.rename(columns={"season": "source_season"})  # (n_positive_player_seasons, 5)
+        lookup = history.rename(
+            columns={"season": "source_season"}
+        )  # (n_positive_player_seasons, 5)
         target_keys = keys.loc[:, ["target_season", "player_id"]].copy()  # (n, 2)
         target_keys["source_season"] = target_keys["target_season"] - offset  # (n,)
         merged = target_keys.merge(
@@ -304,9 +321,11 @@ def _injury_history_features(
         )  # (n, 2 + c_history)
         for source_column in value_columns:
             column = f"injury_lag{offset}_{source_column.removeprefix('physical_')}"
-            features[column] = pd.to_numeric(
-                merged[source_column], errors="coerce"
-            ).fillna(0.0).astype("float32")  # (n,)
+            features[column] = (
+                pd.to_numeric(merged[source_column], errors="coerce")
+                .fillna(0.0)
+                .astype("float32")
+            )  # (n,)
             lineage[column] = FeatureLineage(
                 column=column,
                 sources=("nflverse_injury_reports",),
@@ -351,7 +370,9 @@ def build_injury_feature_bundle(
     frame = phase2.frame.loc[:, safe_columns].copy()  # (n_candidates, d_safe)
     lineage = {column: phase2.lineage[column] for column in safe_columns}
 
-    position_k = phase2.keys["model_position"].eq("K").astype("float32")  # (n_candidates,)
+    position_k = (
+        phase2.keys["model_position"].eq("K").astype("float32")
+    )  # (n_candidates,)
     frame["position_K"] = position_k  # (n_candidates, d_safe + 1)
     lineage["position_K"] = FeatureLineage(
         column="position_K",
@@ -379,7 +400,9 @@ def build_injury_feature_bundle(
         "target_points",
         "previous_points_baseline",
     ]
-    metadata_source = candidate_table.loc[:, metadata_columns].copy()  # (n_candidates, 11)
+    metadata_source = candidate_table.loc[
+        :, metadata_columns
+    ].copy()  # (n_candidates, 11)
     metadata = phase2.keys.merge(
         metadata_source,
         on=["target_season", "player_id", "model_position"],
@@ -387,7 +410,9 @@ def build_injury_feature_bundle(
         validate="one_to_one",
         sort=False,
     )  # (n_candidates, 11)
-    positive_labels = history.rename(columns={"season": "target_season"})  # (n_positive_player_seasons, 5)
+    positive_labels = history.rename(
+        columns={"season": "target_season"}
+    )  # (n_positive_player_seasons, 5)
     labels = phase2.keys.merge(
         positive_labels,
         on=["target_season", "player_id"],
@@ -400,10 +425,12 @@ def build_injury_feature_bundle(
         "physical_injury_report_weeks",
         "physical_designation_count",
     ):
-        labels[column] = pd.to_numeric(labels[column], errors="coerce").fillna(0.0)  # (n_candidates,)
-    labels["physical_injury_reported"] = labels[
-        "physical_injury_reported"
-    ].astype("int8")  # (n_candidates,)
+        labels[column] = pd.to_numeric(labels[column], errors="coerce").fillna(
+            0.0
+        )  # (n_candidates,)
+    labels["physical_injury_reported"] = labels["physical_injury_reported"].astype(
+        "int8"
+    )  # (n_candidates,)
     frame = frame.astype("float32")  # (n_candidates, d_total)
     return InjuryFeatureBundle(
         keys=phase2.keys,

@@ -70,6 +70,9 @@ def test_current_injury_match_screens_every_player_and_normalizes_team() -> None
 
     assert len(screen.player_screen) == 2
     assert screen.current_injuries["player_id"].tolist() == ["a"]
-    assert screen.player_screen.loc[
-        screen.player_screen["player_id"].eq("b"), "screen_result"
-    ].item() == "No current listing found"
+    assert (
+        screen.player_screen.loc[
+            screen.player_screen["player_id"].eq("b"), "screen_result"
+        ].item()
+        == "No current listing found"
+    )

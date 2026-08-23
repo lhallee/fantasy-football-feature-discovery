@@ -1,0 +1,421 @@
+{
+  "combination": {
+    "audit_rows": 3243,
+    "default_weight": 0.2,
+    "development_rows": 3401,
+    "table": [
+      {
+        "bust_rate_top_k": 0.212962962962963,
+        "default": false,
+        "injury_weight": 0.0,
+        "ndcg_at_roster_cutoff": 0.7413242906187612,
+        "rows": 3401.0,
+        "spearman": 0.719571935703247,
+        "stage": "development",
+        "top_k_recall": 0.5069444444444443
+      },
+      {
+        "bust_rate_top_k": 0.2152777777777778,
+        "default": false,
+        "injury_weight": 0.05,
+        "ndcg_at_roster_cutoff": 0.7401928172698619,
+        "rows": 3401.0,
+        "spearman": 0.7190912230662007,
+        "stage": "development",
+        "top_k_recall": 0.5046296296296297
+      },
+      {
+        "bust_rate_top_k": 0.22569444444444445,
+        "default": false,
+        "injury_weight": 0.1,
+        "ndcg_at_roster_cutoff": 0.7315941519235513,
+        "rows": 3401.0,
+        "spearman": 0.7182606663621933,
+        "stage": "development",
+        "top_k_recall": 0.4872685185185186
+      },
+      {
+        "bust_rate_top_k": 0.21875,
+        "default": false,
+        "injury_weight": 0.15,
+        "ndcg_at_roster_cutoff": 0.7263472794961233,
+        "rows": 3401.0,
+        "spearman": 0.716772666150241,
+        "stage": "development",
+        "top_k_recall": 0.4849537037037037
+      },
+      {
+        "bust_rate_top_k": 0.224537037037037,
+        "default": true,
+        "injury_weight": 0.2,
+        "ndcg_at_roster_cutoff": 0.7230752803678132,
+        "rows": 3401.0,
+        "spearman": 0.7152499149380706,
+        "stage": "development",
+        "top_k_recall": 0.482638888888889
+      },
+      {
+        "bust_rate_top_k": 0.23032407407407407,
+        "default": false,
+        "injury_weight": 0.25,
+        "ndcg_at_roster_cutoff": 0.7108803267757859,
+        "rows": 3401.0,
+        "spearman": 0.7124517038705859,
+        "stage": "development",
+        "top_k_recall": 0.47453703703703703
+      },
+      {
+        "bust_rate_top_k": 0.25578703703703703,
+        "default": false,
+        "injury_weight": 0.3,
+        "ndcg_at_roster_cutoff": 0.6931138447530031,
+        "rows": 3401.0,
+        "spearman": 0.7083666842532126,
+        "stage": "development",
+        "top_k_recall": 0.4548611111111111
+      },
+      {
+        "bust_rate_top_k": 0.29629629629629634,
+        "default": false,
+        "injury_weight": 0.4,
+        "ndcg_at_roster_cutoff": 0.6492077058749203,
+        "rows": 3401.0,
+        "spearman": 0.6926416114614944,
+        "stage": "development",
+        "top_k_recall": 0.4039351851851852
+      },
+      {
+        "bust_rate_top_k": 0.35995370370370366,
+        "default": false,
+        "injury_weight": 0.5,
+        "ndcg_at_roster_cutoff": 0.5889644107749789,
+        "rows": 3401.0,
+        "spearman": 0.6432139567071494,
+        "stage": "development",
+        "top_k_recall": 0.34259259259259256
+      },
+      {
+        "bust_rate_top_k": 0.16666666666666666,
+        "default": false,
+        "injury_weight": 0.0,
+        "ndcg_at_roster_cutoff": 0.7909798221653377,
+        "rows": 3243.0,
+        "spearman": 0.7538198764913582,
+        "stage": "audit",
+        "top_k_recall": 0.5416666666666666
+      },
+      {
+        "bust_rate_top_k": 0.16666666666666666,
+        "default": false,
+        "injury_weight": 0.05,
+        "ndcg_at_roster_cutoff": 0.7906925416561857,
+        "rows": 3243.0,
+        "spearman": 0.7535837281989823,
+        "stage": "audit",
+        "top_k_recall": 0.5416666666666666
+      },
+      {
+        "bust_rate_top_k": 0.16782407407407407,
+        "default": false,
+        "injury_weight": 0.1,
+        "ndcg_at_roster_cutoff": 0.7894529222015443,
+        "rows": 3243.0,
+        "spearman": 0.7528178071382673,
+        "stage": "audit",
+        "top_k_recall": 0.5381944444444445
+      },
+      {
+        "bust_rate_top_k": 0.16550925925925924,
+        "default": false,
+        "injury_weight": 0.15,
+        "ndcg_at_roster_cutoff": 0.7819278686259433,
+        "rows": 3243.0,
+        "spearman": 0.751873993606054,
+        "stage": "audit",
+        "top_k_recall": 0.5335648148148149
+      },
+      {
+        "bust_rate_top_k": 0.1724537037037037,
+        "default": true,
+        "injury_weight": 0.2,
+        "ndcg_at_roster_cutoff": 0.7650746014312668,
+        "rows": 3243.0,
+        "spearman": 0.7501998199918846,
+        "stage": "audit",
+        "top_k_recall": 0.519675925925926
+      },
+      {
+        "bust_rate_top_k": 0.17592592592592593,
+        "default": false,
+        "injury_weight": 0.25,
+        "ndcg_at_roster_cutoff": 0.7561954167386326,
+        "rows": 3243.0,
+        "spearman": 0.7475628477056926,
+        "stage": "audit",
+        "top_k_recall": 0.5173611111111112
+      },
+      {
+        "bust_rate_top_k": 0.17592592592592593,
+        "default": false,
+        "injury_weight": 0.3,
+        "ndcg_at_roster_cutoff": 0.748271254355632,
+        "rows": 3243.0,
+        "spearman": 0.7438543093479392,
+        "stage": "audit",
+        "top_k_recall": 0.5173611111111112
+      },
+      {
+        "bust_rate_top_k": 0.23032407407407407,
+        "default": false,
+        "injury_weight": 0.4,
+        "ndcg_at_roster_cutoff": 0.7084059865521278,
+        "rows": 3243.0,
+        "spearman": 0.7280573629240082,
+        "stage": "audit",
+        "top_k_recall": 0.4652777777777779
+      },
+      {
+        "bust_rate_top_k": 0.3194444444444445,
+        "default": false,
+        "injury_weight": 0.5,
+        "ndcg_at_roster_cutoff": 0.6096565589642056,
+        "rows": 3243.0,
+        "spearman": 0.6728323206456815,
+        "stage": "audit",
+        "top_k_recall": 0.38078703703703703
+      }
+    ]
+  },
+  "experiment": "phase5",
+  "feature_ranking": {
+    "featureranker_used": true,
+    "injury_top_20": [
+      "lag1_receiving_yards_after_catch",
+      "lag1_games",
+      "lag1_catch_rate",
+      "lag1_share_receptions_prior_team",
+      "lag1_offense_snaps",
+      "lag1_receiving_yards",
+      "lag1_share_targets_prior_team",
+      "lag1_receptions",
+      "missing_draft_number",
+      "lag1_receiving_yards_after_catch_per_reception",
+      "lag1_receiving_yards_per_target",
+      "lag1_targets_per_game",
+      "was_drafted",
+      "missing_draft_round",
+      "lag1_receiving_first_down_rate",
+      "lag2_offense_snaps",
+      "lag1_receiving_16",
+      "lag1_offense_snaps_per_game",
+      "draft_round",
+      "lag1_receiving_20"
+    ],
+    "points_top_20": [
+      "lag1_offense_snaps",
+      "lag1_games",
+      "lag1_receiving_yards_after_catch",
+      "lag1_receptions",
+      "lag1_share_receptions_prior_team",
+      "lag1_receiving_yards",
+      "lag1_targets",
+      "lag1_offense_snaps_per_game",
+      "lag1_receiving_yards_per_game",
+      "lag1_share_targets_prior_team",
+      "lag1_rushing_10",
+      "lag1_receiving_tds",
+      "missing_draft_number",
+      "lag2_offense_snaps",
+      "lag1_receiving_10",
+      "lag2_receiving_yards_after_catch",
+      "lag1_share_carries_prior_team",
+      "draft_number",
+      "lag1_receptions_per_game",
+      "lag1_late6_receiving_yards_after_catch"
+    ]
+  },
+  "feature_set": "phase5",
+  "generated_at_utc": "2026-08-22T20:28:57.619215+00:00",
+  "injury": {
+    "auc_interval": [
+      0.7313082195029479,
+      0.7677677956106359
+    ],
+    "audit_auc": 0.7491603230037394,
+    "audit_average_precision": 0.44455906791178434,
+    "audit_brier": 0.1601480293191467,
+    "audit_log_loss": 0.4832915477984473,
+    "baseline_auc": 0.5857555848659052,
+    "calibration_intercept": -0.007813524104629857,
+    "calibration_slope": 1.0207756649852966,
+    "development_auc": 0.7302988699179253,
+    "exposure": [
+      {
+        "positive_rate": 0.2467076382791923,
+        "prior_games_auc": 0.6719164913115091,
+        "roc_auc": 0.7491603230037394,
+        "rows": 3417,
+        "subgroup": "all audit candidates"
+      },
+      {
+        "positive_rate": 0.32593340060544906,
+        "prior_games_auc": 0.6213832010900799,
+        "roc_auc": 0.6755656643369607,
+        "rows": 1982,
+        "subgroup": "prior-year games > 0"
+      },
+      {
+        "positive_rate": 0.3644918444165621,
+        "prior_games_auc": 0.5720062594192876,
+        "roc_auc": 0.6470581239072777,
+        "rows": 1594,
+        "subgroup": "prior-year games >= 4"
+      },
+      {
+        "positive_rate": 0.39967506092607635,
+        "prior_games_auc": 0.5183284376822117,
+        "roc_auc": 0.6270586488002905,
+        "rows": 1231,
+        "subgroup": "prior-year games >= 8"
+      }
+    ],
+    "exposure_baseline_auc": 0.676972987471208,
+    "label": "missed_time_injury",
+    "null_mean_auc": 0.5285869040870035,
+    "null_mean_within_season_auc": 0.5424308310384575,
+    "paired_auc_interval": {
+      "bootstrap_samples": 500,
+      "estimate": 0.16340473813783418,
+      "lower_95": 0.1361681096138869,
+      "upper_95": 0.18601892326727656
+    },
+    "position_auc": [
+      {
+        "model_position": "K",
+        "positive_rate": 0.1724137931034483,
+        "roc_auc": 0.6041666666666666,
+        "rows": 174.0
+      },
+      {
+        "model_position": "QB",
+        "positive_rate": 0.18028846153846154,
+        "roc_auc": 0.7767350928641251,
+        "rows": 416.0
+      },
+      {
+        "model_position": "RB",
+        "positive_rate": 0.2625,
+        "roc_auc": 0.7249798224374495,
+        "rows": 800.0
+      },
+      {
+        "model_position": "TE",
+        "positive_rate": 0.2539912917271408,
+        "roc_auc": 0.711473040578099,
+        "rows": 689.0
+      },
+      {
+        "model_position": "WR",
+        "positive_rate": 0.26382660687593423,
+        "roc_auc": 0.7772263844350815,
+        "rows": 1338.0
+      }
+    ],
+    "prevalence": 0.2467076382791923,
+    "secondary_label_audit": {
+      "average_precision": 0.7629402367819453,
+      "brier_score": 0.14038545649033657,
+      "calibration_intercept": 0.04373184984915323,
+      "calibration_slope": 1.0437121902948405,
+      "log_loss": 0.42860632501599794,
+      "prevalence": 0.3494293239683933,
+      "roc_auc": 0.8678845569879687
+    },
+    "selected": "extra_trees_all_leaf50",
+    "success_rule_passed": true
+  },
+  "plan_sha256": "7d2e21c52448b32ac850ea18fecd66bb15978aa01168b7339becc5af36818c68",
+  "points": {
+    "adopted": "phase4_production",
+    "adopted_components": [
+      "phase4_production"
+    ],
+    "audit_interval": [
+      0.7320567629657614,
+      0.7750796502039754
+    ],
+    "audit_mae": 24.69475180054896,
+    "audit_spearman": 0.7556660806193527,
+    "baseline_spearman": 0.6471565438550133,
+    "discovery_spearman": 0.719571935703247,
+    "intervals": {
+      "adopted_minus_previous_points": {
+        "bootstrap_samples": 500,
+        "estimate": 0.10850953676433939,
+        "lower_95": 0.08899211239014189,
+        "upper_95": 0.12785919933025197
+      },
+      "adopted_minus_reference": {
+        "bootstrap_samples": 500,
+        "estimate": 0.0,
+        "lower_95": 0.0,
+        "upper_95": 0.0
+      },
+      "adopted_spearman": {
+        "bootstrap_samples": 500,
+        "estimate": 0.7556660806193527,
+        "lower_95": 0.7320567629657614,
+        "upper_95": 0.7750796502039754
+      }
+    },
+    "null_mean_spearman": 0.02420438448948452,
+    "position_audit": [
+      {
+        "candidate": "phase4_production",
+        "mae": 36.885379778149456,
+        "model_position": "QB",
+        "spearman": 0.7179141511353838
+      },
+      {
+        "candidate": "phase4_production",
+        "mae": 29.341600678911686,
+        "model_position": "RB",
+        "spearman": 0.7429603184781547
+      },
+      {
+        "candidate": "phase4_production",
+        "mae": 16.737001287019,
+        "model_position": "TE",
+        "spearman": 0.7934386033457695
+      },
+      {
+        "candidate": "phase4_production",
+        "mae": 22.3682653752702,
+        "model_position": "WR",
+        "spearman": 0.7683512495181026
+      }
+    ],
+    "reference": "phase4_production",
+    "reference_audit_spearman": 0.7556660806193527,
+    "selected": "phase4_production"
+  },
+  "points_discovery_seasons": [
+    2019,
+    2020,
+    2021
+  ],
+  "points_minimum_training_season": 2017,
+  "replacement_points": {
+    "K": 117.21,
+    "QB": 219.79,
+    "RB": 157.0,
+    "TE": 124.93,
+    "WR": 122.49
+  },
+  "rows": {
+    "current_players": 951,
+    "labeled_player_seasons": 12494
+  },
+  "run_directory": "experiments/phase5/runs/20260822T201352124100Z-usage-features-v1",
+  "workbook_name": "fantasy_football_final_rankings_2026_phase5.xlsx"
+}

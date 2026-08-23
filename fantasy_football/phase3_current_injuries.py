@@ -15,11 +15,11 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Mapping, Sequence
 
-from .phase3_draft import write_risk_adjusted_workbook
-
 
 MFL_INJURY_URL = "https://api.myfantasyleague.com/2026/export"
-MFL_DOCUMENTATION_URL = "https://myfantasyleague.wordpress.com/2008/08/06/developer-api/"
+MFL_DOCUMENTATION_URL = (
+    "https://myfantasyleague.wordpress.com/2008/08/06/developer-api/"
+)
 SNAPSHOT_DATE = "2026-08-14"
 FANTASY_POSITIONS = frozenset({"QB", "RB", "FB", "WR", "TE", "PK", "K"})
 INJURY_STATUSES = frozenset(
@@ -29,10 +29,7 @@ NON_INJURY_DETAILS = frozenset({"ILLNESS", "COVID", "PERSONAL", "SUSPENSION"})
 REQUIRED_BOARD_COLUMNS = frozenset(
     {"player_id", "candidate_name", "team", "model_position"}
 )
-OPERATIONAL_CODE_PATHS = (
-    "fantasy_football/phase3_current_injuries.py",
-    "fantasy_football/phase3_draft.py",
-)
+OPERATIONAL_CODE_PATHS = ("fantasy_football/phase3_current_injuries.py",)
 TEAM_ALIASES = {
     "ARI": "ARI",
     "AZ": "ARI",
@@ -269,7 +266,9 @@ def _normalized_team(value: object) -> str:
     return TEAM_ALIASES.get(team, team)
 
 
-def _response_json(session: requests.Session, parameters: Mapping[str, str]) -> Mapping[str, Any]:
+def _response_json(
+    session: requests.Session, parameters: Mapping[str, str]
+) -> Mapping[str, Any]:
     response = session.get(
         MFL_INJURY_URL,
         params=parameters,
@@ -391,7 +390,9 @@ def fetch_mfl_injury_snapshot() -> tuple[pd.DataFrame, str]:
         ignore_index=True,
     )  # (n_mfl + 11, 16)
     if source_rows.duplicated(["source_team_key", "player_name_key"]).any():
-        raise ValueError("Combined injury snapshot contains duplicate team-player rows.")
+        raise ValueError(
+            "Combined injury snapshot contains duplicate team-player rows."
+        )
     return source_rows, retrieved_at_utc
 
 
@@ -406,13 +407,17 @@ def match_current_injuries(
     # board: (n_players, c_board); source_rows: (n_source, c_source)
     missing_board = sorted(REQUIRED_BOARD_COLUMNS.difference(board.columns))
     if missing_board:
-        raise ValueError(f"Current-injury screen board is missing columns: {missing_board!r}.")
+        raise ValueError(
+            f"Current-injury screen board is missing columns: {missing_board!r}."
+        )
     if board["player_id"].duplicated().any():
         raise ValueError("Current-injury screen requires unique player IDs.")
     board_keys = board.loc[
         :, ["player_id", "candidate_name", "team", "model_position"]
     ].copy()  # (n_players, 4)
-    board_keys["source_team_key"] = board_keys["team"].map(_normalized_team)  # (n_players,)
+    board_keys["source_team_key"] = board_keys["team"].map(
+        _normalized_team
+    )  # (n_players,)
     board_keys["player_name_key"] = board_keys["candidate_name"].map(
         _normalized_name
     )  # (n_players,)
@@ -574,37 +579,29 @@ def write_current_injury_artifacts(
     return paths
 
 
-def rebuild_current_injury_workbook(
+def refresh_current_injury_screen(
     root: Path,
     *,
     as_of_date: str = SNAPSHOT_DATE,
-) -> tuple[Path, CurrentInjuryScreen]:
-    """Refresh the dated screen and rebuild the risk-adjusted workbook."""
+) -> CurrentInjuryScreen:
+    """Refresh the dated screen against the current final board."""
     board = pd.read_parquet(
-        root / "experiments" / "phase3" / "artifacts" / "injury_adjusted_players_2026.parquet"
-    )  # (958, c_board)
-    available_board = board.loc[board["available_for_draft"]].copy()  # (951, c_board)
+        root / "experiments" / "phase4" / "artifacts" / "final_rankings_2026.parquet"
+    )  # (n_players, c_board)
     source_rows, retrieved_at_utc = fetch_mfl_injury_snapshot()
     screen = match_current_injuries(
-        available_board,
+        board,
         source_rows,
         as_of_date=as_of_date,
         retrieved_at_utc=retrieved_at_utc,
     )
     write_current_injury_artifacts(root, screen, as_of_date=as_of_date)
-    output_path = root / "outputs" / "injury_adjusted_draft_board_2026.xlsx"
-    write_risk_adjusted_workbook(
-        available_board,
-        output_path,
-        current_injuries=screen.current_injuries,
-        injury_as_of=as_of_date,
-    )
-    return output_path, screen
+    return screen
 
 
 def _parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Freeze current injury listings and rebuild the 2026 draft workbook."
+        description="Freeze dated current injury listings for the final board."
     )
     parser.add_argument("--root", type=Path, default=Path.cwd())
     parser.add_argument("--as-of", default=SNAPSHOT_DATE)
@@ -612,15 +609,13 @@ def _parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
 
 
 def main(argv: Sequence[str] | None = None) -> int:
-    """Run the dated current-injury screen and workbook rebuild."""
+    """Run the dated current-injury screen."""
     arguments = _parse_args(argv)
-    output_path, screen = rebuild_current_injury_workbook(
+    screen = refresh_current_injury_screen(
         arguments.root.resolve(),
         as_of_date=str(arguments.as_of),
     )
-    print(
-        f"Wrote {output_path} with {len(screen.current_injuries)} current injury listings."
-    )
+    print(f"Froze {len(screen.current_injuries)} current injury listings.")
     return 0
 
 

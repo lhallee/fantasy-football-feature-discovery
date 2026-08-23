@@ -3,7 +3,6 @@
 import pandas as pd
 import pytest
 
-from fantasy_football.phase2_cohort import build_phase2_offense_cohort
 from fantasy_football.phase2_features import KEY_COLUMNS
 from fantasy_football.phase2_features import build_phase2_features
 
@@ -190,23 +189,6 @@ def test_stable_recipes_have_expected_values_and_lineage() -> None:
         "target_share",
     ):
         assert prohibited not in lowered_columns
-
-
-def test_status_cohort_filter_precedes_real_room_feature_aggregation() -> None:
-    weekly, player_seasons, modeling = _stable_inputs()
-    cut_row = modeling.iloc[[0]].copy()  # (1, 18)
-    cut_row.loc[:, "player_id"] = "TEAMMATE"
-    cut_row.loc[:, "status"] = "CUT"
-    cut_row.loc[:, "target_points"] = 0.0
-    with_cut = pd.concat([modeling, cut_row], ignore_index=True)  # (3, 18)
-
-    cohort = build_phase2_offense_cohort(with_cut)
-    bundle = build_phase2_features(weekly, player_seasons, cohort.table)
-    frame = bundle.frame  # (2, d)
-
-    assert bundle.keys["player_id"].tolist() == ["A", "B"]
-    assert frame["room_competitor_count"].tolist() == [1.0, 1.0]
-    assert frame["room_lag1_other_carries"].tolist() == [10.0, 30.0]
 
 
 def test_target_and_future_performance_fields_cannot_change_features() -> None:

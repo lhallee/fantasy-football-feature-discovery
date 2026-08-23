@@ -1,0 +1,228 @@
+{
+  "plan_version": 1,
+  "plan_name": "phase4_final_ranking_v1",
+  "recorded_before_fit_utc": "2026-08-22T18:45:35+00:00",
+  "forecast_origin": "2026-08-09",
+  "current_season": 2026,
+  "question": "Rank August 9, 2026 fantasy candidates by a full-season ESPN full-PPR point forecast and a calibrated probability of a missed-time injury, with no target-season information in any input.",
+  "cohort": {
+    "builder": "fantasy_football.phase2_august.build_august_cohort",
+    "positions": [
+      "QB",
+      "RB",
+      "WR",
+      "TE",
+      "K"
+    ],
+    "historical_seasons": [
+      2013,
+      2024
+    ],
+    "target_season_roster_membership_used_historically": false
+  },
+  "injury_label": {
+    "name": "missed_time_injury",
+    "definition": "1 when, during the regular season, the player either (a) appears on an official weekly injury report with a physical designation and a game status of Out or Doubtful, or (b) holds a Reserve roster status in any regular-season roster week whose description code is not a known non-injury reserve code.",
+    "non_injury_reserve_codes": [
+      "R02",
+      "R03",
+      "R06",
+      "R23",
+      "R27",
+      "R40",
+      "R59",
+      "R62"
+    ],
+    "excluded_components": [
+      "Questionable-only designations",
+      "practice-only designations",
+      "game-day inactive codes because they exist only from 2024",
+      "COVID, retired, did-not-report, left-squad, future, and suspension reserve codes"
+    ],
+    "secondary_label": "physical_injury_reported (Phase 3 definition, reported for comparison only)",
+    "label_seasons": [
+      2013,
+      2024
+    ],
+    "reason_2025_unlabeled": "official injury reports end after 2024; a roster-only 2025 label would not match the definition"
+  },
+  "features": {
+    "inherited": "the 500 Phase 3 leakage-controlled inputs",
+    "added": [
+      "injury_lag{1..4}_reserve_weeks from regular-season roster files (offsets 1 through 4)",
+      "injury_lag{2..5}_absence_report_weeks and injury_lag{2..5}_absence_reported from official reports (offsets 2 through 5 because the report feed ends in 2024)"
+    ],
+    "forbidden": [
+      "any target-season statistic, roster status, depth chart, injury report, projection, ADP, or composite efficiency metric",
+      "lag-1 report features because they cannot be computed for 2026"
+    ]
+  },
+  "points_track": {
+    "cohort": "offense (QB, RB, WR, TE) pooled; kickers retain the Phase 2 production forecast",
+    "target": "raw full-season ESPN full-PPR points with nonparticipants at zero",
+    "minimum_training_season": 2013,
+    "discovery_seasons": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021
+    ],
+    "audit_seasons": [
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "reference": "phase2_production: the locked Phase 2 discovery and audit predictions (off_stable_core_et_all)",
+    "learners": {
+      "ext_et_all": {
+        "estimator": "extra_trees",
+        "n_estimators": 180,
+        "max_depth": 14,
+        "min_samples_leaf": 5,
+        "max_features": 0.7
+      },
+      "ext_hgb_all": {
+        "estimator": "hist_gradient_boosting",
+        "max_iter": 220,
+        "learning_rate": 0.05,
+        "max_leaf_nodes": 31,
+        "l2_regularization": 3.0,
+        "min_samples_leaf": 20
+      },
+      "ext_xgb_all": {
+        "estimator": "xgboost",
+        "n_estimators": 280,
+        "learning_rate": 0.03,
+        "max_depth": 3,
+        "min_child_weight": 5,
+        "subsample": 0.85,
+        "colsample_bytree": 0.85,
+        "reg_lambda": 3.0,
+        "reg_alpha": 0.1
+      }
+    },
+    "candidates": [
+      "phase2_production",
+      "ext_et_all",
+      "ext_hgb_all",
+      "ext_xgb_all",
+      "blend_ext_et_hgb",
+      "blend_ext_all3",
+      "blend_phase2_ext_et",
+      "blend_phase2_ext_all3"
+    ],
+    "primary_metric": "mean within-position-season Spearman",
+    "selection_rule": "best discovery mean Spearman; any candidate within 0.005 is eligible; prefer phase2_production, then fewer components, then lower MAE, then identifier",
+    "adoption_rule": "the selected candidate replaces phase2_production for 2026 only if its audit mean Spearman is at least the phase2_production audit mean Spearman minus 0.005; otherwise phase2_production is retained and the comparison is reported",
+    "null_control": {
+      "seeds": 5,
+      "grain": "target permuted independently within target season and position",
+      "gate_absolute_mean_spearman": 0.05
+    },
+    "uncertainty": "player-cluster bootstrap, 500 resamples, for audit mean Spearman and the paired gain over phase2_production",
+    "interval_forecast": "empirical 10th and 90th residual percentiles from 2022-2025 audit predictions of the adopted procedure, within position and predicted-point tercile"
+  },
+  "injury_track": {
+    "cohort": "QB, RB, WR, TE, K pooled",
+    "development_seasons": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021
+    ],
+    "audit_seasons": [
+      2022,
+      2023,
+      2024
+    ],
+    "fold_design": "base model on seasons 2013 through y-2, sigmoid calibration on y-1, evaluation on y",
+    "learners": {
+      "age_position_logistic": "baseline; age, missing_age, position indicators",
+      "prior_games_logistic": "exposure baseline; lag1_games and position indicators",
+      "elastic_all_c0.05": "elastic-net logistic regression, C=0.05, l1_ratio=0.9, balanced classes",
+      "extra_trees_all_leaf20": "300 trees, min leaf 20, 70% features per split, balanced subsample",
+      "extra_trees_all_leaf50": "300 trees, min leaf 50, 70% features per split, balanced subsample",
+      "hist_gradient_all_leaves15": "200 iterations, 15 leaves, learning rate 0.05, l2 3.0, balanced classes"
+    },
+    "selection_rule": "best mean development ROC AUC; within 0.005 eligible; then lower mean log loss; then simpler family order baseline, elastic_net, hist_gradient, extra_trees; then identifier",
+    "success_rule": "clustered 95% lower AUC limit above 0.5 and pooled audit AUC at least 0.02 above the age-position baseline",
+    "null_control": {
+      "seeds": 5,
+      "grain": "labels permuted within season and position",
+      "gate_mean_auc": [
+        0.45,
+        0.55
+      ]
+    },
+    "diagnostics": [
+      "position AUC",
+      "exposure subgroups by prior-year games",
+      "calibration intercept and slope",
+      "player-cluster bootstrap AUC interval"
+    ]
+  },
+  "combination": {
+    "score": "100 * ((1 - w) * within-position percentile of predicted points + w * (1 - missed-time injury probability))",
+    "weights_evaluated": [
+      0.0,
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3,
+      0.4,
+      0.5
+    ],
+    "evaluation_rows": "development seasons 2017-2021 where both tracks have out-of-fold predictions",
+    "default_weight_rule": "largest weight whose mean within-position-season Spearman against realized points is within 0.005 of the best weight",
+    "audit": "the default weight and weight zero are evaluated once on 2022-2024 audit rows",
+    "workbook_control": "the workbook exposes an editable weight cell that recomputes a custom score"
+  },
+  "feature_ranking": {
+    "tracks": [
+      "points",
+      "injury"
+    ],
+    "evidence": [
+      "held-out permutation importance on discovery folds (points: ext_et_all, ext_hgb_all, ext_xgb_all; injury: selected learner)",
+      "discovery-only univariate association (points: Spearman; injury: ROC AUC)",
+      "FeatureRanker probe-weighted reciprocal-rank consensus on discovery rows",
+      "feature-family ablation on discovery folds"
+    ],
+    "consensus": "mean rank across the permutation, univariate, and FeatureRanker evidence",
+    "audit_rows_used_for_ranking": false
+  },
+  "current_injury_screen": "the dated 2026-08-14 Phase 3 screen is joined as a flag and detail columns; it does not change either model",
+  "outputs": [
+    "outputs/fantasy_football_final_rankings_2026.xlsx",
+    "experiments/phase4/RESULTS.md",
+    "experiments/phase4/artifacts/*"
+  ],
+  "amendments": [
+    {
+      "amendment": 1,
+      "recorded_utc": "2026-08-22T19:07:30+00:00",
+      "trigger": "The first full run (2026-08-22, run 20260822T190102Z-final-ranking-v1) failed the points null-control gate: mean within-position-season Spearman 0.0512 over 5 target permutations against the 0.05 gate.",
+      "diagnosis": "Mean target points per season fall from about 57 (2013-2016) to about 40 (2017 onward) because the weekly roster files widen their coverage in 2016-2017, enlarging the candidate pool with low scorers. A model fitted to permuted targets can still learn era-proxy features and recover within-season structure. Evidence in artifacts/points_null_era_diagnostic.json: for validation seasons 2019-2021, the null mean is 0.108 (sd 0.036, 6 seeds) with training from 2013 and 0.027 (sd 0.034) with training from 2017, while real ext_et_all skill is 0.714 versus 0.720.",
+      "change": "The extended points learners train from 2017 onward in discovery, audit, and production. The phase2_production reference, the injury track, the selection and adoption rules, and every other declaration are unchanged. The injury null control additionally reports mean within-season AUC, which removes era prevalence from the pooled statistic. Because at least two training seasons are required, the points discovery folds become 2019, 2020, and 2021; the audit seasons stay 2022-2025.",
+      "status_of_first_run": "Retained under experiments/phase4/runs as the pre-amendment record; not used for the workbook."
+    },
+    {
+      "amendment": 2,
+      "recorded_utc": "2026-08-22T19:30:47+00:00",
+      "trigger": "The installed FeatureRanker package is version 1.2.2, whose feature_ranking() runs an internal hyperparameter search that did not finish within ten minutes on a 600-row, 40-column test, and whose API differs from the 3.0.4 interface used by the earlier notebook.",
+      "change": "The third feature-ranking evidence line becomes an in-house filter panel on the same discovery rows: k-nearest-neighbour mutual information and random-forest impurity importance (300 trees), combined as their mean rank. The consensus rank is the mean of the permutation, univariate, and panel ranks. FeatureRanker remains available behind an opt-in flag and is not part of the reported result."
+    },
+    {
+      "amendment": 3,
+      "recorded_utc": "2026-08-22T20:04:04+00:00",
+      "trigger": "Request to upgrade FeatureRanker to 3.0.4 and redo that analysis.",
+      "change": "FeatureRanker 3.0.4 (probe-weighted reciprocal-rank consensus over random forest, XGBoost, mutual information, ANOVA F-test, and L1 rankings) is restored as an evidence line on the same discovery rows used for the other rankings. The consensus rank becomes the mean of four ranks: permutation, univariate, filter panel, and FeatureRanker. The FeatureRanker step was rerun on the completed run 20260822T193048718307Z-final-ranking-v2 without refitting the models; per-method ranks, probe scores, and voting sensitivity are saved beside the ranking tables."
+    }
+  ]
+}

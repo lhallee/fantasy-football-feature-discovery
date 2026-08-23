@@ -48,7 +48,9 @@ def test_nonparticipants_are_explicit_zero_targets(august_table: pd.DataFrame) -
     historical = august_table[august_table["target_season"].lt(2026)]  # (n_history, c)
     assert historical["target_points"].notna().all()
     prospects = historical["cohort_source_kind"].eq("draft_or_combine")  # (n_history,)
-    pseudo = historical["player_id"].str.startswith(("pfr:", "prospect:"))  # (n_history,)
+    pseudo = historical["player_id"].str.startswith(
+        ("pfr:", "prospect:")
+    )  # (n_history,)
     assert pseudo.any()
     assert historical.loc[prospects & pseudo, "target_points"].eq(0.0).all()
 
@@ -60,13 +62,14 @@ def test_current_rows_are_complete_august_roster_with_availability_flag(
     current = august_table[august_table["target_season"].eq(2026)]  # (n_current, c)
     source = pd.read_parquet(ROOT / "data" / "processed" / "preseason_players.parquet")
     model_position = source["position"].astype("string").str.upper().map(POSITION_MAP)
-    unavailable = source["status"].astype("string").str.upper().isin(
-        {"CUT", "RET", "RFA", "RSR", "TRC", "TRD", "TRT", "UFA"}
+    unavailable = (
+        source["status"]
+        .astype("string")
+        .str.upper()
+        .isin({"CUT", "RET", "RFA", "RSR", "TRC", "TRD", "TRT", "UFA"})
     )
     expected = source[
-        source["season"].eq(2026)
-        & model_position.notna()
-        & source["player_id"].notna()
+        source["season"].eq(2026) & model_position.notna() & source["player_id"].notna()
     ]["player_id"].drop_duplicates()
     assert set(current["player_id"]) == set(expected)
     expected_available = set(

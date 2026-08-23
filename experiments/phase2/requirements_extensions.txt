@@ -1,2 +1,0 @@
-# Optional dependency for the scoring-correlation figure.
-matplotlib>=3.8

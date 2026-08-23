@@ -1,0 +1,28 @@
+{
+ "seeds": [
+  {
+   "seed": 5000,
+   "pooled": 0.5187367047558616,
+   "within_season_position": 0.4787448202877578
+  },
+  {
+   "seed": 5001,
+   "pooled": 0.5615712020461023,
+   "within_season_position": 0.5186260081296546
+  },
+  {
+   "seed": 5002,
+   "pooled": 0.5354487291176899,
+   "within_season_position": 0.47445751649031465
+  },
+  {
+   "seed": 5003,
+   "pooled": 0.5114914468346267,
+   "within_season_position": 0.4416710149366642
+  }
+ ],
+ "real_pooled": 0.7274258782012607,
+ "real_within_season_position": 0.6829227921801392,
+ "null_mean_pooled": 0.5318120206885701,
+ "null_mean_within_season_position": 0.47837483996109786
+}

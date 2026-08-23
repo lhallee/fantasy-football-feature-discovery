@@ -3,9 +3,13 @@ __pycache__/
 .ruff_cache/
 build/
 *.egg-info/
-artifacts/*.joblib
-!artifacts/offense_model.joblib
-!artifacts/kicker_model.joblib
 data/raw/*
 !data/raw/manifest.json
 outputs/*/
+docs/report/*.aux
+docs/report/*.bbl
+docs/report/*.blg
+docs/report/*.fls
+docs/report/*.fdb_latexmk
+docs/report/*.log
+docs/report/*.out
